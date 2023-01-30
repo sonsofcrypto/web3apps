@@ -34,7 +34,7 @@ class DefaultDashboardWireframeFactory(
     )
 }
 
-class DashboardAssembler: AssemblerComponent {
+class DashboardWireframeFactoryAssembler: AssemblerComponent {
 
     override fun register(to: AssemblerRegistry) {
         to.register("DashboardWireframeFactory", INSTANCE) { resolver ->

@@ -32,6 +32,10 @@ class NavigationFragment(
         //childFragmentManager.popBackStack()
     }
 
+    fun popToRoot() {
+        //TODO("Implement")
+    }
+
     fun presentModal(fragment: Fragment) {
         TODO("Implement")
     }

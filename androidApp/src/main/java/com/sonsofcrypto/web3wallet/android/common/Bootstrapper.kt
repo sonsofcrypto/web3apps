@@ -2,7 +2,7 @@ package com.sonsofcrypto.web3wallet.android.common
 
 import androidx.appcompat.app.AppCompatActivity
 import com.sonsofcrypto.web3wallet.android.assembler
-import com.sonsofcrypto.web3wallet.android.modules.dashboard.DashboardAssembler
+import com.sonsofcrypto.web3wallet.android.modules.dashboard.DashboardWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.root.RootAssembler
 import com.sonsofcrypto.web3wallet.android.modules.root.RootWireframeFactory
 import com.sonsofcrypto.web3wallet.android.services.*
@@ -41,7 +41,7 @@ private class AssemblerBootstrapper: Bootstrapper {
                 NodeServiceAssembler(),
                 // Modules
                 RootAssembler(),
-                DashboardAssembler()
+                DashboardWireframeFactoryAssembler()
             )
         )
     }

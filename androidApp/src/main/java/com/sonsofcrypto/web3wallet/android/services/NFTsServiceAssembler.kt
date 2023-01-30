@@ -11,7 +11,6 @@ class NFTsServiceAssembler: AssemblerComponent {
     override fun register(to: AssemblerRegistry) {
 
         to.register("NFTsService", AssemblerRegistryScope.SINGLETON) {
-
             OpenSeaNFTsService(
                 it.resolve("NetworksService"),
                 KeyValueStore("NFTsService"),
