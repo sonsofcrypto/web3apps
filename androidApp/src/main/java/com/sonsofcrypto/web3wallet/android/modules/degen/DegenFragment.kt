@@ -22,7 +22,7 @@ class DegenFragment : Fragment(R.layout.fragment_degen), DegenView {
     }
 
     override fun update(viewModel: DegenViewModel) {
-
+        print("Number of degen sections: ${viewModel.sections.count()}")
     }
 
     override fun popToRootAndRefresh() {
