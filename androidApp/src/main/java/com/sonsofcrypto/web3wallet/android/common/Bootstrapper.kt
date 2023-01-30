@@ -40,6 +40,7 @@ private class AssemblerBootstrapper: Bootstrapper {
                 NFTsServiceAssembler(),
                 WalletServiceAssembler(),
                 NodeServiceAssembler(),
+                DegenServiceAssembler(),
                 // Modules
                 RootWireframeFactoryAssembler(),
                 DashboardWireframeFactoryAssembler(),
