@@ -1,4 +1,4 @@
-package com.sonsofcrypto.web3wallet.android
+package com.sonsofcrypto.web3wallet.android.tests
 
 import com.sonsofcrypto.web3lib.utils.bip39.Bip39
 import com.sonsofcrypto.web3lib.utils.bip39.WordList

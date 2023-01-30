@@ -1,4 +1,4 @@
-package com.sonsofcrypto.web3wallet.android
+package com.sonsofcrypto.web3wallet.android.tests
 
 import androidx.annotation.Keep
 import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore

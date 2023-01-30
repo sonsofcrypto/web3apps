@@ -1,0 +1,465 @@
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="OK">OK</string>
+    <string name="web3wallet">web3wallet</string>
+    <string name="wallets">Wallets</string>
+    <string name="networks">Networks</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="degen">Degen</string>
+    <string name="nfts">NFTs</string>
+    <string name="apps">Apps</string>
+    <string name="settings">Settings</string>
+    <string name="receive">Receive</string>
+    <string name="send">Send</string>
+    <string name="more">More</string>
+    <string name="done">Done</string>
+    <string name="close">Close</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="paste">Paste</string>
+    <string name="min">min</string>
+    <string name="sec">sec</string>
+    <string name="save">Save</string>
+    <string name="max">Max</string>
+    <string name="enterFunds">Enter funds</string>
+    <string name="insufficientFunds">Insufficient funds</string>
+    <string name="low">Low</string>
+    <string name="medium">Average</string>
+    <string name="high">Fast</string>
+    <string name="comingSoon">Coming Soon</string>
+    <string name="approved">Approved</string>
+    <string name="approve">Approve</string>
+    <string name="rejected">Rejected</string>
+    <string name="reject">Reject</string>
+    <string name="search">Search</string>
+    <string name="time.ago.day">%1$s day ago</string>
+    <string name="time.ago.days">%1$s days ago</string>
+    <string name="time.ago.hour">%1$s hour ago</string>
+    <string name="time.ago.hours">%1$s hours ago</string>
+    <string name="time.ago.min">%1$s minute ago</string>
+    <string name="time.ago.mins">%1$s minutes ago</string>
+    <string name="time.ago.day.short">%@d ago</string>
+    <string name="time.ago.hour.short">%@h ago</string>
+    <string name="time.ago.min.short">%1$smin ago</string>
+    <string name="time.until.day.shortest">%1$sd</string>
+    <string name="time.until.hour.shortest">%1$sh</string>
+    <string name="time.until.min.shortest">%1$sm</string>
+    <string name="time.until.sec.shortest">%1$ss</string>
+    <string name="pending">Pending</string>
+    <string name="closed">Closed</string>
+    <string name="error">Error</string>
+    <string name="cancel">Cancel</string>
+    <string name="sendLogs">Send Logs</string>
+
+    <string name="error.alert.title">Oops! 😬</string>
+
+    <string name="wallets.tile">wallet</string>
+    <string name="wallets.createNew">Import wallet</string>
+    <string name="wallets.connectHD">Connect hardware wallet</string>
+
+    <string name="networks.header">Choose one or multiple networks for your wallet.</string>
+    <string name="networks.cell.connection">Connection:</string>
+    <string name="networks.cell.status">Status:</string>
+    <string name="networks.cell.explorer">Explorer:</string>
+    <string name="networks.provider.pokt">Pokt.network</string>
+    <string name="networks.provider.alchyme">Alchyme</string>
+    <string name="networks.provider.local">Local Geth Node</string>
+    <string name="networks.provider.custom">Custom gateway</string>
+    <string name="networks.settings.title">Network Settings</string>
+
+    <string name="dashboard.tab.title">Wallet</string>
+    <string name="dashboard.button.receive">Receive</string>
+    <string name="dashboard.button.send">Send</string>
+    <string name="dashboard.button.swap">Swap</string>
+    <string name="dashboard.section.nfts">NFTs</string>
+    <string name="dashboard.section.Notifications">Notifications</string>
+
+    <string name="degen.dappCategory.title.swap">Swap</string>
+    <string name="degen.dappCategory.title.cult">Cult.DAO</string>
+    <string name="degen.dappCategory.title.stakeYield">Staking and Yield farms</string>
+    <string name="degen.dappCategory.title.landBorrow">Borrowing / Lending</string>
+    <string name="degen.dappCategory.title.derivative">Derivatives</string>
+    <string name="degen.dappCategory.title.bridge">Bridges</string>
+    <string name="degen.dappCategory.title.mixer">Mixers</string>
+    <string name="degen.dappCategory.title.governance">Governance</string>
+
+    <string name="degen.dappCategory.subTitle.swap">Swap like a Degen</string>
+    <string name="degen.dappCategory.subTitle.cult">Decentralization revolution</string>
+    <string name="degen.dappCategory.subTitle.stakeYield">Stake your coins and receive rewards</string>
+    <string name="degen.dappCategory.subTitle.landBorrow">Borrow or lend your coins to earn interest</string>
+    <string name="degen.dappCategory.subTitle.derivative">Futures, perpetual and other derivatives</string>
+    <string name="degen.dappCategory.subTitle.bridge">Bridge between L1s and L2s</string>
+    <string name="degen.dappCategory.subTitle.mixer">Regain your privacy</string>
+    <string name="degen.dappCategory.subTitle.governance">Participate in governance\ndecisions</string>
+
+    <string name="degen.section.title">"Explore the web3 world. Interact directly from the app with smart contracts, not via web2 frontends."</string>
+
+<!--    "account.marketInfo.marketCap" = "Market cap";-->
+<!--    "account.marketInfo.price" = "Price";-->
+<!--    "account.marketInfo.volume" = "24h volume";-->
+<!--    "account.marketInfo.transactions" = "Transactions";-->
+<!--    "account.marketInfo.transactions.empty" = "No transactions";-->
+<!--    "account.marketInfo.transactions.loading" = "Updating transactions...";-->
+<!--    "account.action.copy.toast" = "Address copied to your clipboard";-->
+<!--    "account.action.bonus.cult" = "Read the manifesto";-->
+
+<!--    "keyStore.newMnemonic" = "Create new wallet";-->
+<!--    "keyStore.importMnemonic" = "Import wallet";-->
+<!--    "keyStore.moreOption" = "More options";-->
+<!--    "keyStore.connectHardwareWallet" = "Connect hardware wallet";-->
+<!--    "keyStore.importPrivateKey" = "Import private key";-->
+<!--    "keyStore.createMultiSig" = "Create multisig wallet";-->
+
+<!--    "mnemonic.title.new" = "New wallet";-->
+<!--    "mnemonic.title.import" = "Import wallet";-->
+<!--    "mnemonic.title.update" = "Edit wallet";-->
+<!--    "mnemonic.tapToReveal" = "Tap to reveal mnemonic";-->
+<!--    "mnemonic.footer" = "Write down mnemonic above. Never share it with anyone. All of the accounts/wallets are derived from it. If lost crypto is unrecoverable";-->
+<!--    "mnemonic.footerHighlightWord0" = "Never";-->
+<!--    "mnemonic.footerHighlightWord1" = "unrecoverable";-->
+<!--    "mnemonic.name.title" = "Wallet name";-->
+<!--    "mnemonic.name.placeholder" = "eg: Default wallet";-->
+<!--    "mnemonic.iCould.title" = "Backup in iCloud";-->
+<!--    "mnemonic.salt.title" = "Salt mnemonic";-->
+<!--    "mnemonic.salt.placeholder" = "Enter salt";-->
+<!--    "mnemonic.salt.description" = "Adding salt to mnemonic increases security but decrees portability. Learn more";-->
+<!--    "mnemonic.salt.descriptionHighlight" = "Learn more";-->
+<!--    "mnemonic.passType.title" = "Pass type";-->
+<!--    "mnemonic.passType.pin" = "Pin";-->
+<!--    "mnemonic.passType.password" = "Password";-->
+<!--    "mnemonic.passType.faceId" = "Face ID";-->
+<!--    "mnemonic.passType.touchId" = "Touch ID";-->
+<!--    "mnemonic.pinType.placeholder" = "Enter pin";-->
+<!--    "mnemonic.passType.placeholder" = "Enter password";-->
+<!--    "mnemonic.passType.allowFaceId" = "Allow unlock with FaceID";-->
+<!--    "mnemonic.pasteboard" = "Mnemonic copied to pasteboard\n(for 30 seconds)";-->
+<!--    "mnemonic.cta.new" = "Create new wallet";-->
+<!--    "mnemonic.cta.update" = "Update";-->
+<!--    "mnemonic.cta.delete" = "Delete";-->
+<!--    "mnemonic.cta.import" = "Import";-->
+<!--    "mnemonic.defaultWalletName" = "Default wallet";-->
+<!--    "mnemonic.defaultNthWalletName" = "Wallet %d";-->
+<!--    "mnemonic.error.invalid.name" = "Please enter a name.";-->
+<!--    "mnemonic.update.failed.alert.title" = "Oops 😬";-->
+<!--    "mnemonic.update.failed.alert.message" = "Unable to update your wallet. Please try again.";-->
+
+<!--    "networks.header.l1s" = "Layer #1s";-->
+<!--    "networks.header.l2s" = "Layer #2s";-->
+<!--    "networks.header.l1sTest" = "Layer #1s Testnets";-->
+<!--    "networks.header.l2sTest" = "Layer #2s Testnets";-->
+
+<!--    "settings.themes" = "Themes";-->
+<!--    "settings.themes.miami.light" = "Miami Sunrise Light";-->
+<!--    "settings.themes.miami.dark" = "Miami Sunrise Dark";-->
+<!--    "settings.themes.ios.light" = "Vanilla Light";-->
+<!--    "settings.themes.ios.dark" = "Vanilla Dark";-->
+
+<!--    "settings.improvement" = "Improvement proposals";-->
+
+<!--    "settings.developer" = "Developer menu";-->
+<!--    "settings.developer.apis" = "APIs";-->
+<!--    "settings.developer.apis.nfts" = "NFTs";-->
+<!--    "settings.developer.apis.nfts.openSea" = "OpenSea";-->
+<!--    "settings.developer.transitions" = "Transitions";-->
+<!--    "settings.developer.transitions.cardFlip" = "Card Flip";-->
+<!--    "settings.developer.transitions.sheet" = "Sheet";-->
+<!--    "settings.developer.resetKeyStore" = "Reset keystore";-->
+
+<!--    "settings.about" = "About";-->
+<!--    "settings.about.socials" = "Socials";-->
+<!--    "settings.about.socials.website" = "Website";-->
+<!--    "settings.about.socials.github" = "GitHub";-->
+<!--    "settings.about.socials.twitter" = "Twitter";-->
+<!--    "settings.about.socials.telegram" = "Telegram";-->
+<!--    "settings.about.socials.discord" = "Discord";-->
+<!--    "settings.about.socials.medium" = "Medium";-->
+<!--    "settings.about.contactUs" = "Contact us";-->
+<!--    "settings.about.contactUs.mail" = "Mail";-->
+<!--    "settings.about.contactUs.footer" = "sons Of crypto";-->
+
+<!--    "settings.feedback" = "Beta feedback / Report issue 🪲";-->
+<!--    "settings.feedback.subject" = "App feedback %@";-->
+<!--    "settings.feedback.subject.beta" = "Beta %@ feedback / Report 🪲";-->
+
+<!--    "alert.underConstruction.title" = "Under construction";-->
+<!--    "alert.underConstruction.message" = "App is under very active development and this corner is not quite ready yet. Check back soon.";-->
+
+<!--    "alert.deleteWallet.title" = "⚠️ Warning ⚠️";-->
+<!--    "alert.deleteWallet.message" = "Are you sure you would like to delete your wallet?\n\nYou could still import again after, but make sure you have your mnemonic backed up first.";-->
+<!--    "alert.deleteWallet.action.confirm" = "Yes, delete wallet";-->
+
+<!--    "alert.resetKeystore.title" = "🚨🚨🚨 Warning 🚨🚨🚨";-->
+<!--    "alert.resetKeystore.message" = "Are you sure you would like to delete all your wallets?\n\nYou could still import them again after, but make sure you have your mnemonics backed up first.";-->
+<!--    "alert.resetKeystore.action.confirm" = "Yes, delete wallets";-->
+
+<!--    "alert.email.notDetected.title" = "No Email";-->
+<!--    "alert.email.notDetected.message" = "No email client detected for this device.";-->
+
+<!--    "alert.send.transaction.toYourself.title" = "Invalid To Address";-->
+<!--    "alert.send.transaction.toYourself.message" = "Please enter an address that is different to your current one.";-->
+
+<!--    "mnemonicConfirmation.title" = "Confirm Mnemonic";-->
+<!--    "mnemonicConfirmation.confirm.wallet" = "Please enter the 12 word phrase you were given when you created your wallet.";-->
+<!--    "mnemonicConfirmation.salt" = "Salt mnemonic";-->
+<!--    "mnemonicConfirmation.salt.placeholder" = "Enter salt";-->
+<!--    "mnemonicConfirmation.cta" = "Validate";-->
+<!--    "mnemonicConfirmation.cta.invalid" = "Invalid mnemonic";-->
+<!--    "mnemonicConfirmation.cta.congratulations" = "Tap to confirm! 🥳";-->
+
+<!--    "nfts.dashboard.collection.title" = "Your Collections";-->
+<!--    "nfts.dashboard.collection.popular.author" = "Created by %@";-->
+<!--    "nfts.dashboard.noContent.title" = "No NFTs detected";-->
+<!--    "nfts.dashboard.noContent.body" = "There seems to be no NFTs associated to this wallet address";-->
+<!--    "nfts.dashboard.noContent.cta" = "Refresh";-->
+<!--    "nfts.dashboard.error.message" = "We were unable to fetch fetch your NFTs, please try again. If the error persists please send us the error logs by email so we can look into it.";-->
+<!--    "nfts.dashboard.error.email.body" = "Failed to load NFTs\n\nDebug data:\n\n%@";-->
+
+<!--    "nft.detail.section.id" = "NFT ID: %@";-->
+<!--    "nft.detail.section.title.description" = "Description";-->
+<!--    "nft.detail.section.title.description.empty" = "Empty description";-->
+<!--    "nft.detail.section.title.properties" = "Properties";-->
+<!--    "nft.detail.section.title.other" = "Other";-->
+<!--    "nft.detail.section.title.other.contractAddress" = "Contract Address";-->
+<!--    "nft.detail.section.title.other.schemaName" = "Schema Name";-->
+<!--    "nft.detail.section.title.other.tokenId" = "Token ID";-->
+<!--    "nft.detail.section.title.other.network" = "Network";-->
+<!--    "nft.detail.button.send" = "Send";-->
+
+<!--    "chat" = "web3chat";-->
+<!--    "chat.colletion.top.cell.body" = "List of upcoming web3 apps, of course all will be fully decentralised! 🚀🚀🚀";-->
+<!--    "chat.item.web3chat" = "web3chat";-->
+
+<!--    "chat.friend.message1" = "Hi, how can I help?";-->
+<!--    "chat.friend.message2" = "Sure";-->
+<!--    "chat.friend.message3" = "A good place to start would be to follow us at @sonsofcrypto on twitter";-->
+<!--    "chat.friend.message4" = "Sure, will do ser!";-->
+<!--    "chat.friend.message5" = "By the way, did you manage to go to the #CULT event last weekend?";-->
+<!--    "chat.friend.message6" = "It was sick! 😎";-->
+<!--    "chat.friend.message7" = "Stay tunned Ser!";-->
+
+<!--    "chat.me.message1" = "I would like to find out more about SonsOfCrypto";-->
+<!--    "chat.me.message2" = "Perfect, I will check this out";-->
+<!--    "chat.me.message3" = "Also, please tell SonsOfCrypto team that they rock! 🔥";-->
+
+<!--    "currencyPicker.title.currency" = "Select a currency";-->
+<!--    "currencyPicker.title.currencies" = "Select currencies";-->
+<!--    "currencyPicker.title.receive" = "Select a currency";-->
+<!--    "currencyPicker.title.send" = "Select a currency";-->
+<!--    "currencyPicker.title.multiSelectEdit" = "Select currencies";-->
+<!--    "currencyPicker.title.select" = "Select a currency";-->
+<!--    "currencyPicker.networks.title" = "Available networks";-->
+<!--    "currencyPicker.currencies.favourite.title" = "Favourite currencies";-->
+<!--    "currencyPicker.currencies.title" = "All currencies";-->
+<!--    "currencyPicker.featured.title" = "Featured";-->
+<!--    "currencyPicker.popular.title" = "Popular";-->
+<!--    "currencyPicker.noResults" = "No results";-->
+
+<!--    "currencyReceive.title.receive" = "Receive %@";-->
+<!--    "currencyReceive.qrcode.name" = "web3wallet";-->
+<!--    "currencyReceive.disclaimer" = "Send only %@ to this address. Sending any other coins may result in permanent loss.";-->
+<!--    "currencyReceive.action.copy" = "Copy";-->
+<!--    "currencyReceive.action.copy.toast" = "Address copied to your clipboard";-->
+<!--    "currencyReceive.action.share" = "Share";-->
+<!--    "currencyReceive.action.share.address" = "My Public Address to Receive %@:";-->
+<!--    "currencyReceive.action.add" = "Add";-->
+<!--    "currencyReceive.action.add.toast" = "+%@ coins added to your wallet!";-->
+
+<!--    "currencyAdd.title" = "Add %@ Token";-->
+<!--    "currencyAdd.network.title" = "Network";-->
+<!--    "currencyAdd.contractAddress.title" = "Contract Address";-->
+<!--    "currencyAdd.contractAddress.placeholder" = "0xa0b86991c6...ce3606eb48";-->
+<!--    "currencyAdd.name.title" = "Name";-->
+<!--    "currencyAdd.name.placeholder" = "USD Coin";-->
+<!--    "currencyAdd.symbol.title" = "Symbol";-->
+<!--    "currencyAdd.symbol.placeholder" = "USDC";-->
+<!--    "currencyAdd.decimals.title" = "Decimals";-->
+<!--    "currencyAdd.decimals.placeholder" = "1-32";-->
+<!--    "currencyAdd.validation.field.required" = "This field is required";-->
+<!--    "currencyAdd.validation.field.address.ethereum.invalid" = "Invalid Ethereum address";-->
+<!--    "currencyAdd.validation.field.address.solana.invalid" = "Invalid Solana address";-->
+<!--    "currencyAdd.validation.field.decimal.int" = "This must be a valid number";-->
+<!--    "currencyAdd.validation.field.decimal.range" = "Number should be between 1 and 32";-->
+<!--    "currencyAdd.cta.valid" = "Add token";-->
+<!--    "currencyAdd.cta.invalid.contractAddress" = "Invalid Contract Address";-->
+<!--    "currencyAdd.cta.invalid.name" = "Invalid Name";-->
+<!--    "currencyAdd.cta.invalid.symbol" = "Invalid Symbol";-->
+<!--    "currencyAdd.cta.invalid.decimals" = "Invalid Decimals";-->
+<!--    "currencyAdd.cta.invalid" = "Invalid data";-->
+
+<!--    "networkPicker.title" = "Select network";-->
+<!--    "networkPicker.noResults" = "No results";-->
+
+<!--    "qrCodeScan.title" = "Scan QR code";-->
+<!--    "qrCodeScan.error.notSupported.title" = "Scanning not supported";-->
+<!--    "qrCodeScan.error.notSupported.message" = "Your device does not support QR code scanning. Please use a device with a camera.";-->
+<!--    "qrCodeScan.error.invalid.address" = "is not a valid %@ address.";-->
+
+<!--    "currencySend.title" = "Send %@";-->
+<!--    "currencySend.cell.token.placeholder" = "0";-->
+<!--    "currencySend.cell.currency.placeholder" = "0.0";-->
+<!--    "currencySend.cell.currency.label.usd" = "USD";-->
+<!--    "currencySend.missing.address" = "Invalid address";-->
+
+<!--    "nftSend.title" = "Send NFT";-->
+<!--    "nftSend.missing.address" = "Invalid address";-->
+
+<!--    "currencySwap.title" = "Token Swap";-->
+<!--    "currencySwap.segment.swap" = "Swap";-->
+<!--    "currencySwap.segment.limit" = "Limit";-->
+<!--    "currencySwap.cell.provider" = "Provider";-->
+<!--    "currencySwap.cell.price" = "Price";-->
+<!--    "currencySwap.cell.slippage" = "Slippage";-->
+<!--    "currencySwap.cell.button.state.swap" = "Swap with";-->
+<!--    "currencySwap.cell.button.state.approve" = "Approve";-->
+<!--    "currencySwap.cell.button.state.approving" = "Approving";-->
+<!--    "currencySwap.cell.button.state.loading" = "Loading";-->
+<!--    "currencySwap.enterAmount" = "Enter an amount";-->
+<!--    "currencySwap.insufficientBalance" = "Insufficient %@ balance";-->
+<!--    "currencySwap.noPoolsFound" = "No pools found";-->
+<!--    "currencySwap.swapAnyway" = "Swap anyway (-%@%)";-->
+
+<!--    "authenticate.title.unlock" = "Unlock";-->
+<!--    "authenticate.title.swap" = "Swap";-->
+<!--    "authenticate.placeholder.password" = "Password";-->
+<!--    "authenticate.placeholder.salt" = "Salt";-->
+
+<!--    "authenticate.title.send" = "Send";-->
+<!--    "authenticate.title.sendNFT" = "Send NFT";-->
+<!--    "authenticate.title.cultCastVote" = "CULT Vote";-->
+
+<!--    "confirmation.provider" = "Provider";-->
+<!--    "confirmation.slippage" = "Slippage";-->
+<!--    "confirmation.from" = "From";-->
+<!--    "confirmation.to" = "To";-->
+
+<!--    "confirmation.swap.title" = "Confirm Transaction";-->
+<!--    "confirmation.swap.confirm" = "Swap";-->
+
+<!--    "confirmation.send.title" = "Confirm Transaction";-->
+<!--    "confirmation.send.confirm" = "Send";-->
+
+<!--    "confirmation.sendNFT.title" = "Confirm Transaction";-->
+<!--    "confirmation.sendNFT.confirm" = "Send";-->
+
+<!--    "confirmation.cultCastVote.title" = "Confirm Transaction";-->
+<!--    "confirmation.cultCastVote.confirm" = "Vote";-->
+
+<!--    "confirmation.approveUniswap.title" = "Confirm Approval";-->
+<!--    "confirmation.approveUniswap.permission.title" = "Give permission to the Uniswap Protocol to access your %@?";-->
+<!--    "confirmation.approveUniswap.permission.message" = "By granting permission, you are allowing the Uniswap Protocol contract to access your %@ funds.";-->
+<!--    "confirmation.approveUniswap.confirm" = "Approve";-->
+
+<!--    "confirmation.tx.inProgress.send.title" = "Broadcasting transaction...";-->
+<!--    "confirmation.tx.inProgress.send.message" = "This may take up to 1 min\ndepending on how busy is the network";-->
+<!--    "confirmation.tx.inProgress.swap.title" = "Broadcasting transaction...";-->
+<!--    "confirmation.tx.inProgress.swap.message" = "This may take up to 1 min\ndepending on how busy is the network";-->
+<!--    "confirmation.tx.inProgress.sendNFT.title" = "Broadcasting transaction...";-->
+<!--    "confirmation.tx.inProgress.sendNFT.message" = "This may take up to 1 min\ndepending on how busy is the network";-->
+<!--    "confirmation.tx.inProgress.cultCastVote.title" = "Broadcasting transaction...";-->
+<!--    "confirmation.tx.inProgress.cultCastVote.message" = "This may take up to 1min\ndepending on how busy is the network";-->
+
+<!--    "confirmation.tx.success.send.title" = "Broadcasted! 🎉";-->
+<!--    "confirmation.tx.success.send.message" = "The transaction is now broadcasted, you can see it now in your account.";-->
+<!--    "confirmation.tx.success.send.cta" = "Go to Account";-->
+<!--    "confirmation.tx.success.swap.title" = "Broadcasted! 🎉";-->
+<!--    "confirmation.tx.success.swap.message" = "The transaction is now broadcasted, you can see it below on Etherscan.";-->
+<!--    "confirmation.tx.success.swap.cta" = "Done";-->
+<!--    "confirmation.tx.success.sendNFT.title" = "Broadcasted! 🎉";-->
+<!--    "confirmation.tx.success.sendNFT.message" = "The transaction is now broadcasted, you can see it now in your account.";-->
+<!--    "confirmation.tx.success.sendNFT.cta" = "Done";-->
+<!--    "confirmation.tx.success.cultCastVote.title" = "Vote casted! 🎉";-->
+<!--    "confirmation.tx.success.cultCastVote.message" = "The transaction is now broadcasted, your vote will be counted soon.";-->
+<!--    "confirmation.tx.success.cultCastVote.cta" = "Done";-->
+<!--    "confirmation.tx.success.viewEtherScan" = "View on Etherscan";-->
+
+<!--    "confirmation.tx.failed.send.title" = "Oops 😬";-->
+<!--    "confirmation.tx.failed.send.cta" = "Retry";-->
+<!--    "confirmation.tx.failed.swap.title" = "Oops 😬";-->
+<!--    "confirmation.tx.failed.swap.cta" = "Retry";-->
+<!--    "confirmation.tx.failed.sendNFT.title" = "Oops 😬";-->
+<!--    "confirmation.tx.failed.sendNFT.cta" = "Retry";-->
+<!--    "confirmation.tx.failed.cultCastVote.title" = "Oops 😬";-->
+<!--    "confirmation.tx.failed.cultCastVote.cta" = "Retry";-->
+<!--    "confirmation.tx.failed.approveUniswap.title" = "Oops 😬";-->
+<!--    "confirmation.tx.failed.approveUniswap.cta" = "Retry";-->
+<!--    "confirmation.tx.failed.report" = "Report Error";-->
+<!--    "confirmation.tx.failed.generic.error" = "This transaction has failed. Please try again.";-->
+
+<!--    "cult.proposals.title" = "Cult.DAO Proposals";-->
+<!--    "cult.proposals.segmentedControl.pending" = "Pending";-->
+<!--    "cult.proposals.segmentedControl.closed" = "Closed";-->
+<!--    "cult.proposals.pending.processing" = "Processing";-->
+<!--    "cult.proposals.closed.totalVotes" = "Total Votes: %@";-->
+<!--    "cult.proposals.result" = "Result: %@";-->
+<!--    "cult.proposals.result.liteWhitepaper" = "Lite/Whitepaper";-->
+<!--    "cult.proposals.result.socialDocs" = "Social Docs";-->
+<!--    "cult.proposals.result.audits" = "Audits";-->
+<!--    "cult.proposals.footer.text" = "Cult.DAO";-->
+<!--    "cult.proposals.error.failure.castVote" = "Failed to cast your vote.\n\nError: %@";-->
+<!--    "cult.proposals.alert.noCult.title" = "No CULT";-->
+<!--    "cult.proposals.alert.noCult.message" = "Your CULT balance is 0 for this wallet.\nYou need some CULT in order to cast your vote.";-->
+<!--    "cult.proposals.alert.noCult.action.getCult" = "Get CULT";-->
+
+<!--    "cult.proposal.title" = "Proposal";-->
+<!--    "cult.proposal.title.of" = "of";-->
+<!--    "cult.proposal.guardian.header"="Guardian Information";-->
+<!--    "cult.proposal.guardian.name" = "Name";-->
+<!--    "cult.proposal.guardian.discordHandle" = "Discord";-->
+<!--    "cult.proposal.guardian.wallet" = "Wallet";-->
+<!--    "cult.proposal.summary.header" = "Project Summary";-->
+<!--    "cult.proposal.docs.header"="Project Docs";-->
+<!--    "cult.proposal.tokenomics.header"="Other Information";-->
+<!--    "cult.proposal.tokenomics.rewardAllocation" = "CULT Reward Allocation";-->
+<!--    "cult.proposal.tokenomics.rewardDistribution" = "Reward Distribution Terms";-->
+<!--    "cult.proposal.tokenomics.projectEthWallet" = "Project Ethereum Wallet";-->
+<!--    "cult.proposal.parsing.rewardDistribution.per" = "per";-->
+<!--    "cult.proposal.parsing.cultRewardAllocation" = "%@% of Total Supply";-->
+
+<!--    "proposals.infrastructure.title" = "Infrastructure";-->
+<!--    "proposals.integration.title" = "Integrations";-->
+<!--    "proposals.feature.title" = "Features";-->
+<!--    "proposals.unknown" = "Unknown";-->
+<!--    "proposals.infrastructure.description" = "Support for standards and protocols";-->
+<!--    "proposals.integration.description" = "Direct smart contracts / defi / web3 products integrations and support for L1 & L2 chains";-->
+<!--    "proposals.feature.description" = "Various app usability improvements and features";-->
+<!--    "proposals" = "proposals";-->
+<!--    "proposals.votes" = "Votes: %@";-->
+<!--    "proposals.button.title" = "Vote";-->
+
+<!--    "proposal.title" = "Proposal %@ of %@";-->
+<!--    "proposal.summary.header" = "Details";-->
+<!--    "proposal.button.vote" = "Vote";-->
+<!--    "proposal.hashTag" = "WIP_%@";-->
+
+<!--    "mnemonic.error.invalid" = "Invalid mnemonic, the words entered are invalid.";-->
+<!--    "mnemonic.error.invalid.wordCount" = "Typically 12 (or 15, 18, 21, 24) words separated by spaces.";-->
+<!--    "mnemonic.error.invalid.wordCount.highlight0" = "12 (or 15, 18, 21, 24) words";-->
+
+<!--    "validation.error.pin.min.length" = "Minimum 6 characters";-->
+<!--    "validation.error.pin.weak" = "First 2 digits should be different";-->
+
+<!--    "validation.error.pass.min.length" = "Minimum 8 characters";-->
+<!--    "validation.error.pass.min.capital" = "At least one capital letter needed";-->
+<!--    "validation.error.pass.min.lowercase" = "At least one lowercase letter needed";-->
+<!--    "validation.error.pass.min.digit" = "At least one digit needed";-->
+
+<!--    "currencyAmountPicker.balance" = "Balance: %@";-->
+
+<!--    "webView.title.txDetails" = "Transaction Details";-->
+
+<!--    "report.txFailed.error.body" = "Hi team,\n\nI've just got a transaction failure with the following error: \n\n%@\n\nThanks!\n\nPS: Thanks for reporting this failure, this really helps us improving the app! \n❤️❤️❤️";-->
+
+<!--    "networkAddressPicker.to.address.placeholder" = "To %@ address";-->
+
+<!--    "networkFeeView.estimatedFee" = "Network Fee";-->
+
+<!--    "actions.mnemonic.title" = "Secure";-->
+<!--    "actions.mnemonic.body" = "Confirm mnemonic";-->
+<!--    "actions.themes.title" = "App Themes";-->
+<!--    "actions.themes.body" = "Fancy a new look ?";-->
+<!--    "actions.improvementProposals.title" = "WIPs roadmap";-->
+<!--    "actions.improvementProposals.body" = "Improvement proposals";-->
+
+
+</resources>

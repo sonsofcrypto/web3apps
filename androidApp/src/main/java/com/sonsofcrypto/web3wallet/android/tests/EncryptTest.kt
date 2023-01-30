@@ -1,4 +1,4 @@
-package com.sonsofcrypto.web3wallet.android
+package com.sonsofcrypto.web3wallet.android.tests
 
 import com.sonsofcrypto.web3lib.provider.model.DataHexString
 import com.sonsofcrypto.web3lib.provider.model.toByteArrayData

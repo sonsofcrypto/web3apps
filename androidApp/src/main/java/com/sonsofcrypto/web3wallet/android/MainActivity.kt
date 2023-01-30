@@ -1,21 +1,29 @@
 package com.sonsofcrypto.web3wallet.android
 
 import android.os.Bundle
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.sonsofcrypto.web3lib.utils.BundledAssetProviderApplication
-import com.sonsofcrypto.web3lib.utils.secureRand
+import com.sonsofcrypto.web3wallet.android.common.Assembler
+import com.sonsofcrypto.web3wallet.android.common.DefaultAssembler
+import com.sonsofcrypto.web3wallet.android.common.MainBootstrapper
+import com.sonsofcrypto.web3walletcore.extensions.App
 
-class MainActivity : AppCompatActivity() {
+val assembler: Assembler = DefaultAssembler()
+
+class MainActivity : App() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         BundledAssetProviderApplication.setInstance(application)
 
         setContentView(R.layout.activity_main)
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = secureRand(128).toString()
+        if (savedInstanceState == null) {
+            MainBootstrapper(this).boot()
+        }
+
+        //val tv: TextView = findViewById(R.id.text_view)
+        //tv.text = secureRand(128).toString()
     }
 
     override fun onResume() {

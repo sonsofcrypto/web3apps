@@ -1,4 +1,4 @@
-package com.sonsofcrypto.web3wallet.android
+package com.sonsofcrypto.web3wallet.android.tests
 
 import android.content.Context
 import com.sonsofcrypto.web3lib.services.coinGecko.DefaultCoinGeckoService

@@ -35,7 +35,6 @@
 "approve" = "Approve";
 "rejected" = "Rejected";
 "reject" = "Reject";
-"new" = "New";
 "search" = "Search";
 "time.ago.day" = "%@ day ago";
 "time.ago.days" = "%@ days ago";
@@ -99,10 +98,6 @@
 "degen.dappCategory.subTitle.governance" = "Participate in governance\ndecisions";
 
 "degen.section.title" = "Explore the web3 world. Interact directly from the app with smart contracts, not via web2 frontends.";
-
-"amms" = "AMMs";
-"swap" = "Swap";
-"balance:" = "Balance:";
 
 "account.marketInfo.marketCap" = "Market cap";
 "account.marketInfo.price" = "Price";
