@@ -29,7 +29,7 @@ dependencies {
     implementation(files("$rootDir/coreCrypto/build/android/coreCrypto-sources.jar"))
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha06")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:${rootProject.ext["serialization_version"]}")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${rootProject.ext["serialization_version"]}")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-protobuf:${rootProject.ext["serialization_version"]}")
