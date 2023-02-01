@@ -30,7 +30,17 @@ class DegenWireframe(
     }
 
     override fun navigate(destination: DegenWireframeDestination) {
-        TODO("Not yet implemented")
+        when (destination) {
+            is DegenWireframeDestination.Swap -> {
+                println("Present SWAP!")
+            }
+            is DegenWireframeDestination.Cult -> {
+                println("Present CULT!")
+            }
+            is DegenWireframeDestination.ComingSoon -> {
+                println("Present coming soon!")
+            }
+        }
     }
 
     private fun wireUp(): Fragment {

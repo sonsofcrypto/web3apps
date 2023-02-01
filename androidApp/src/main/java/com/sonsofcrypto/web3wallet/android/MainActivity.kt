@@ -2,9 +2,7 @@ package com.sonsofcrypto.web3wallet.android
 
 import android.os.Bundle
 import com.sonsofcrypto.web3lib.utils.BundledAssetProviderApplication
-import com.sonsofcrypto.web3wallet.android.common.Assembler
-import com.sonsofcrypto.web3wallet.android.common.DefaultAssembler
-import com.sonsofcrypto.web3wallet.android.common.MainBootstrapper
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.App
 
 val assembler: Assembler = DefaultAssembler()
@@ -15,6 +13,8 @@ class MainActivity : App() {
         super.onCreate(savedInstanceState)
 
         BundledAssetProviderApplication.setInstance(application)
+
+        AppTheme.value = themeMiamiSunriseLight
 
         setContentView(R.layout.activity_main)
 

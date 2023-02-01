@@ -19,6 +19,12 @@ android {
             isMinifyEnabled = false
         }
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
     namespace = "com.sonsofcrypto.web3wallet.android"
 }
 
@@ -39,4 +45,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext["coroutines_version"]}") {
         version { strictly("${rootProject.ext["coroutines_version"]}") }
     }
+
+    val composeVersion = "1.3.3"
+    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:1.4.0-alpha04")
+    // implementation("androidx.activity:activity-compose:1.5.1")
 }
