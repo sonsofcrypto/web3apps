@@ -36,7 +36,7 @@ class DegenFragment : Fragment(), DegenView {
 
     lateinit var presenter: DegenPresenter
 
-    private var liveData: MutableLiveData<DegenViewModel> = MutableLiveData()
+    private val liveData = MutableLiveData<DegenViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +45,8 @@ class DegenFragment : Fragment(), DegenView {
         presenter.present()
         return ComposeView(requireContext()).apply {
             setContent {
-                val state by liveData.observeAsState()
-                state?.let { DegenList(it) }
+                val viewModel by liveData.observeAsState()
+                viewModel?.let { DegenList(it) }
             }
         }
     }
@@ -61,15 +61,15 @@ class DegenFragment : Fragment(), DegenView {
     }
 
     @Composable
-    private fun DegenList(state: DegenViewModel) {
+    private fun DegenList(viewModel: DegenViewModel) {
         LazyColumn(
             Modifier
                 .background(backgroundGradient())
                 .padding(start = theme().shapes.padding, end = theme().shapes.padding)
         ) {
-            items(state.sections.size) { index ->
-                DegenSection(state.sections[index])
-                if (state.sections.count() - 1 == index) {
+            items(viewModel.sections.size) { index ->
+                DegenSection(viewModel.sections[index])
+                if (viewModel.sections.count() - 1 == index) {
                     Spacer(modifier = Modifier.height(theme().shapes.padding))
                 }
             }
@@ -116,10 +116,7 @@ class DegenFragment : Fragment(), DegenView {
                 }
                 if (items.last() != it) {
                     Spacer(modifier = Modifier.height(8.dp))
-                    Divider(
-                        color = theme().colors.separatorPrimary,
-                        thickness = 0.5.dp
-                    )
+                    W3WDivider()
                     Spacer(modifier = Modifier.height(8.dp))
                 }
             }

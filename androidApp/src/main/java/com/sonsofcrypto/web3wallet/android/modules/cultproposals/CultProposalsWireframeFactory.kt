@@ -7,6 +7,7 @@ import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3wallet.android.common.AssemblerComponent
 import com.sonsofcrypto.web3wallet.android.common.AssemblerRegistry
 import com.sonsofcrypto.web3wallet.android.common.AssemblerRegistryScope
+import com.sonsofcrypto.web3wallet.android.modules.cultproposal.CultProposalWireframeFactory
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposals.CultProposalsWireframe
 import com.sonsofcrypto.web3walletcore.services.cult.CultService
 
@@ -18,6 +19,7 @@ class DefaultCultProposalsWireframeFactory(
     private val cultService: CultService,
     private val walletService: WalletService,
     private val networksService: NetworksService,
+    private val cultProposalWireframeFactory: CultProposalWireframeFactory
 ): CultProposalsWireframeFactory {
 
     override fun make(parent: Fragment?): CultProposalsWireframe = DefaultCultProposalsWireframe(
@@ -25,6 +27,7 @@ class DefaultCultProposalsWireframeFactory(
         cultService,
         walletService,
         networksService,
+        cultProposalWireframeFactory,
     )
 }
 
@@ -37,6 +40,7 @@ class CultProposalsWireframeFactoryAssembler: AssemblerComponent {
                 it.resolve("CultService"),
                 it.resolve("WalletService"),
                 it.resolve("NetworksService"),
+                it.resolve("CultProposalWireframeFactory"),
             )
         }
     }

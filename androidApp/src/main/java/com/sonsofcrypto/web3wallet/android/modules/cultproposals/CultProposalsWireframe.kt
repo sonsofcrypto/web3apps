@@ -6,6 +6,8 @@ import com.sonsofcrypto.web3lib.services.wallet.WalletService
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3wallet.android.R
 import com.sonsofcrypto.web3wallet.android.common.NavigationFragment
+import com.sonsofcrypto.web3wallet.android.modules.cultproposal.CultProposalWireframeFactory
+import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalWireframeContext
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposals.*
 import com.sonsofcrypto.web3walletcore.services.cult.CultService
 
@@ -14,18 +16,24 @@ class DefaultCultProposalsWireframe(
     private val cultService: CultService,
     private val walletService: WalletService,
     private val networksService: NetworksService,
+    private val cultProposalWireframeFactory: CultProposalWireframeFactory,
 ): CultProposalsWireframe {
-
-    private lateinit var fragment: WeakRef<Fragment>
 
     override fun present() {
         val fragment = wireUp()
-        this.fragment = WeakRef(fragment)
         (parent?.get() as? NavigationFragment)?.push(fragment, animated = true)
     }
 
     override fun navigate(destination: CultProposalsWireframeDestination) {
-
+        when (destination) {
+            is CultProposalsWireframeDestination.Proposal -> {
+                val context = CultProposalWireframeContext(
+                    destination.proposal, destination.proposals
+                )
+                cultProposalWireframeFactory.make(parent?.get(), context).present()
+            }
+            else -> { println("handle event $destination")}
+        }
     }
 
     private fun wireUp(): Fragment {

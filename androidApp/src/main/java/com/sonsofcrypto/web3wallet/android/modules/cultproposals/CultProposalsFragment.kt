@@ -40,8 +40,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
 
     lateinit var presenter: CultProposalsPresenter
 
-    private var liveData: MutableLiveData<CultProposalsViewModel> = MutableLiveData()
-
+    private val liveData = MutableLiveData<CultProposalsViewModel>()
     private val formatter = NumberFormat.getInstance()
 
     init {
@@ -55,8 +54,8 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
         presenter.present()
         return ComposeView(requireContext()).apply {
             setContent {
-                val state by liveData.observeAsState()
-                state?.let { CultProposalsList(it) }
+                val viewModel by liveData.observeAsState()
+                viewModel?.let { CultProposalsList(it) }
             }
         }
     }
@@ -66,13 +65,13 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
     }
 
     @Composable
-    private fun CultProposalsList(state: CultProposalsViewModel) {
-        when (state) {
+    private fun CultProposalsList(viewModel: CultProposalsViewModel) {
+        when (viewModel) {
             is CultProposalsViewModel.Loading -> {
                 CultProposalsLoading()
             }
             is CultProposalsViewModel.Loaded -> {
-                state.sections.firstOrNull()?.let { CultProposalsLoaded(it) }
+                viewModel.sections.firstOrNull()?.let { CultProposalsLoaded(it) }
             }
             is CultProposalsViewModel.Error -> {
                 CultProposalsLoading()
