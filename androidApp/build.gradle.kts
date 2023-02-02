@@ -54,4 +54,5 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:1.4.0-alpha04")
     // implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.28.0")
 }

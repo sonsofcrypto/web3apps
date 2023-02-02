@@ -65,30 +65,29 @@ class DegenFragment : Fragment(), DegenView {
         LazyColumn(
             Modifier
                 .background(backgroundGradient())
-                .padding(PaddingValues(16.dp, 0.dp, 16.dp, 0.dp))
+                .padding(start = theme().shapes.padding, end = theme().shapes.padding)
         ) {
             items(state.sections.size) { index ->
                 DegenSection(state.sections[index])
                 if (state.sections.count() - 1 == index) {
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(theme().shapes.padding))
                 }
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(theme().shapes.padding))
     }
 
     @Composable
     private fun DegenSection(section: DegenViewModel.Section) {
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(theme().shapes.padding))
         when (section) {
             is DegenViewModel.Section.Header -> {
                 Text(
                     text = section.title,
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                    modifier = Modifier
+                        .padding(start = theme().shapes.padding, end = theme().shapes.padding),
                     color = if(section.isEnabled) theme().colors.textPrimary else theme().colors.textSecondary,
-                    fontSize = theme().fonts.bodyBold.fontSize,
-                    fontStyle = theme().fonts.bodyBold.fontStyle,
-                    fontWeight = theme().fonts.bodyBold.fontWeight,
+                    style = theme().fonts.bodyBold
                 )
             }
             is DegenViewModel.Section.Group -> {
@@ -102,9 +101,9 @@ class DegenFragment : Fragment(), DegenView {
     private fun DegenItems(items: List<DegenViewModel.Item>) {
         Column(
             Modifier
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(theme().shapes.padding))
                 .background(theme().colors.bgPrimary)
-                .padding(16.dp)
+                .padding(theme().shapes.padding)
         ) {
             items.forEach {
                 DegenItem(item = it) {
@@ -114,16 +113,13 @@ class DegenFragment : Fragment(), DegenView {
                     } else {
                         presenter.handle(DegenPresenterEvent.ComingSoon)
                     }
-
-                    if (AppTheme.value == themeMiamiSunriseDark) {
-                        AppTheme.value = themeMiamiSunriseLight
-                    } else {
-                        AppTheme.value = themeMiamiSunriseDark
-                    }
                 }
                 if (items.last() != it) {
                     Spacer(modifier = Modifier.height(8.dp))
-                    Divider(color = theme().colors.separatorPrimary)
+                    Divider(
+                        color = theme().colors.separatorPrimary,
+                        thickness = 0.5.dp
+                    )
                     Spacer(modifier = Modifier.height(8.dp))
                 }
             }
@@ -147,22 +143,18 @@ class DegenFragment : Fragment(), DegenView {
                 Text(
                     item.title,
                     color = if (item.isEnabled) theme().colors.textPrimary else theme().colors.textSecondary,
-                    fontSize = theme().fonts.body.fontSize,
-                    fontStyle = theme().fonts.body.fontStyle,
-                    fontWeight = theme().fonts.body.fontWeight,
+                    style = theme().fonts.body,
                 )
                 Text(
                     item.subtitle,
                     color = theme().colors.textSecondary,
-                    fontSize = theme().fonts.subheadline.fontSize,
-                    fontStyle = theme().fonts.subheadline.fontStyle,
-                    fontWeight = theme().fonts.subheadline.fontWeight,
+                    style = theme().fonts.subheadline,
                 )
             }
             Icon(
                 Icons.Rounded.KeyboardArrowRight,
                 contentDescription = null,
-                tint = theme().colors.textSecondary,
+                tint = if (item.isEnabled) theme().colors.textPrimary else theme().colors.textSecondary,
             )
         }
     }

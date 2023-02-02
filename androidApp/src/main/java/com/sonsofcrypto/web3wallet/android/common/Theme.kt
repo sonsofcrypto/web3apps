@@ -5,15 +5,36 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 
 var AppTheme: MutableLiveData<Theme> = MutableLiveData()
 
+@Composable
+fun theme(): Theme {
+    val theme by AppTheme.observeAsState(themeMiamiSunriseDark)
+    return theme
+}
+
+//if (AppTheme.value == themeMiamiSunriseDark) {
+//    AppTheme.value = themeMiamiSunriseLight
+//} else {
+//    AppTheme.value = themeMiamiSunriseDark
+//}
+
 data class Theme(
     val fonts: ThemeFonts,
     val colors: ThemeColors,
+    val shapes: ThemeShapes,
+)
+
+data class ThemeShapes(
+    val padding: Dp = 16.dp,
+    val cornerRadius: Dp = 16.dp,
+    val cornerRadiusSmall: Dp = 8.dp,
 )
 
 data class ThemeFonts(
@@ -53,12 +74,6 @@ data class ThemeFonts(
 //    val dashboardTVTokenBalanceSmall: TextStyle = TextStyle(.init(name: "OCR-A", size: 8)!),
 )
 
-@Composable
-fun theme(): Theme {
-    val test by AppTheme.observeAsState(themeMiamiSunriseDark)
-    return test
-}
-
 data class ThemeColors(
     var textPrimary: Color,
     var textSecondary: Color,
@@ -94,12 +109,14 @@ data class ThemeColors(
 
 val themeMiamiSunriseLight = Theme(
     ThemeFonts(),
-    ThemeMiamiSunrise().lightColors
+    ThemeMiamiSunrise().lightColors,
+    ThemeShapes(),
 )
 
 val themeMiamiSunriseDark = Theme(
     ThemeFonts(),
-    ThemeMiamiSunrise().darkColors
+    ThemeMiamiSunrise().darkColors,
+    ThemeShapes(),
 )
 
 class ThemeMiamiSunrise {

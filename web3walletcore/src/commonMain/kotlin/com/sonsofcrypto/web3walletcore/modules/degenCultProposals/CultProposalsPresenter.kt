@@ -124,7 +124,7 @@ class DefaultCultProposalsPresenter(
 
     private fun sectionPendingViewModel(): CultProposalsViewModel.Section =
         CultProposalsViewModel.Section.Pending(
-            Localized("pending") + " ${pending.count()}",
+            Localized("pending") + " (${pending.count()})",
             pending.map { proposalViewModel(it) },
             CultProposalsViewModel.Footer(
                 "cult-dao-big-icon",
@@ -134,7 +134,7 @@ class DefaultCultProposalsPresenter(
 
     private fun sectionClosedViewModel(): CultProposalsViewModel.Section =
         CultProposalsViewModel.Section.Closed(
-            Localized("closed") + " ${closed.count()}",
+            Localized("closed") + " (${closed.count()})",
             closed.map { proposalViewModel(it) },
             CultProposalsViewModel.Footer(
                 "cult-dao-big-icon",

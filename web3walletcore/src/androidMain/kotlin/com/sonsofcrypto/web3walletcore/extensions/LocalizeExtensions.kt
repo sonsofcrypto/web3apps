@@ -9,7 +9,9 @@ actual fun Localized(string: String): String {
 }
 
 actual fun Localized(fmt: String, vararg args: Any?): String {
-    return App.Companion.context.getStringResourceByName(fmt) ?: "-"
+    // TODO: Review why is taking the object address instead of its value
+    val string = App.Companion.context.getStringResourceByName(fmt) ?: "-"
+    return String.format(string, args)
 }
 
 open class App: AppCompatActivity() {
