@@ -1,16 +1,20 @@
 package com.sonsofcrypto.web3wallet.android
 
+import android.content.Context
 import android.os.Bundle
 import com.sonsofcrypto.web3lib.utils.BundledAssetProviderApplication
 import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.App
 
 val assembler: Assembler = DefaultAssembler()
+lateinit var appContext: Context
 
 class MainActivity : App() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        appContext = this
 
         BundledAssetProviderApplication.setInstance(application)
 

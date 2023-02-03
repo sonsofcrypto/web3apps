@@ -35,15 +35,15 @@ class DefaultImprovementProposalsService(
 
     @Throws(Throwable::class)
     override suspend fun fetch(): List<ImprovementProposal> {
-        try {
+        return try {
             val body = client.get(url()).bodyAsText()
             var proposals = jsonDecode<List<ImprovementProposal>>(body) ?: emptyList()
             proposals = proposals.sortedBy { it.id }
             store(proposals)
-            return proposals
+            proposals
         } catch (err: Throwable) {
             println("[Error] $err")
-            return cached().ifEmpty { throw err }
+            cached().ifEmpty { throw err }
         }
     }
 

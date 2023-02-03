@@ -4,8 +4,10 @@ import androidx.fragment.app.Fragment
 import com.sonsofcrypto.web3lib.services.networks.NetworksService
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3wallet.android.R
+import com.sonsofcrypto.web3wallet.android.assembler
 import com.sonsofcrypto.web3wallet.android.common.NavigationFragment
 import com.sonsofcrypto.web3wallet.android.modules.cultproposals.CultProposalsWireframeFactory
+import com.sonsofcrypto.web3wallet.android.modules.improvementproposals.ImprovementProposalsWireframeFactory
 import com.sonsofcrypto.web3walletcore.modules.degen.DefaultDegenInteractor
 import com.sonsofcrypto.web3walletcore.modules.degen.DefaultDegenPresenter
 import com.sonsofcrypto.web3walletcore.modules.degen.DegenWireframe
@@ -35,6 +37,8 @@ class DefaultDegenWireframe(
         when (destination) {
             is DegenWireframeDestination.Swap -> {
                 println("Present SWAP!")
+                val factory: ImprovementProposalsWireframeFactory = assembler.resolve("ImprovementProposalsWireframeFactory")
+                factory.make(fragment.get()).present()
             }
             is DegenWireframeDestination.Cult -> {
                 cultProposalsWireframeFactory.make(fragment.get()).present()

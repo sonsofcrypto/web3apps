@@ -42,15 +42,22 @@ class DefaultImprovementProposalsPresenter(
     private var selectedCategoryIdx: Int = 0
     private val scope = CoroutineScope(bgDispatcher)
 
+    init {
+        print("called")
+    }
     override fun present() {
         updateView()
         val errHandler = CoroutineExceptionHandler { _, err ->
+            error = err
             scope.launch(uiDispatcher) {
-                error = err
                 updateView()
             }
         }
         scope.launch(errHandler) {
+//            proposals = interactor.fetchProposals()
+//            scope.launch(uiDispatcher) {
+//                updateView()
+//            }
             val result = interactor.fetchProposals()
             withUICxt {
                 proposals = result

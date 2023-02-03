@@ -21,7 +21,7 @@ class DefaultCultProposalWireframe(
     override fun navigate(destination: CultProposalWireframeDestination) {
         when (destination) {
             is CultProposalWireframeDestination.Dismiss -> {
-                (parent?.get() as? NavigationFragment)?.popFragment()
+                (parent?.get() as? NavigationFragment)?.pop()
             }
         }
     }

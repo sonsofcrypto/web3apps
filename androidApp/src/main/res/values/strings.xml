@@ -416,10 +416,11 @@
     <string name="cult.proposal.parsing.rewardDistribution.per">per</string>
     <string name="cult.proposal.parsing.cultRewardAllocation">%1$s% of Total Supply</string>
 
+    <string name="proposals.title">W3W improvement proposals</string>
     <string name="proposals.infrastructure.title">Infrastructure</string>
     <string name="proposals.integration.title">Integrations</string>
     <string name="proposals.feature.title">Features</string>
-    <string name="proposals.unknown">Unknown</string>
+    <string name="proposals.unknown.title">Unknown</string>
     <string name="proposals.infrastructure.description">Support for standards and protocols</string>
     <string name="proposals.integration.description">Direct smart contracts / defi / web3 products integrations and support for L1 &amp; L2 chains</string>
     <string name="proposals.feature.description">Various app usability improvements and features</string>

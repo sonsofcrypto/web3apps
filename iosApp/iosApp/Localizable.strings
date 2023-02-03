@@ -420,10 +420,11 @@
 "cult.proposal.parsing.rewardDistribution.per" = "per";
 "cult.proposal.parsing.cultRewardAllocation" = "%@% of Total Supply";
 
+"proposals.title" = "W3W improvement proposals";
 "proposals.infrastructure.title" = "Infrastructure";
 "proposals.integration.title" = "Integrations";
 "proposals.feature.title" = "Features";
-"proposals.unknown" = "Unknown";
+"proposals.unknown.title" = "Unknown";
 "proposals.infrastructure.description" = "Support for standards and protocols";
 "proposals.integration.description" = "Direct smart contracts / defi / web3 products integrations and support for L1 & L2 chains";
 "proposals.feature.description" = "Various app usability improvements and features";

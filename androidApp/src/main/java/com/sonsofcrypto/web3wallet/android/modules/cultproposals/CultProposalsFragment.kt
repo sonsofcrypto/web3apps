@@ -48,8 +48,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         presenter.present()
         return ComposeView(requireContext()).apply {

@@ -8,7 +8,7 @@ import web3walletcore
 final class ImprovementProposalsServiceAssembler: AssemblerComponent {
 
     func register(to registry: AssemblerRegistry) {
-        registry.register(scope: .instance) { resolver -> ImprovementProposalsService in
+        registry.register(scope: .singleton) { resolver -> ImprovementProposalsService in
             DefaultImprovementProposalsService(
                 store: KeyValueStore(name: "\(ImprovementProposalsService.self)")
             )
