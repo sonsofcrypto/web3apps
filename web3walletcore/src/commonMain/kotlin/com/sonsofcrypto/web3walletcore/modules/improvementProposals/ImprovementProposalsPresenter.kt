@@ -42,9 +42,6 @@ class DefaultImprovementProposalsPresenter(
     private var selectedCategoryIdx: Int = 0
     private val scope = CoroutineScope(bgDispatcher)
 
-    init {
-        print("called")
-    }
     override fun present() {
         updateView()
         val errHandler = CoroutineExceptionHandler { _, err ->

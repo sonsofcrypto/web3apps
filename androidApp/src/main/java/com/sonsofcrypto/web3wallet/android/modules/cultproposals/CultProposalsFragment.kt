@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -238,7 +239,8 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
                 modifier = Modifier.fillMaxWidth(),
                 color = theme().colors.textPrimary,
                 style = theme().fonts.bodyBold,
-                // maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                //maxLines = 1,
             )
             Spacer(Modifier.height(theme().shapes.padding))
             Row(

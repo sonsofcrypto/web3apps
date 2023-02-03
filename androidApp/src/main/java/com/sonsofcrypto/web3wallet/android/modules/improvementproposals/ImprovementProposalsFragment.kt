@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import com.sonsofcrypto.web3wallet.android.common.NavigationBar
 import com.sonsofcrypto.web3wallet.android.common.backgroundGradient
 import com.sonsofcrypto.web3wallet.android.common.theme
 import com.sonsofcrypto.web3wallet.android.modules.improvementproposals.ImprovementProposalsFragment.ImprovementProposalCategoryType.*
@@ -46,10 +47,6 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
         INFRASTRUCTURE, INTEGRATIONS, FEATURES
     }
 
-    init {
-        print("called")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,7 +62,6 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
     }
 
     override fun update(viewModel: ImprovementProposalsViewModel) {
-        println("[AA] -> viewModel: $viewModel")
         liveData.value = viewModel
     }
 
@@ -125,22 +121,10 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
 
     @Composable
     private fun ImprovementProposalsNavigation() {
-        Column(
-            modifier = Modifier
-                .background(theme().colors.navBarBackground)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-            Text(
-                Localized("proposals.title"),
-                color = theme().colors.navBarTitle,
-                style = theme().fonts.navTitle,
-            )
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-            ImprovementProposalsCategorySegments()
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-        }
+        NavigationBar(
+            title = Localized("proposals.title"),
+            content = { ImprovementProposalsCategorySegments() }
+        )
     }
 
     @Composable
@@ -234,9 +218,15 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                     Spacer(modifier = Modifier.height(theme().shapes.padding))
                 }
                 val item = items[index]
-                ImprovementProposalsCategoryItem(item) {
-                    presenter.handle(ImprovementProposalsPresenterEvent.Vote(index))
-                }
+                ImprovementProposalsCategoryItem(
+                    item = item,
+                    onSelect = {
+                        presenter.handle(ImprovementProposalsPresenterEvent.Proposal(index))
+                    },
+                    onVote = {
+                        presenter.handle(ImprovementProposalsPresenterEvent.Vote(index))
+                    }
+                )
                 if (item == items.last()) {
                     Spacer(modifier = Modifier.height(theme().shapes.padding))
                 }
@@ -247,6 +237,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
     @Composable
     private fun ImprovementProposalsCategoryItem(
         item: ImprovementProposalsViewModel.Item,
+        onSelect: () -> Unit,
         onVote: () -> Unit,
     ) {
         Row(
@@ -254,7 +245,12 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(theme().shapes.padding))
                 .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
+                .padding(theme().shapes.padding)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onSelect,
+                ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {

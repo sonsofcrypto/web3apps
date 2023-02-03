@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3wallet.android.appContext
 import com.sonsofcrypto.web3wallet.android.common.NavigationFragment
+import com.sonsofcrypto.web3wallet.android.modules.improvementproposal.ImprovementProposalWireframeFactory
+import com.sonsofcrypto.web3walletcore.modules.improvementProposal.ImprovementProposalWireframeContext
 import com.sonsofcrypto.web3walletcore.modules.improvementProposals.*
 import com.sonsofcrypto.web3walletcore.services.improvementProposals.ImprovementProposalsService
 import java.net.URLEncoder
 
 class DefaultImprovementProposalsWireframe(
     private val parent: WeakRef<Fragment>?,
-    private val improvementProposalsService: ImprovementProposalsService
+    private val improvementProposalsService: ImprovementProposalsService,
+    private val improvementProposalWireframeFactory: ImprovementProposalWireframeFactory,
 ): ImprovementProposalsWireframe {
 
     override fun present() {
@@ -24,7 +27,8 @@ class DefaultImprovementProposalsWireframe(
     override fun navigate(destination: ImprovementProposalsWireframeDestination) {
         when (destination) {
             is ImprovementProposalsWireframeDestination.Proposal -> {
-                println("[AA] Navigate to proposal -> ${destination.proposal.title}")
+                val context = ImprovementProposalWireframeContext(destination.proposal)
+                improvementProposalWireframeFactory.make(parent?.get(), context).present()
             }
             is ImprovementProposalsWireframeDestination.Vote -> {
                 val body = Uri.encode(destination.proposal.tweet)
@@ -34,7 +38,7 @@ class DefaultImprovementProposalsWireframe(
                 ContextCompat.startActivity(appContext, browserIntent, null)
             }
             is ImprovementProposalsWireframeDestination.Dismiss -> {
-                (parent as? NavigationFragment)?.pop()
+                (parent?.get() as? NavigationFragment)?.pop()
             }
         }
     }
