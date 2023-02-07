@@ -18,7 +18,7 @@ class MainActivity : App() {
 
         BundledAssetProviderApplication.setInstance(application)
 
-        AppTheme.value = themeMiamiSunriseDark//themeMiamiSunriseDark
+        AppTheme.value = themeMiamiSunriseLight//themeMiamiSunriseDark
 
         setContentView(R.layout.activity_main)
 

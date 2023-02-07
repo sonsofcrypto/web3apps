@@ -46,7 +46,7 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         presenter.present(true)
         return ComposeView(requireContext()).apply {
             setContent {
@@ -107,7 +107,7 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
                 val screenWidth = LocalConfiguration.current.screenWidthDp
                 val size = (screenWidth * 0.6).dp
                 val item = nftList[it]
-                imageItem(url = item.image, contentDescription = "nft item", size = size) {
+                ImageItem(url = item.image, contentDescription = "nft item", size = size) {
                     presenter.handle(NFTsDashboardPresenterEvent.ViewNFT(it))
                 }
             }
@@ -126,29 +126,33 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
                 .fillMaxSize()
                 .padding(theme().shapes.padding),
         ) {
-            for (i in 0..collectionList.count() / 2) {
+            val items = collectionList.size / 2
+            val extra = if(collectionList.size % 2 == 0) 0 else 1
+            for (i in 0 until items + extra) {
+                val firstIndex = i * 2
+                val secondIndex = i * 2 + 1
                 val screenWidth = LocalConfiguration.current.screenWidthDp
                 val size = (screenWidth.dp - theme().shapes.padding * 3) / 2
-                val item1 = collectionList[i]
-                val item2 = collectionList.getOrNull(i + 1)
+                val item1 = collectionList[firstIndex]
+                val item2 = collectionList.getOrNull(secondIndex)
                 Row(
                     horizontalArrangement = Arrangement.Start,
                 ) {
-                    imageItem(
+                    ImageItem(
                         url = item1.coverImage,
                         contentDescription = "collection item",
                         size = size
                     ) {
-                        presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(i))
+                        presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(firstIndex))
                     }
                     Spacer(modifier = Modifier.width(theme().shapes.padding))
                     item2?.let {
-                        imageItem(
+                        ImageItem(
                             url = it.coverImage,
                             contentDescription = "collection item",
                             size = size
                         ) {
-                            presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(i + 1))
+                            presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(secondIndex))
                         }
                     }
                 }
@@ -160,7 +164,7 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
     }
 
     @Composable
-    private fun imageItem(
+    private fun ImageItem(
         url: String,
         contentDescription: String,
         size: Dp,
