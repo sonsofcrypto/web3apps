@@ -26,10 +26,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import coil.ImageLoader
 import coil.compose.rememberAsyncImagePainter
-import com.sonsofcrypto.web3wallet.android.common.NavigationBar
-import com.sonsofcrypto.web3wallet.android.common.W3WDivider
-import com.sonsofcrypto.web3wallet.android.common.backgroundGradient
-import com.sonsofcrypto.web3wallet.android.common.theme
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.improvementProposal.ImprovementProposalPresenter
 import com.sonsofcrypto.web3walletcore.modules.improvementProposal.ImprovementProposalPresenterEvent
@@ -51,7 +48,7 @@ class ImprovementProposalFragment: Fragment(), ImprovementProposalView {
         return ComposeView(requireContext()).apply {
             setContent {
                 val viewModel by liveData.observeAsState()
-                viewModel?.let { ImprovementProposalList(viewModel = it) }
+                viewModel?.let { ImprovementProposalScreen(viewModel = it) }
             }
         }
     }
@@ -61,16 +58,11 @@ class ImprovementProposalFragment: Fragment(), ImprovementProposalView {
     }
 
     @Composable
-    private fun ImprovementProposalList(viewModel: ImprovementProposalViewModel) {
-        Column(
-            modifier = Modifier
-                .background(backgroundGradient())
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            NavigationBar(title = viewModel.name)
-            ImprovementProposalContent(viewModel)
-        }
+    private fun ImprovementProposalScreen(viewModel: ImprovementProposalViewModel) {
+        Screen(
+            navBar = { NavigationBar(title = viewModel.name) },
+            content = { ImprovementProposalContent(viewModel) }
+        )
     }
 
     @Composable

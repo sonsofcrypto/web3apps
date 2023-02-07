@@ -1,10 +1,8 @@
 package com.sonsofcrypto.web3wallet.android.common
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +16,22 @@ import com.sonsofcrypto.web3walletcore.extensions.Localized
 @Composable
 fun backgroundGradient(): Brush {
     return Brush.verticalGradient(listOf(theme().colors.bgGradientTop, theme().colors.bgGradientBtm))
+}
+
+@Composable
+fun Screen(
+    navBar: @Composable() (() -> Unit)? = null,
+    content: @Composable() (() -> Unit),
+) {
+    Column(
+        modifier = Modifier
+            .background(backgroundGradient())
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        navBar?.let { it() }
+        content()
+    }
 }
 
 @Composable
@@ -44,10 +58,26 @@ fun NavigationBar(
         }
     }
 }
+
 @Composable
 fun W3WDivider() {
     Divider(
         color = theme().colors.separatorPrimary,
         thickness = 0.5.dp
     )
+}
+@Composable
+fun W3WLoadingScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundGradient())
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
+    }
 }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -27,9 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.sonsofcrypto.web3wallet.android.common.NavigationBar
-import com.sonsofcrypto.web3wallet.android.common.backgroundGradient
-import com.sonsofcrypto.web3wallet.android.common.theme
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3wallet.android.modules.improvementproposals.ImprovementProposalsFragment.ImprovementProposalCategoryType.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.improvementProposals.ImprovementProposalsPresenter
@@ -56,7 +53,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
         return ComposeView(requireContext()).apply {
             setContent {
                 val viewModel by liveData.observeAsState()
-                viewModel?.let { ImprovementProposalsList(viewModel = it) }
+                viewModel?.let { ImprovementProposalsScreen(viewModel = it) }
             }
         }
     }
@@ -66,10 +63,23 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
     }
 
     @Composable
-    private fun ImprovementProposalsList(viewModel: ImprovementProposalsViewModel) {
+    private fun ImprovementProposalsScreen(viewModel: ImprovementProposalsViewModel) {
+        Screen(
+            navBar = {
+                NavigationBar(
+                    title = Localized("proposals.title"),
+                    content = { ImprovementProposalsCategorySegments() }
+                )
+            },
+            content = { ImprovementProposalsContent(viewModel) }
+        )
+    }
+
+    @Composable
+    private fun ImprovementProposalsContent(viewModel: ImprovementProposalsViewModel) {
         when (viewModel) {
             is ImprovementProposalsViewModel.Loading -> {
-                ImprovementProposalsLoading()
+                W3WLoadingScreen()
             }
             is ImprovementProposalsViewModel.Loaded -> {
                 ImprovementProposalsLoaded(
@@ -84,23 +94,6 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
     }
 
     @Composable
-    private fun ImprovementProposalsLoading() {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(backgroundGradient())
-        ) {
-            ImprovementProposalsNavigation()
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        }
-    }
-
-    @Composable
     private fun ImprovementProposalsLoaded(
         viewModel: List<ImprovementProposalsViewModel.Category>,
         selectedCategoryIdx: Int,
@@ -110,21 +103,12 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                 .fillMaxSize()
                 .background(backgroundGradient())
         ) {
-            ImprovementProposalsNavigation()
             val category = viewModel[selectedCategoryIdx]
             ImprovementProposalsCategoryList(
                 description = category.description, items = category.items
             )
             Spacer(modifier = Modifier.height(theme().shapes.padding))
         }
-    }
-
-    @Composable
-    private fun ImprovementProposalsNavigation() {
-        NavigationBar(
-            title = Localized("proposals.title"),
-            content = { ImprovementProposalsCategorySegments() }
-        )
     }
 
     @Composable

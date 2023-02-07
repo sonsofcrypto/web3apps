@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +27,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sonsofcrypto.web3wallet.android.common.*
+import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.degen.DegenPresenter
 import com.sonsofcrypto.web3walletcore.modules.degen.DegenPresenterEvent
 import com.sonsofcrypto.web3walletcore.modules.degen.DegenView
@@ -45,8 +48,13 @@ class DegenFragment : Fragment(), DegenView {
         presenter.present()
         return ComposeView(requireContext()).apply {
             setContent {
+                val systemUiController = rememberSystemUiController()
+                systemUiController.setSystemBarsColor(
+                    color = theme().colors.navBarBackground
+                )
+
                 val viewModel by liveData.observeAsState()
-                viewModel?.let { DegenList(it) }
+                viewModel?.let { DegenScreen(it) }
             }
         }
     }
@@ -61,11 +69,17 @@ class DegenFragment : Fragment(), DegenView {
     }
 
     @Composable
-    private fun DegenList(viewModel: DegenViewModel) {
+    private fun DegenScreen(viewModel: DegenViewModel) {
+        Screen(
+            navBar = { NavigationBar(title = Localized("degen")) },
+            content = { DegenContent(viewModel) }
+        )
+    }
+
+    @Composable
+    private fun DegenContent(viewModel: DegenViewModel) {
         LazyColumn(
-            Modifier
-                .background(backgroundGradient())
-                .padding(start = theme().shapes.padding, end = theme().shapes.padding)
+            Modifier.padding(start = theme().shapes.padding, end = theme().shapes.padding)
         ) {
             items(viewModel.sections.size) { index ->
                 DegenSection(viewModel.sections[index])

@@ -26,9 +26,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.sonsofcrypto.web3wallet.android.common.W3WDivider
-import com.sonsofcrypto.web3wallet.android.common.backgroundGradient
-import com.sonsofcrypto.web3wallet.android.common.theme
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalPresenter
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalPresenterEvent
@@ -54,7 +52,7 @@ class CultProposalFragment: Fragment(), CultProposalView {
         return ComposeView(requireContext()).apply { 
             setContent { 
                 val viewModel by liveData.observeAsState()
-                viewModel?.let { CultProposal(viewModel = it.proposals[it.selectedIndex]) }
+                viewModel?.let { CultProposalScreen(viewModel = it.proposals[it.selectedIndex]) }
             }
         }
     }
@@ -62,9 +60,17 @@ class CultProposalFragment: Fragment(), CultProposalView {
     override fun update(viewModel: CultProposalViewModel) {
         liveData.value = viewModel
     }
+
+    @Composable
+    private fun CultProposalScreen(viewModel: CultProposalViewModel.ProposalDetails) {
+        Screen(
+            navBar = { NavigationBar(title = viewModel.name) },
+            content = { CultProposalContent(viewModel) }
+        )
+    }
     
     @Composable
-    private fun CultProposal(viewModel: CultProposalViewModel.ProposalDetails) {
+    private fun CultProposalContent(viewModel: CultProposalViewModel.ProposalDetails) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -73,13 +79,13 @@ class CultProposalFragment: Fragment(), CultProposalView {
                 .padding(theme().shapes.padding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                viewModel.name,
-                color = theme().colors.textPrimary,
-                style = theme().fonts.title3,
-                textAlign = TextAlign.Center,
-            )
-            Spacer(Modifier.height(theme().shapes.padding))
+//            Text(
+//                viewModel.name,
+//                color = theme().colors.textPrimary,
+//                style = theme().fonts.title3,
+//                textAlign = TextAlign.Center,
+//            )
+            //Spacer(Modifier.height(theme().shapes.padding))
             CultProposalStatus(viewModel = viewModel.status)
             Spacer(Modifier.height(theme().shapes.padding))
             viewModel.guardianInfo?.let { 

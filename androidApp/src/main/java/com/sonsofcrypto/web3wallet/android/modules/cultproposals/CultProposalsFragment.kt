@@ -27,8 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import com.sonsofcrypto.web3wallet.android.common.backgroundGradient
-import com.sonsofcrypto.web3wallet.android.common.theme
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposals.CultProposalsPresenter
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposals.CultProposalsPresenterEvent
@@ -55,7 +54,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
         return ComposeView(requireContext()).apply {
             setContent {
                 val viewModel by liveData.observeAsState()
-                viewModel?.let { CultProposalsList(it) }
+                viewModel?.let { CultProposalsScreen(it) }
             }
         }
     }
@@ -65,29 +64,25 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
     }
 
     @Composable
-    private fun CultProposalsList(viewModel: CultProposalsViewModel) {
+    private fun CultProposalsScreen(viewModel: CultProposalsViewModel) {
+        Screen(
+            navBar = { NavigationBar(title = Localized("cult.proposals.title")) },
+            content = { CultProposalsContent(viewModel) }
+        )
+    }
+
+    @Composable
+    private fun CultProposalsContent(viewModel: CultProposalsViewModel) {
         when (viewModel) {
             is CultProposalsViewModel.Loading -> {
-                CultProposalsLoading()
+                W3WLoadingScreen()
             }
             is CultProposalsViewModel.Loaded -> {
                 viewModel.sections.firstOrNull()?.let { CultProposalsLoaded(it) }
             }
             is CultProposalsViewModel.Error -> {
-                CultProposalsLoading()
+                W3WLoadingScreen()
             }
-        }
-    }
-
-    @Composable
-    private fun CultProposalsLoading() {
-        Box(
-            modifier = Modifier
-                .background(backgroundGradient())
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            CircularProgressIndicator()
         }
     }
 
@@ -102,9 +97,9 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(theme().shapes.padding + 30.dp + theme().shapes.padding)
+                    .height(30.dp + theme().shapes.padding)
                     .background(theme().colors.navBarBackground),
-                verticalAlignment = Alignment.CenterVertically,
+                verticalAlignment = Alignment.Top,
                 horizontalArrangement = Arrangement.Center,
             ) {
                 CultTabSelector()

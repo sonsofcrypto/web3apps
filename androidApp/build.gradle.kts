@@ -54,7 +54,9 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:1.4.0-alpha04")
     // implementation("androidx.activity:activity-compose:1.5.1")
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.28.0")
+    val accompanistVersion = "0.28.0"
+    implementation("com.google.accompanist:accompanist-swiperefresh:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("io.coil-kt:coil-compose:2.2.2")
 }

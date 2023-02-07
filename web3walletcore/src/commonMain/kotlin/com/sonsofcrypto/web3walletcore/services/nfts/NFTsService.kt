@@ -65,8 +65,9 @@ class OpenSeaNFTsService(
     }
 
     override suspend fun fetchNFTs(): List<NFTItem> {
-        val address = networksService.wallet()?.address()?.toHexStringAddress()?.hexString
-            ?: return emptyList()
+//        val address = networksService.wallet()?.address()?.toHexStringAddress()?.hexString
+//            ?: return emptyList()
+        val address = "0x1DB8CeC74589448F3e427B2d7f90e7D7e13f0927"
         val network = networksService.network ?: return emptyList()
         // NOTE: At this stage we only support Ethereum network
         if (network.id() != Network.ethereum().id()) {
