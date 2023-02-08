@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,12 +17,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import coil.ImageLoader
-import coil.compose.rememberAsyncImagePainter
 import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.improvementProposal.ImprovementProposalPresenter
@@ -59,8 +53,8 @@ class ImprovementProposalFragment: Fragment(), ImprovementProposalView {
 
     @Composable
     private fun ImprovementProposalScreen(viewModel: ImprovementProposalViewModel) {
-        Screen(
-            navBar = { NavigationBar(title = viewModel.name) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = viewModel.name) },
             content = { ImprovementProposalContent(viewModel) }
         )
     }
@@ -73,41 +67,26 @@ class ImprovementProposalFragment: Fragment(), ImprovementProposalView {
                 .verticalScroll(ScrollState(0)),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
             ImprovementProposalStatus(viewModel.status)
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(16f / 9f)
-                    .clip(RoundedCornerShape(theme().shapes.cornerRadius)),
-                painter = rememberAsyncImagePainter(
-                    model = viewModel.imageUrl,
-                    //imageLoader = ImageLoader.defaults,
-                ),
+            W3WSpacerVertical()
+            W3WImage(
+                url = viewModel.imageUrl,
+                modifier = Modifier.aspectRatio(16f / 9f),
                 contentDescription = viewModel.name,
             )
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-            ImprovementProposalDetails(viewModel.body)
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(theme().shapes.cornerRadiusSmall)),
-                onClick = {
-                    presenter.handle(ImprovementProposalPresenterEvent.Vote)
-                },
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = theme().colors.buttonBgPrimary
-                )
+            W3WSpacerVertical()
+            W3WCard(
+                title = Localized("proposal.summary.header"),
+                content = { ImprovementProposalSummaryContent(viewModel.body) }
+            )
+            W3WSpacerVertical()
+            W3WButtonPrimary(
+                title = Localized("proposal.button.vote"),
             ) {
-                Text(
-                    Localized("proposal.button.vote"),
-                    color = theme().colors.textPrimary,
-                    style = theme().fonts.title3,
-                )
+                presenter.handle(ImprovementProposalPresenterEvent.Vote)
             }
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
         }
     }
 
@@ -132,36 +111,11 @@ class ImprovementProposalFragment: Fragment(), ImprovementProposalView {
     }
 
     @Composable
-    private fun ImprovementProposalDetails(viewModel: String) {
-        Column(
-            Modifier
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
-            horizontalAlignment = Alignment.Start
-        ) {
-            ImprovementProposalCardHeaderAndDivider(
-                title = Localized("proposal.summary.header")
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                viewModel,
-                color = theme().colors.textPrimary,
-                style = theme().fonts.subheadline,
-            )
-        }
-    }
-
-    @Composable
-    private fun ImprovementProposalCardHeaderAndDivider(title: String) {
+    private fun ImprovementProposalSummaryContent(viewModel: String) {
         Text(
-            title,
+            viewModel,
             color = theme().colors.textPrimary,
-            style = theme().fonts.headlineBold,
-            textAlign = TextAlign.Start,
+            style = theme().fonts.subheadline,
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        W3WDivider()
     }
-
 }

@@ -5,30 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import coil.compose.SubcomposeAsyncImage
 import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.nftsDashboard.NFTsDashboardPresenter
@@ -67,8 +57,8 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
 
     @Composable
     private fun NFTsDashboardScreen(viewModel: NFTsDashboardViewModel) {
-        Screen(
-            navBar = { NavigationBar(title = Localized("nfts")) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = Localized("nfts")) },
             content = { NFTsDashboardContent(viewModel = viewModel) }
         )
     }
@@ -103,11 +93,15 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
             contentPadding = PaddingValues(theme().shapes.padding)
         ) {
             items(nftList.count()) {
-                if (it != 0) { Spacer(modifier = Modifier.width(theme().shapes.padding))  }
+                if (it != 0) { W3WSpacerHorizontal()  }
                 val screenWidth = LocalConfiguration.current.screenWidthDp
                 val size = (screenWidth * 0.6).dp
                 val item = nftList[it]
-                ImageItem(url = item.image, contentDescription = "nft item", size = size) {
+                W3WImage(
+                    url = item.image,
+                    modifier = Modifier.requiredSize(size),
+                    contentDescription = "nft item"
+                ) {
                     presenter.handle(NFTsDashboardPresenterEvent.ViewNFT(it))
                 }
             }
@@ -138,58 +132,28 @@ class NFTsDashboardFragment: Fragment(), NFTsDashboardView {
                 Row(
                     horizontalArrangement = Arrangement.Start,
                 ) {
-                    ImageItem(
+                    W3WImage(
                         url = item1.coverImage,
+                        modifier = Modifier.requiredSize(size),
                         contentDescription = "collection item",
-                        size = size
                     ) {
                         presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(firstIndex))
                     }
-                    Spacer(modifier = Modifier.width(theme().shapes.padding))
+                    W3WSpacerHorizontal()
                     item2?.let {
-                        ImageItem(
+                        W3WImage(
                             url = it.coverImage,
+                            modifier = Modifier.requiredSize(size),
                             contentDescription = "collection item",
-                            size = size
                         ) {
                             presenter.handle(NFTsDashboardPresenterEvent.ViewCollectionNFTs(secondIndex))
                         }
                     }
                 }
                 if (item1 != collectionList.last() && item2 != collectionList.last()) {
-                    Spacer(modifier = Modifier.height(theme().shapes.padding))
+                    W3WSpacerVertical()
                 }
             }
         }
-    }
-
-    @Composable
-    private fun ImageItem(
-        url: String,
-        contentDescription: String,
-        size: Dp,
-        onClick: () -> Unit,
-    ) {
-        SubcomposeAsyncImage(
-            model = url,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .requiredSize(size)
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.textSecondary)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onClick,
-                ) ,
-            loading = {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .requiredSize(32.dp)
-                        .align(Alignment.Center)
-                )
-            },
-            contentDescription = contentDescription
-        )
     }
 }

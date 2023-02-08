@@ -317,7 +317,7 @@
     <string name="currencySwap.enterAmount">Enter an amount</string>
     <string name="currencySwap.insufficientBalance">Insufficient %1$s balance</string>
     <string name="currencySwap.noPoolsFound">No pools found</string>
-    <string name="currencySwap.swapAnyway">Swap anyway (-%1$s%)</string>
+    <string name="currencySwap.swapAnyway">Swap anyway (-%1$s\%)</string>
 
     <string name="authenticate.title.unlock">Unlock</string>
     <string name="authenticate.title.swap">Swap</string>
@@ -414,7 +414,7 @@
     <string name="cult.proposal.tokenomics.rewardDistribution">Reward Distribution Terms</string>
     <string name="cult.proposal.tokenomics.projectEthWallet">Project Ethereum Wallet</string>
     <string name="cult.proposal.parsing.rewardDistribution.per">per</string>
-    <string name="cult.proposal.parsing.cultRewardAllocation">%1$s% of Total Supply</string>
+    <string name="cult.proposal.parsing.cultRewardAllocation">%1$s\% of Total Supply</string>
 
     <string name="proposals.title">W3W improvement proposals</string>
     <string name="proposals.infrastructure.title">Infrastructure</string>

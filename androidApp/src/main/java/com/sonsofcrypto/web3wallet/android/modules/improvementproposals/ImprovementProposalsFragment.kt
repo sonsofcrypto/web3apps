@@ -64,9 +64,9 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
 
     @Composable
     private fun ImprovementProposalsScreen(viewModel: ImprovementProposalsViewModel) {
-        Screen(
+        W3WScreen(
             navBar = {
-                NavigationBar(
+                W3WNavigationBar(
                     title = Localized("proposals.title"),
                     content = { ImprovementProposalsCategorySegments() }
                 )
@@ -107,7 +107,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
             ImprovementProposalsCategoryList(
                 description = category.description, items = category.items
             )
-            Spacer(modifier = Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
         }
     }
 
@@ -191,7 +191,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                 .fillMaxHeight()
         ) {
             items(items.size) { index ->
-                Spacer(modifier = Modifier.height(theme().shapes.padding))
+                W3WSpacerVertical()
                 if (index == 0) {
                     Text(
                         text = description,
@@ -199,7 +199,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                         color = theme().colors.textPrimary,
                         style = theme().fonts.body
                     )
-                    Spacer(modifier = Modifier.height(theme().shapes.padding))
+                    W3WSpacerVertical()
                 }
                 val item = items[index]
                 ImprovementProposalsCategoryItem(
@@ -212,7 +212,7 @@ class ImprovementProposalsFragment: Fragment(), ImprovementProposalsView {
                     }
                 )
                 if (item == items.last()) {
-                    Spacer(modifier = Modifier.height(theme().shapes.padding))
+                    W3WSpacerVertical()
                 }
             }
         }

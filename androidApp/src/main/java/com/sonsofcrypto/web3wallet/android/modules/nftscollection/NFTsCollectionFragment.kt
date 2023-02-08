@@ -4,31 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
-import coil.compose.SubcomposeAsyncImage
-import com.sonsofcrypto.web3wallet.android.common.NavigationBar
-import com.sonsofcrypto.web3wallet.android.common.Screen
-import com.sonsofcrypto.web3wallet.android.common.theme
+import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.modules.nftsCollection.NFTsCollectionPresenter
 import com.sonsofcrypto.web3walletcore.modules.nftsCollection.NFTsCollectionPresenterEvent
 import com.sonsofcrypto.web3walletcore.modules.nftsCollection.NFTsCollectionView
@@ -61,8 +48,8 @@ class NFTsCollectionFragment: Fragment(), NFTsCollectionView {
 
     @Composable
     fun NFTsCollectionScreen(viewModel: NFTsCollectionViewModel) {
-        Screen(
-            navBar = { NavigationBar(title = viewModel.collection.title) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = viewModel.collection.title) },
             content = { NFTsCollectionContent(viewModel = viewModel.nfts) }
         )
     }
@@ -85,55 +72,26 @@ class NFTsCollectionFragment: Fragment(), NFTsCollectionView {
                 Row(
                     horizontalArrangement = Arrangement.Start,
                 ) {
-                    ImageItem(
+                    W3WImage(
                         url = item1.image,
-                        size = size
+                        modifier = Modifier.requiredSize(size),
+                        contentDescription = "collection item $index1",
                     ) {
                         presenter.handle(NFTsCollectionPresenterEvent.NFTDetail(index1))
                     }
-                    Spacer(modifier = Modifier.width(theme().shapes.padding))
+                    W3WSpacerHorizontal()
                     item2?.let {
-                        ImageItem(
-                            url = it.image,
-                            size = size
+                        W3WImage(
+                            url = item2.image,
+                            modifier = Modifier.requiredSize(size),
+                            contentDescription = "collection item $index2",
                         ) {
                             presenter.handle(NFTsCollectionPresenterEvent.NFTDetail(index2))
                         }
                     }
                 }
-                if (item1 != viewModel.last() && item2 != viewModel.last()) {
-                    Spacer(modifier = Modifier.height(theme().shapes.padding))
-                }
+                if (item1 != viewModel.last() && item2 != viewModel.last()) { W3WSpacerVertical() }
             }
         }
-    }
-
-    @Composable
-    private fun ImageItem(
-        url: String,
-        size: Dp,
-        onClick: () -> Unit,
-    ) {
-        SubcomposeAsyncImage(
-            model = url,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .requiredSize(size)
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.textSecondary)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onClick,
-                ) ,
-            loading = {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .requiredSize(32.dp)
-                        .align(Alignment.Center)
-                )
-            },
-            contentDescription = "collection item"
-        )
     }
 }

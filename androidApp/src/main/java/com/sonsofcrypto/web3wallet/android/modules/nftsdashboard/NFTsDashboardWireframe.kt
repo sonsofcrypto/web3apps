@@ -5,7 +5,9 @@ import com.sonsofcrypto.web3lib.services.networks.NetworksService
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3wallet.android.R
 import com.sonsofcrypto.web3wallet.android.common.NavigationFragment
+import com.sonsofcrypto.web3wallet.android.modules.nftdetail.NFTDetailWireframeFactory
 import com.sonsofcrypto.web3wallet.android.modules.nftscollection.DefaultNFTsCollectionWireframeFactory
+import com.sonsofcrypto.web3walletcore.modules.nftDetail.NFTDetailWireframeContext
 import com.sonsofcrypto.web3walletcore.modules.nftsCollection.NFTsCollectionWireframeContext
 import com.sonsofcrypto.web3walletcore.modules.nftsDashboard.*
 import com.sonsofcrypto.web3walletcore.services.nfts.NFTsService
@@ -15,6 +17,7 @@ class DefaultNFTsDashboardWireframe(
     private val networksService: NetworksService,
     private val nftsService: NFTsService,
     private val nftsCollectionWireframeFactory: DefaultNFTsCollectionWireframeFactory,
+    private val nftDetailWireframeFactory: NFTDetailWireframeFactory
 ): NFTsDashboardWireframe {
 
     private lateinit var fragment: WeakRef<Fragment>
@@ -37,7 +40,13 @@ class DefaultNFTsDashboardWireframe(
                 ).present()
             }
             is NFTsDashboardWireframeDestination.ViewNFT -> {
-                println("tapped collection -> ${destination.nftItem.name}")
+                val context = NFTDetailWireframeContext(
+                    destination.nftItem.identifier, destination.nftItem.collectionIdentifier
+                )
+                nftDetailWireframeFactory.make(
+                    fragment.get(),
+                    context
+                ).present()
             }
             is NFTsDashboardWireframeDestination.SendError -> {
 

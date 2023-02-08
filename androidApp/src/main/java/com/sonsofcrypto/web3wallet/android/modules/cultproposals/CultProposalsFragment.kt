@@ -10,7 +10,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -65,8 +64,8 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
 
     @Composable
     private fun CultProposalsScreen(viewModel: CultProposalsViewModel) {
-        Screen(
-            navBar = { NavigationBar(title = Localized("cult.proposals.title")) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = Localized("cult.proposals.title")) },
             content = { CultProposalsContent(viewModel) }
         )
     }
@@ -182,15 +181,15 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
         ) {
             items(if(items.isEmpty()) 1 else items.size) { index ->
                 if (index == 0) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                    W3WSpacerVertical(height = 8.dp)
                     Title3BoldText(text = title, textAlign = TextAlign.Start)
                 }
                 if (items.isNotEmpty()) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                    W3WSpacerVertical(height = 8.dp)
                     CultProposalItem(item = items[index]) {
                         presenter.handle(SelectProposal(index))
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
+                    W3WSpacerVertical(height = 8.dp)
                 }
                 if (index == items.size - 1 || items.isEmpty()) {
                     Title3BoldText(text = footer.text, textAlign = TextAlign.Center)
@@ -237,7 +236,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
                 overflow = TextOverflow.Ellipsis,
                 //maxLines = 1,
             )
-            Spacer(Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
@@ -249,7 +248,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
                     tint = theme().colors.textPrimary,
                 )
             }
-            Spacer(Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
             Text(
                 item.stateName,
                 modifier = Modifier.fillMaxWidth(),
@@ -277,7 +276,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
             Modifier.fillMaxWidth(0.93f)
         ) {
             CultProposalVotes(vote = item.approved, color = theme().colors.priceUp)
-            Spacer(modifier = Modifier.height(8.dp))
+            W3WSpacerVertical(height = 8.dp)
             CultProposalVotes(vote = item.rejected, color = theme().colors.priceDown)
         }
     }
@@ -307,7 +306,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
                         .fillMaxHeight()
                         .background(color),
                 )
-                Spacer(modifier = Modifier.height(theme().shapes.padding))
+                W3WSpacerVertical()
                 Text(
                     vote.name + " " + formatter.format(vote.value * 100) + "%",
                     modifier = Modifier
@@ -318,7 +317,7 @@ class CultProposalsFragment : Fragment(), CultProposalsView {
                     style = theme().fonts.footnote,
                 )
             }
-            Spacer(modifier = Modifier.width(theme().shapes.padding))
+            W3WSpacerHorizontal()
             val approvedVotes = formatter.format(vote.total)
             Text(
                 approvedVotes,

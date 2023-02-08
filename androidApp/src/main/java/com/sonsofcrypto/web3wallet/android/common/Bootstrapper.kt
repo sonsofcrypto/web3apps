@@ -8,6 +8,7 @@ import com.sonsofcrypto.web3wallet.android.modules.dashboard.DashboardWireframeF
 import com.sonsofcrypto.web3wallet.android.modules.degen.DegenWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.improvementproposal.ImprovementProposalWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.improvementproposals.ImprovementProposalsWireframeFactoryAssembler
+import com.sonsofcrypto.web3wallet.android.modules.nftdetail.NFTDetailWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.nftscollection.NFTsCollectionWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.nftsdashboard.NFTsDashboardWireframeFactoryAssembler
 import com.sonsofcrypto.web3wallet.android.modules.root.RootWireframeFactory
@@ -59,6 +60,7 @@ private class AssemblerBootstrapper: Bootstrapper {
                 ImprovementProposalWireframeFactoryAssembler(),
                 NFTsDashboardWireframeFactoryAssembler(),
                 NFTsCollectionWireframeFactoryAssembler(),
+                NFTDetailWireframeFactoryAssembler(),
             )
         )
     }

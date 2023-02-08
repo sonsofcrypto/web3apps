@@ -29,7 +29,6 @@ import androidx.lifecycle.MutableLiveData
 import com.sonsofcrypto.web3wallet.android.common.*
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalPresenter
-import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalPresenterEvent
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalView
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalViewModel
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalViewModel.ProposalDetails.DocumentsInfo.Document.Item.Link
@@ -63,8 +62,8 @@ class CultProposalFragment: Fragment(), CultProposalView {
 
     @Composable
     private fun CultProposalScreen(viewModel: CultProposalViewModel.ProposalDetails) {
-        Screen(
-            navBar = { NavigationBar(title = viewModel.name) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = viewModel.name) },
             content = { CultProposalContent(viewModel) }
         )
     }
@@ -85,18 +84,30 @@ class CultProposalFragment: Fragment(), CultProposalView {
 //                style = theme().fonts.title3,
 //                textAlign = TextAlign.Center,
 //            )
-            //Spacer(Modifier.height(theme().shapes.padding))
+            //W3WSpacerVertical()
             CultProposalStatus(viewModel = viewModel.status)
-            Spacer(Modifier.height(theme().shapes.padding))
-            viewModel.guardianInfo?.let { 
-                CultProposalGuardianInfo(viewModel = it)
-                Spacer(Modifier.height(theme().shapes.padding))
+            W3WSpacerVertical()
+            viewModel.guardianInfo?.let {
+                W3WCard(
+                    title = it.title,
+                    content = { CultProposalGuardianInfo(viewModel = it) }
+                )
+                W3WSpacerVertical()
             }
-            CultProposalProjectSummary(viewModel = viewModel.summary)
-            Spacer(Modifier.height(theme().shapes.padding))
-            CultProposalProjectDocs(viewModel = viewModel.documentsInfo)
-            Spacer(Modifier.height(theme().shapes.padding))
-            CultProposalTokenomics(viewModel = viewModel.tokenomics)
+            W3WCard(
+                title = viewModel.summary.title,
+                content = { CultProposalProjectSummary(viewModel = viewModel.summary) }
+            )
+            W3WSpacerVertical()
+            W3WCard(
+                title = viewModel.documentsInfo.title,
+                content = { CultProposalProjectDocs(viewModel = viewModel.documentsInfo) }
+            )
+            W3WSpacerVertical()
+            W3WCard(
+                title = viewModel.tokenomics.title,
+                content = { CultProposalTokenomics(viewModel = viewModel.tokenomics) }
+            )
         }
     }
 
@@ -122,32 +133,11 @@ class CultProposalFragment: Fragment(), CultProposalView {
     private fun CultProposalGuardianInfo(
         viewModel: CultProposalViewModel.ProposalDetails.GuardianInfo
     ) {
-        Column(
-            Modifier
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
-            horizontalAlignment = Alignment.Start
-        ) {
-            CultProposalCardHeaderAndDivider(title = viewModel.title)
-            Spacer(modifier = Modifier.height(8.dp))
-            CultProposalGuardianInfoRow(name = viewModel.name, value = viewModel.nameValue)
-            Spacer(modifier = Modifier.height(4.dp))
-            CultProposalGuardianInfoRow(name = viewModel.socialHandle, value = viewModel.socialHandleValue)
-            Spacer(modifier = Modifier.height(4.dp))
-            CultProposalGuardianInfoRow(name = viewModel.wallet, value = viewModel.walletValue)
-        }
-    }
-
-    @Composable
-    private fun CultProposalCardHeaderAndDivider(title: String) {
-        Text(
-            title,
-            color = theme().colors.textPrimary,
-            style = theme().fonts.headlineBold,
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        W3WDivider()
+        CultProposalGuardianInfoRow(name = viewModel.name, value = viewModel.nameValue)
+        W3WSpacerVertical(height = 4.dp)
+        CultProposalGuardianInfoRow(name = viewModel.socialHandle, value = viewModel.socialHandleValue)
+        W3WSpacerVertical(height = 4.dp)
+        CultProposalGuardianInfoRow(name = viewModel.wallet, value = viewModel.walletValue)
     }
 
     @Composable
@@ -158,7 +148,7 @@ class CultProposalFragment: Fragment(), CultProposalView {
                 color = theme().colors.textSecondary,
                 style = theme().fonts.subheadline,
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            W3WSpacerHorizontal(width = 8.dp)
             Text(
                 value,
                 color = theme().colors.textPrimary,
@@ -171,39 +161,19 @@ class CultProposalFragment: Fragment(), CultProposalView {
     private fun CultProposalProjectSummary(
         viewModel: CultProposalViewModel.ProposalDetails.Summary
     ) {
-        Column(
-            Modifier
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
-            horizontalAlignment = Alignment.Start
-        ) {
-            CultProposalCardHeaderAndDivider(title = viewModel.title)
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                viewModel.summary,
-                color = theme().colors.textPrimary,
-                style = theme().fonts.subheadline,
-            )
-        }
+        Text(
+            viewModel.summary,
+            color = theme().colors.textPrimary,
+            style = theme().fonts.subheadline,
+        )
     }
 
     @Composable
     private fun CultProposalProjectDocs(
         viewModel: CultProposalViewModel.ProposalDetails.DocumentsInfo
     ) {
-        Column(
-            Modifier
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
-            horizontalAlignment = Alignment.Start
-        ) {
-            CultProposalCardHeaderAndDivider(title = viewModel.title)
-            Spacer(modifier = Modifier.height(8.dp))
-            viewModel.documents.forEach {
-                CultProposalProductDocsDocument(viewModel = it)
-            }
+        viewModel.documents.forEach {
+            CultProposalProductDocsDocument(viewModel = it)
         }
     }
 
@@ -249,30 +219,20 @@ class CultProposalFragment: Fragment(), CultProposalView {
     private fun CultProposalTokenomics(
         viewModel: CultProposalViewModel.ProposalDetails.Tokenomics
     ) {
-        Column(
-            Modifier
-                .clip(RoundedCornerShape(theme().shapes.cornerRadius))
-                .background(theme().colors.bgPrimary)
-                .padding(theme().shapes.padding),
-            horizontalAlignment = Alignment.Start
-        ) {
-            CultProposalCardHeaderAndDivider(title = viewModel.title)
-            Spacer(modifier = Modifier.height(8.dp))
-            CultProposalTokenomicsRow(
-                name = viewModel.rewardAllocation,
-                value = viewModel.rewardAllocationValue
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            CultProposalTokenomicsRow(
-                name = viewModel.rewardDistribution,
-                value = viewModel.rewardDistributionValue
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            CultProposalTokenomicsRow(
-                name = viewModel.projectETHWallet,
-                value = viewModel.projectETHWalletValue
-            )
-        }
+        CultProposalTokenomicsRow(
+            name = viewModel.rewardAllocation,
+            value = viewModel.rewardAllocationValue
+        )
+        W3WSpacerVertical(height = 8.dp)
+        CultProposalTokenomicsRow(
+            name = viewModel.rewardDistribution,
+            value = viewModel.rewardDistributionValue
+        )
+        W3WSpacerVertical(height = 8.dp)
+        CultProposalTokenomicsRow(
+            name = viewModel.projectETHWallet,
+            value = viewModel.projectETHWalletValue
+        )
     }
 
     @Composable
@@ -283,7 +243,7 @@ class CultProposalFragment: Fragment(), CultProposalView {
                 color = theme().colors.textSecondary,
                 style = theme().fonts.subheadline,
             )
-            Spacer(modifier = Modifier.width(4.dp))
+            W3WSpacerHorizontal(width = 4.dp)
             Text(
                 value,
                 color = theme().colors.textPrimary,

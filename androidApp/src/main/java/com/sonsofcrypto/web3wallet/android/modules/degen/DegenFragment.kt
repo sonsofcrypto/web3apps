@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -70,8 +68,8 @@ class DegenFragment : Fragment(), DegenView {
 
     @Composable
     private fun DegenScreen(viewModel: DegenViewModel) {
-        Screen(
-            navBar = { NavigationBar(title = Localized("degen")) },
+        W3WScreen(
+            navBar = { W3WNavigationBar(title = Localized("degen")) },
             content = { DegenContent(viewModel) }
         )
     }
@@ -84,16 +82,16 @@ class DegenFragment : Fragment(), DegenView {
             items(viewModel.sections.size) { index ->
                 DegenSection(viewModel.sections[index])
                 if (viewModel.sections.count() - 1 == index) {
-                    Spacer(modifier = Modifier.height(theme().shapes.padding))
+                    W3WSpacerVertical()
                 }
             }
         }
-        Spacer(modifier = Modifier.height(theme().shapes.padding))
+        W3WSpacerVertical()
     }
 
     @Composable
     private fun DegenSection(section: DegenViewModel.Section) {
-        Spacer(modifier = Modifier.height(theme().shapes.padding))
+        W3WSpacerVertical()
         when (section) {
             is DegenViewModel.Section.Header -> {
                 Text(
@@ -106,7 +104,7 @@ class DegenFragment : Fragment(), DegenView {
             }
             is DegenViewModel.Section.Group -> {
                 DegenItems(section.items)
-                Spacer(modifier = Modifier.height(4.dp))
+                W3WSpacerVertical(height = 4.dp)
             }
         }
     }
@@ -129,9 +127,9 @@ class DegenFragment : Fragment(), DegenView {
                     }
                 }
                 if (items.last() != it) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                    W3WSpacerVertical(height = 8.dp)
                     W3WDivider()
-                    Spacer(modifier = Modifier.height(8.dp))
+                    W3WSpacerVertical(height = 8.dp)
                 }
             }
         }

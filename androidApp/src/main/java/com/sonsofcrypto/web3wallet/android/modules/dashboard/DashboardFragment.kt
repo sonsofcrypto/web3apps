@@ -1,10 +1,8 @@
 package com.sonsofcrypto.web3wallet.android.modules.dashboard
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.sonsofcrypto.web3wallet.android.R
 import com.sonsofcrypto.web3walletcore.modules.dashboard.DashboardPresenter
 import com.sonsofcrypto.web3walletcore.modules.dashboard.DashboardView
