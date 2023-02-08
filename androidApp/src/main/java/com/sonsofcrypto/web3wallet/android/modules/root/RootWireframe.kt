@@ -39,8 +39,8 @@ class DefaultRootWireframe(
         when (destination) {
             DASHBOARD -> {
 //                dashboardWireframeFactory.make(fragment.get()).present()
-                degenWireframeFactory.make(fragment.get()).present()
-//                nftsDashboardWireframeFactory.make(fragment.get()).present()
+//                degenWireframeFactory.make(fragment.get()).present()
+                nftsDashboardWireframeFactory.make(fragment.get()).present()
             }
             NETWORKS -> {}
             KEYSTORE -> {}

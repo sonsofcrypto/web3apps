@@ -12,13 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
-import com.sonsofcrypto.web3walletcore.extensions.Localized
-import com.sonsofcrypto.web3walletcore.modules.improvementProposal.ImprovementProposalPresenterEvent
 
 @Composable
 fun backgroundGradient(): Brush {
@@ -176,4 +176,20 @@ fun W3WButtonPrimary(
             style = theme().fonts.title3,
         )
     }
+}
+
+@Composable
+fun W3WTextSubheadline(
+    text: String,
+    modifier: Modifier = Modifier,
+    textDecoration: TextDecoration? = null,
+    color: Color = theme().colors.textPrimary,
+) {
+    Text(
+        text,
+        modifier = modifier,
+        color = color,
+        textDecoration = textDecoration,
+        style = theme().fonts.subheadline,
+    )
 }

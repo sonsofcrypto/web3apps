@@ -96,7 +96,7 @@ class CultProposalFragment: Fragment(), CultProposalView {
             }
             W3WCard(
                 title = viewModel.summary.title,
-                content = { CultProposalProjectSummary(viewModel = viewModel.summary) }
+                content = { W3WTextSubheadline(text = viewModel.summary.summary) }
             )
             W3WSpacerVertical()
             W3WCard(
@@ -143,29 +143,10 @@ class CultProposalFragment: Fragment(), CultProposalView {
     @Composable
     private fun CultProposalGuardianInfoRow(name: String, value: String) {
         Row {
-            Text(
-                name,
-                color = theme().colors.textSecondary,
-                style = theme().fonts.subheadline,
-            )
+            W3WTextSubheadline(text = name, color = theme().colors.textSecondary)
             W3WSpacerHorizontal(width = 8.dp)
-            Text(
-                value,
-                color = theme().colors.textPrimary,
-                style = theme().fonts.subheadline,
-            )
+            W3WTextSubheadline(text = value)
         }
-    }
-
-    @Composable
-    private fun CultProposalProjectSummary(
-        viewModel: CultProposalViewModel.ProposalDetails.Summary
-    ) {
-        Text(
-            viewModel.summary,
-            color = theme().colors.textPrimary,
-            style = theme().fonts.subheadline,
-        )
     }
 
     @Composable
@@ -181,35 +162,23 @@ class CultProposalFragment: Fragment(), CultProposalView {
     private fun CultProposalProductDocsDocument(
         viewModel: CultProposalViewModel.ProposalDetails.DocumentsInfo.Document
     ) {
-        Text(
-            viewModel.title,
-            color = theme().colors.textSecondary,
-            style = theme().fonts.subheadline,
-        )
+        W3WTextSubheadline(text = viewModel.title, color = theme().colors.textSecondary)
         viewModel.items.forEach {
             when (it) {
                 is Link -> {
                     val uriHandler = LocalUriHandler.current
-                    Text(
-                        it.displayName,
+                    W3WTextSubheadline(
+                        text = it.displayName,
+                        textDecoration = TextDecoration.Underline,
                         modifier = Modifier.clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null,
                         ) {
                             uriHandler.openUri(it.url)
                         },
-                        textDecoration = TextDecoration.Underline,
-                        color = theme().colors.textPrimary,
-                        style = theme().fonts.subheadline,
                     )
                 }
-                is Note -> {
-                    Text(
-                        it.text,
-                        color = theme().colors.textPrimary,
-                        style = theme().fonts.subheadline,
-                    )
-                }
+                is Note -> { W3WTextSubheadline(text = it.text) }
             }
 
         }
@@ -238,17 +207,9 @@ class CultProposalFragment: Fragment(), CultProposalView {
     @Composable
     private fun CultProposalTokenomicsRow(name: String, value: String) {
         Column {
-            Text(
-                name,
-                color = theme().colors.textSecondary,
-                style = theme().fonts.subheadline,
-            )
+            W3WTextSubheadline(text = name, color = theme().colors.textSecondary)
             W3WSpacerHorizontal(width = 4.dp)
-            Text(
-                value,
-                color = theme().colors.textPrimary,
-                style = theme().fonts.subheadline,
-            )
+            W3WTextSubheadline(text = value)
         }
     }
 }
