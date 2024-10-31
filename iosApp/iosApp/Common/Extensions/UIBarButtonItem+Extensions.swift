@@ -51,7 +51,23 @@ extension UIBarButtonItem {
     ) {
         self.init(barButtonSystemItem: system, target: nil, action: nil)
     }
-
+    
+    convenience init(
+        images: [UIImage],
+        target: Any?,
+        action: Selector?
+    ) {
+        let stack = HStackView(
+            images.map { UIImageView(image: $0) },
+            alignment: .center,
+            distribution: .equalSpacing,
+            spacing: Theme.paddingHalf.half
+        )
+        let tap = UITapGestureRecognizer(target: target, action: action)
+        stack.addGestureRecognizer(tap)
+        self.init(customView: stack)
+    }
+    
     static func smallLabel(_ title: String = "") -> UIBarButtonItem {
         let label = UILabel(with: .subheadline)
         label.font = Theme.font.caption1

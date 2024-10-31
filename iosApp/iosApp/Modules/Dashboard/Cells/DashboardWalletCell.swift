@@ -50,9 +50,9 @@ extension DashboardWalletCell {
         imageView.image = UIImage(named: viewModel.imageName)
         currencyLabel.text = viewModel.ticker
         fiatPriceLabel.attributedText = .init(
-            Formatters.Companion.shared.fiat.format(
+            Formater.Companion.shared.fiat.format(
                 amount: viewModel.fiatPrice.bigDec,
-                style: Formatters.StyleCustom(maxLength: 9.uint32),
+                style: Formater.StyleCustom(maxLength: 9.uint32),
                 currencyCode: viewModel.fiatCurrencyCode
             ),
             font: Theme.font.dashboardTVBalance,
@@ -65,10 +65,10 @@ extension DashboardWalletCell {
         pctChangeLabel.layer.shadowColor = pctChangeLabel.textColor.cgColor
         charView.update(viewModel.candles)
         cryptoBalanceLabel.attributedText = .init(
-            Formatters.Companion.shared.currency.format(
+            Formater.Companion.shared.currency.format(
                 amount: viewModel.cryptoBalance,
                 currency: viewModel.currency,
-                style: Formatters.StyleCustom(maxLength: 15.uint32)
+                style: Formater.StyleCustom(maxLength: 15.uint32)
             ),
             font: Theme.font.dashboardTVTokenBalance,
             fontSmall: Theme.font.dashboardTVTokenBalanceSmall,

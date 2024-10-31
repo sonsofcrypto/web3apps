@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.account
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3walletcore.common.viewModels.CandlesViewModel
 
 data class AccountViewModel(
@@ -13,8 +13,8 @@ data class AccountViewModel(
     val transactions: List<Transaction>,
 ) {
     data class Header(
-        val balance: List<Formatters.Output>,
-        val fiatBalance: List<Formatters.Output>,
+        val balance: List<Formater.Output>,
+        val fiatBalance: List<Formater.Output>,
         val pct: String,
         val pctUp: Boolean,
         val buttons: List<Button>,
@@ -31,9 +31,9 @@ data class AccountViewModel(
     )
 
     data class MarketInfo(
-        val marketCap: List<Formatters.Output>,
-        val price: List<Formatters.Output>,
-        val volume: List<Formatters.Output>,
+        val marketCap: List<Formater.Output>,
+        val price: List<Formater.Output>,
+        val volume: List<Formater.Output>,
     )
 
     data class BonusAction(
@@ -48,8 +48,8 @@ data class AccountViewModel(
         data class Data(
             val date: String,
             val address: String,
-            val amount: List<Formatters.Output>,
-            val fiatPrice: List<Formatters.Output>,
+            val amount: List<Formater.Output>,
+            val fiatPrice: List<Formater.Output>,
             val isReceive: Boolean,
             val txHash: String,
         )

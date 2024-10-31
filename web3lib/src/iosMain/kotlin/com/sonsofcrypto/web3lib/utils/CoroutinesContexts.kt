@@ -24,6 +24,7 @@ actual val bgDispatcher: CoroutineDispatcher
 actual val logExceptionHandler: CoroutineExceptionHandler
     get() = CoroutineExceptionHandler { _, err -> println(err) }
 
+@OptIn(ExperimentalForeignApi::class)
 actual fun currentThreadId(): String {
     val cString = dispatch_queue_get_label(dispatch_get_current_queue())
     val string = NSString.stringWithCString(cString, encoding = NSUTF8StringEncoding)

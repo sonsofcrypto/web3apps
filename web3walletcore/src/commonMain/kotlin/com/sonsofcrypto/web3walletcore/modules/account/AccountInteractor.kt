@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.account
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.provider.model.Log
 import com.sonsofcrypto.web3lib.provider.model.Topic
 import com.sonsofcrypto.web3lib.services.coinGecko.model.Candle
@@ -11,10 +11,10 @@ import com.sonsofcrypto.web3lib.services.wallet.WalletService
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Currency.Type.ERC20
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.abiDecodeAddress
-import com.sonsofcrypto.web3lib.utils.abiDecodeBigInt
-import com.sonsofcrypto.web3lib.utils.timestamp.BlockNumberToTimestampHelper
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.legacy.abiDecodeAddress
+import com.sonsofcrypto.web3lib.legacy.abiDecodeBigInt
+import com.sonsofcrypto.web3lib.legacy.BlockNumberToTimestampHelper
 import com.sonsofcrypto.web3walletcore.services.etherScan.EtherScanService
 import com.sonsofcrypto.web3walletcore.services.etherScan.EtherScanTransaction
 
@@ -64,14 +64,14 @@ class DefaultAccountInteractor(
     override fun fiatBalance(network: Network, currency: Currency): Double {
         val mul = market(currency)?.currentPrice ?: 0.toDouble()
         val amount = cryptoBalance(network, currency)
-        var balance = Formatters.crypto(amount, currency.decimals(), mul)
+        var balance = Formater.crypto(amount, currency.decimals(), mul)
         balance *= 100
         return balance.toInt().toDouble() / 100
     }
 
     override fun fiatPrice(amount: BigInt, currency: Currency): Double {
         val mul = market(currency)?.currentPrice ?: 0.toDouble()
-        var price = Formatters.crypto(amount, currency.decimals(), mul)
+        var price = Formater.crypto(amount, currency.decimals(), mul)
         price *= 100
         return price.toInt().toDouble() / 100
     }

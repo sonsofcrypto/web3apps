@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib.abi
 
-import com.sonsofcrypto.web3lib.utils.extensions.jsonDecode
+import com.sonsofcrypto.web3lib.extensions.jsonDecode
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 

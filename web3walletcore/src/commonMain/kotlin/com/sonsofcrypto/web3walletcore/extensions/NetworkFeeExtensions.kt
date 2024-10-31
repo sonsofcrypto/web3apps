@@ -1,11 +1,11 @@
 package com.sonsofcrypto.web3walletcore.extensions
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
-import com.sonsofcrypto.web3lib.formatters.Formatters.Style.Custom
+import com.sonsofcrypto.web3lib.formatters.Formater
+import com.sonsofcrypto.web3lib.formatters.Formater.Style.Custom
 import com.sonsofcrypto.web3lib.types.Currency
-import com.sonsofcrypto.web3lib.types.NetworkFee
-import com.sonsofcrypto.web3lib.utils.BigDec
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3walletcore.common.viewModels.NetworkFeeViewModel
 
 // TODO(Anon): Refactor this to fee service
@@ -29,23 +29,23 @@ fun NetworkFee.toNetworkFeeViewModel(
         networkFeeFiat(currencyFiatPrice, fiatPriceDigits, fiatPriceCurrencyCode),
     )
 
-private fun NetworkFee.networkFeeAmount(amountDigits: UInt): List<Formatters.Output> =
-    Formatters.currency.format(amount, currency, Custom(amountDigits))
+private fun NetworkFee.networkFeeAmount(amountDigits: UInt): List<Formater.Output> =
+    Formater.currency.format(amount, currency, Custom(amountDigits))
 
-private fun NetworkFee.networkFeeTime(): List<Formatters.Output> =
-    listOf(Formatters.Output.Normal(timeString))
+private fun NetworkFee.networkFeeTime(): List<Formater.Output> =
+    listOf(Formater.Output.Normal(timeString))
 
 private fun NetworkFee.networkFeeFiat(
     currencyFiatPrice: Double, fiatPriceDigits: UInt, fiatPriceCurrencyCode: String
-): List<Formatters.Output> =
+): List<Formater.Output> =
     fiatPrice(amount, currency, Custom(fiatPriceDigits), fiatPriceCurrencyCode, currencyFiatPrice)
 
 private fun NetworkFee.fiatPrice(
-    amount: BigInt, currency: Currency, style: Formatters.Style,
+    amount: BigInt, currency: Currency, style: Formater.Style,
     currencyCode: String, currencyFiatPrice: Double
-): List<Formatters.Output> {
-    val value = Formatters.crypto(amount, currency.decimals(), currencyFiatPrice)
-    return Formatters.fiat.format(
+): List<Formater.Output> {
+    val value = Formater.crypto(amount, currency.decimals(), currencyFiatPrice)
+    return Formater.fiat.format(
         BigDec.from(BigDec.from(value).mul(BigDec.from(100)).toBigInt()).div(BigDec.from(100)),
         style,
         currencyCode

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.sonsofcrypto.web3lib.utils.FileManager
-import com.sonsofcrypto.web3lib.utils.secureRand
+import com.sonsofcrypto.web3lib.utilsCrypto.secureRand
 
 
 class MainActivity : AppCompatActivity() {

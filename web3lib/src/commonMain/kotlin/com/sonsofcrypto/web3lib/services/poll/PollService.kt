@@ -6,9 +6,9 @@ import com.sonsofcrypto.web3lib.provider.Provider
 import com.sonsofcrypto.web3lib.provider.call
 import com.sonsofcrypto.web3lib.provider.model.toByteArrayData
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
+import com.sonsofcrypto.web3lib.extensions.toHexString
 import com.sonsofcrypto.web3lib.utils.timerFlow
 import com.sonsofcrypto.web3lib.utils.withBgCxt
 import kotlinx.coroutines.CoroutineScope

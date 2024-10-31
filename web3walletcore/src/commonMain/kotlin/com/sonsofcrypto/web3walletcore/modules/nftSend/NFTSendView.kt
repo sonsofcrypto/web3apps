@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.nftSend
 
-import com.sonsofcrypto.web3lib.types.NetworkFee
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
 
 interface NFTSendView {
     fun update(viewModel: NFTSendViewModel)

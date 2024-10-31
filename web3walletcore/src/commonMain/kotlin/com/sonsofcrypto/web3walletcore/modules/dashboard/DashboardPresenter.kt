@@ -1,10 +1,10 @@
 package com.sonsofcrypto.web3walletcore.modules.dashboard
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.services.coinGecko.model.Candle
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigDec
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
@@ -175,9 +175,9 @@ class DefaultDashboardPresenter(
     )
 
     private fun balanceHeader(): Section.Header = Balance(
-        Formatters.fiat.format(
+        Formater.fiat.format(
             BigDec.from(interactor.totalFiatBalance()),
-            Formatters.Style.Custom(15u),
+            Formater.Style.Custom(15u),
             "usd"
         )
     )
@@ -244,7 +244,7 @@ class DefaultDashboardPresenter(
             fiatBalance,
             cryptoBalance,
             currency,
-            Formatters.pct.format(market?.priceChangePercentage24h, true),
+            Formater.pct.format(market?.priceChangePercentage24h, true),
             (market?.priceChangePercentage24h ?: 0.toDouble()) >= 0,
             walletCandles(interactor.candles(currency)),
             "usd",

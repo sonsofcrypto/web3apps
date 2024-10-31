@@ -53,9 +53,10 @@ private extension CurrencyReceiveViewController {
         )
         cardView.backgroundColor = Theme.color.bgPrimary
         cardView.layer.cornerRadius = Theme.cornerRadius
-        cardView.add(
-            .targetAction(.init(target: self, selector: #selector(onCopyAction)))
-        )
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onCopyAction))
+        cardView.isUserInteractionEnabled = true
+        cardView.addGestureRecognizer(tap)
+        
         nameLabel.apply(style: .body)
         addressLabel.apply(style: .body)
         addressLabel.textAlignment = .center
@@ -101,7 +102,13 @@ private extension CurrencyReceiveViewController {
     
     @objc func onCopyAction() {
         UIPasteboard.general.string = self.viewModel?.address
-        view.presentToastAlert(with: Localized("currencyReceive.action.copy.toast"))
+        navigationController?.asNavVc?.toast(
+            ToastViewModel(
+                text: Localized("currencyReceive.action.copy.toast"),
+                media: nil,
+                position: .top
+            )
+        )
     }
 
     func shareAction() -> (() -> Void) {

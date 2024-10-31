@@ -1,7 +1,7 @@
 package com.sonsofcrypto.web3walletcore.modules.nftSend
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
-import com.sonsofcrypto.web3lib.types.NetworkFee
+import com.sonsofcrypto.web3lib.formatters.Formater
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3walletcore.common.viewModels.NetworkAddressPickerViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.NetworkFeeViewModel
@@ -110,7 +110,7 @@ class DefaultNFTSendPresenter(
     private fun formattedAddress(address: String?): String {
         address ?: return ""
         if (!context.network.isValidAddress(address)) { return address }
-        return Formatters.address.format(address, 8, context.network)
+        return Formater.address.format(address, 8, context.network)
     }
 
     private fun sendViewModel(): NFTSendViewModel.Item.Send =

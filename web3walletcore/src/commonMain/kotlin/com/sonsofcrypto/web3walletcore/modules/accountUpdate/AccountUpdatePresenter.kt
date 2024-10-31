@@ -23,12 +23,10 @@ import com.sonsofcrypto.web3walletcore.common.viewModels.ImageMedia.SysName
 import com.sonsofcrypto.web3walletcore.common.viewModels.ToastViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.ToastViewModel.Position.TOP
 import com.sonsofcrypto.web3walletcore.extensions.Localized
-import com.sonsofcrypto.web3walletcore.modules.authenticate.AuthenticateData
-import com.sonsofcrypto.web3walletcore.modules.authenticate.AuthenticateWireframeContext
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.AlertAction
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.CTAAction
-import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.CopyAccountAddress
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.Copy
+import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.CopyAccountAddress
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.RightBarButtonAction
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.SetAccountHidden
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.SetAccountName
@@ -36,6 +34,8 @@ import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresen
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdatePresenterEvent.ViewPrivKey
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdateWireframeDestination.Authenticate
 import com.sonsofcrypto.web3walletcore.modules.accountUpdate.AccountUpdateWireframeDestination.Dismiss
+import com.sonsofcrypto.web3walletcore.modules.authenticate.AuthenticateData
+import com.sonsofcrypto.web3walletcore.modules.authenticate.AuthenticateWireframeContext
 import kotlin.time.Duration.Companion.seconds
 
 sealed class AccountUpdatePresenterEvent {

@@ -2,11 +2,11 @@ package com.sonsofcrypto.web3walletcore.modules.confirmation
 
 import com.sonsofcrypto.web3lib.provider.model.TransactionResponse
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyStoreService
-import com.sonsofcrypto.web3lib.services.uniswap.UniswapService
+import com.sonsofcrypto.web3lib.integrations.uniswap.UniswapService
 import com.sonsofcrypto.web3lib.services.wallet.WalletService
-import com.sonsofcrypto.web3lib.signer.CultGovernor
-import com.sonsofcrypto.web3lib.signer.ERC721
-import com.sonsofcrypto.web3lib.types.Address.HexString
+import com.sonsofcrypto.web3lib.legacy.CultGovernor
+import com.sonsofcrypto.web3lib.legacy.ERC721
+import com.sonsofcrypto.web3lib.types.Address.HexStr
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3walletcore.services.nfts.NFTItem
@@ -57,11 +57,11 @@ class DefaultConfirmationInteractor(
         input: ConfirmationWireframeContext.SendNFTContext, password: String, salt: String,
     ): TransactionResponse {
         walletService.unlock(password, salt, input.network)
-        val contract = ERC721(HexString(input.nftItem.address))
+        val contract = ERC721(HexStr(input.nftItem.address))
         val tx = walletService.contractSend(
             contract.address.hexString,
             contract.transferFrom(
-                HexString(input.addressFrom), HexString(input.addressTo), input.nftItem.tokenId
+                HexStr(input.addressFrom), HexStr(input.addressTo), input.nftItem.tokenId
             ),
             input.network
         )

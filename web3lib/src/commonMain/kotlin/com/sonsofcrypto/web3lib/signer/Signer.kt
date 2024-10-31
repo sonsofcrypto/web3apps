@@ -12,7 +12,7 @@ import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.AddressHexString
 import com.sonsofcrypto.web3lib.types.toHexString
 import com.sonsofcrypto.web3lib.types.toHexStringAddress
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 
 abstract class Signer(provider: Provider? = null) {
     /** Connected provider */
@@ -134,7 +134,7 @@ abstract class Signer(provider: Provider? = null) {
             chainId = tx.chainId ?: chainId(),
         )
 
-        return tx.copy(gasPrice = unwrappedProvider().estimateGas(tx))
+        return tx.copy(gasLimit = unwrappedProvider().estimateGas(tx))
     }
 
     /** Adds `from` if it does not contain. Throws if `from` != 'address' */

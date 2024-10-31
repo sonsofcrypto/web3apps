@@ -4,14 +4,14 @@ import com.sonsofcrypto.web3lib.provider.utils.stringValue
 import com.sonsofcrypto.web3lib.provider.utils.toBigIntQnt
 import com.sonsofcrypto.web3lib.provider.utils.toIntQnt
 import com.sonsofcrypto.web3lib.types.Address
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
 
 data class TransactionReceipt(
-    val to: Address.HexString,
-    val from: Address.HexString,
-    val contractAddress: Address.HexString?,
+    val to: Address.HexStr,
+    val from: Address.HexStr,
+    val contractAddress: Address.HexStr?,
     val transactionIndex: BigInt,
     val gasUsed: BigInt,
     val logsBloom: DataHexStr,
@@ -31,8 +31,8 @@ data class TransactionReceipt(
 fun TransactionReceipt.Companion.fromHexifiedJsonObject(
     jsonObject: JsonObject
 ) : TransactionReceipt = TransactionReceipt(
-    to = Address.HexString(jsonObject["to"]!!.stringValue()),
-    from = Address.HexString(jsonObject["from"]!!.stringValue()),
+    to = Address.HexStr(jsonObject["to"]!!.stringValue()),
+    from = Address.HexStr(jsonObject["from"]!!.stringValue()),
     contractAddress = Address.fromHexString(
         jsonObject["contractAddress"]?.stringValue()
     ),

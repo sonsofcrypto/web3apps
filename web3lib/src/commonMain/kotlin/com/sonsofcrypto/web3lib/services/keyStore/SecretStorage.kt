@@ -1,11 +1,11 @@
 package com.sonsofcrypto.web3lib.services.keyStore
 
-import com.sonsofcrypto.web3lib.utils.aesCTRXOR
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.keccak256
-import com.sonsofcrypto.web3lib.utils.scrypt
-import com.sonsofcrypto.web3lib.utils.secureRand
+import com.sonsofcrypto.web3lib.utilsCrypto.aesCTRXOR
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.utilsCrypto.keccak256
+import com.sonsofcrypto.web3lib.utilsCrypto.scrypt
+import com.sonsofcrypto.web3lib.utilsCrypto.secureRand
 import kotlinx.serialization.Serializable
 
 private const val minDkLen: Long = 32

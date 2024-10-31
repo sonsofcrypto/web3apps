@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.currencyPicker
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 
 data class CurrencyPickerViewModel(
@@ -38,8 +38,8 @@ data class CurrencyPickerViewModel(
         val name: String,
         val position: Position,
         val isSelected: Boolean?,
-        val tokens: List<Formatters.Output>? = null,
-        val fiat: List<Formatters.Output>? = null,
+        val tokens: List<Formater.Output>? = null,
+        val fiat: List<Formater.Output>? = null,
     )
 
     enum class Position { SINGLE, FIRST, MIDDLE, LAST }

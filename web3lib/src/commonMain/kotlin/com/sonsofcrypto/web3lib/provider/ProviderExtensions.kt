@@ -7,5 +7,5 @@ import com.sonsofcrypto.web3lib.types.AddressHexString
 
 @Throws(Throwable::class)
 suspend fun Provider.call(to: AddressHexString, data: DataHexStr): DataHexStr {
-    return call(TransactionRequest(to = Address.HexString(to), data = data))
+    return call(TransactionRequest(to = Address.HexStr(to), data = data))
 }

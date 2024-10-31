@@ -3,7 +3,7 @@ package com.sonsofcrypto.web3lib.provider.model
 import com.sonsofcrypto.web3lib.provider.utils.stringValue
 import com.sonsofcrypto.web3lib.provider.utils.toBigIntQnt
 import com.sonsofcrypto.web3lib.types.Address
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -15,7 +15,7 @@ data class Log(
     val blockHash: DataHexStr,
     val transactionIndex: BigInt,
     val removed: Boolean,
-    val address: Address.HexString,
+    val address: Address.HexStr,
     val data: DataHexStr,
     val topics: List<Topic>?,
     val transactionHash: DataHexStr,

@@ -1,11 +1,11 @@
 package com.sonsofcrypto.web3walletcore.modules.currencyPicker
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyStoreService
 import com.sonsofcrypto.web3lib.services.wallet.WalletService
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 
 interface CurrencyPickerInteractor {
     fun favouriteCurrencies(network: Network): List<Currency>
@@ -31,6 +31,6 @@ class DefaultCurrencyPickerInteractor(
 
     override fun fiatPrice(network: Network, currency: Currency): Double {
         val marketPrice = currencyStoreService.marketData(currency)?.currentPrice ?: 0.0
-        return Formatters.crypto(balance(network, currency), currency.decimals(), marketPrice)
+        return Formater.crypto(balance(network, currency), currency.decimals(), marketPrice)
     }
 }

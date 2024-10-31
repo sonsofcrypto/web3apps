@@ -3,9 +3,9 @@ package com.sonsofcrypto.web3walletcore.services.mnemonic
 import com.sonsofcrypto.web3lib.types.Bip44
 import com.sonsofcrypto.web3lib.types.ExtKey
 import com.sonsofcrypto.web3lib.utils.Trie
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39
-import com.sonsofcrypto.web3lib.utils.bip39.WORDLIST_ENGLISH
-import com.sonsofcrypto.web3lib.utils.bip39.WordList
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.WORDLIST_ENGLISH
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.WordList
 import com.sonsofcrypto.web3walletcore.services.mnemonic.MnemonicServiceError.INVALID_WORD_COUNT
 import com.sonsofcrypto.web3walletcore.services.mnemonic.MnemonicServiceError.OTHER
 

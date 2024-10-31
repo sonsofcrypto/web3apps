@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.signers
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreService
 import com.sonsofcrypto.web3lib.services.networks.NetworksService
@@ -66,7 +66,7 @@ class DefaultSignersInteractor(
         val item = signer(idx)
         val address = item.primaryAddress()
         return if (!short) address
-            else Formatters.address.format(address ?: "", 8, Network.ethereum())
+            else Formater.address.format(address ?: "", 8, Network.ethereum())
     }
 
     override fun isHidden(idx: Int): Boolean =

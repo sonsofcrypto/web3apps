@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.confirmation
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3walletcore.services.nfts.NFTItem
 
 data class ConfirmationViewModel(
@@ -71,8 +71,8 @@ data class ConfirmationApproveUniswapViewModel(
 data class ConfirmationCurrencyViewModel(
     val iconName: String,
     val symbol: String,
-    val value: List<Formatters.Output>,
-    val usdValue: List<Formatters.Output>,
+    val value: List<Formater.Output>,
+    val usdValue: List<Formater.Output>,
 )
 
 data class ConfirmationAddressViewModel(
@@ -82,9 +82,9 @@ data class ConfirmationAddressViewModel(
 
 data class ConfirmationNetworkFeeViewModel(
     val title: String,
-    val value: List<Formatters.Output>,
+    val value: List<Formater.Output>,
     val time: String,
-    val fiat: List<Formatters.Output>,
+    val fiat: List<Formater.Output>,
 )
 
 data class ConfirmationProviderViewModel(

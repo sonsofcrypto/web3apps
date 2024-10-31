@@ -44,7 +44,11 @@ private extension DashboardHeaderTitleView {
         rightAction.font = Theme.font.body
         rightAction.textColor = Theme.color.textPrimary
         rightAction.isHidden = true
-        rightAction.add(.targetAction(.init(target: self, selector: #selector(moreTapped))))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(moreTapped))
+        rightAction.isUserInteractionEnabled = true
+        rightAction.addGestureRecognizer(tap)
+        
         let offset = ThemeVanilla.isCurrent() ? 0 : -Theme.paddingHalf + 1
         stack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stack)

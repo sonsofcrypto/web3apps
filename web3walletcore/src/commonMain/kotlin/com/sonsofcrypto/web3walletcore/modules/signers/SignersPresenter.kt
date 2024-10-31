@@ -41,8 +41,8 @@ import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestinati
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.CreateMultisig
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.DashboardOnboarding
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.EditSignersItem
-import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.ImportMnemonic
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.ImportAccount
+import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.ImportMnemonic
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.Networks
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.NewMnemonic
 import com.sonsofcrypto.web3walletcore.modules.signers.SignersWireframeDestination.SignersFullscreen

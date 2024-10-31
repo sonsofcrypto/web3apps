@@ -19,6 +19,8 @@ final class NavigationController: UINavigationController {
         Theme.statusBarStyle
     }
 
+    private weak var toastView: ToastView? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let appearance = navigationBar.standardAppearance
@@ -165,9 +167,15 @@ extension NavigationController {
         toastView.transform = CGAffineTransformMakeTranslation(0, top ? -y : y)
         UIView.springAnimate { toastView.transform = .identity }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+        self.toastView = toastView
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) { [weak self] in
             toastView.removeAnimated()
+            self?.toastView = nil
         }
+    }
+
+    func isPresentingToast() -> Bool {
+        toastView != nil
     }
 
     func toast(_ viewModel: ToastViewModel) {

@@ -3,7 +3,7 @@ package com.sonsofcrypto.web3walletcore.modules.degenCultProposals
 import com.sonsofcrypto.web3lib.services.wallet.WalletService
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3walletcore.services.cult.CultService
 import com.sonsofcrypto.web3walletcore.services.cult.CultServiceResponse
 

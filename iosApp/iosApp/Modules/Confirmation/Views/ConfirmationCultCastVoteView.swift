@@ -84,7 +84,7 @@ private extension ConfirmationCultCastVoteView {
     
     func networkFeeGroup() -> UIView {
         var value = viewModel.networkFee.value
-        value.append(Formatters.OutputNormal(value: " ~ \(viewModel.networkFee.time)"))
+        value.append(Formater.OutputNormal(value: " ~ \(viewModel.networkFee.time)"))
         let views = [
             row(
                 with: viewModel.networkFee.title,

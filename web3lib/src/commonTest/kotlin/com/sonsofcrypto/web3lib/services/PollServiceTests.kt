@@ -16,7 +16,7 @@ import com.sonsofcrypto.web3lib.services.poll.GroupPollServiceRequest
 import com.sonsofcrypto.web3lib.services.poll.PollServiceRequest
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock

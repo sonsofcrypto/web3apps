@@ -6,10 +6,9 @@ import com.sonsofcrypto.web3lib.services.address.AddressService
 import com.sonsofcrypto.web3lib.services.address.DefaultAddressService
 import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.Key
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.keccak256
-import com.sonsofcrypto.web3lib.utils.Signature
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.utilsCrypto.Signature
+import com.sonsofcrypto.web3lib.utilsCrypto.keccak256
 
 class KeySigner(
     private val key: Key,
@@ -21,7 +20,7 @@ class KeySigner(
         KeySigner(key, addressService, provider)
 
     @Throws(Throwable::class)
-    override suspend fun address(): Address = Address.HexString(
+    override suspend fun address(): Address = Address.HexStr(
         addressService.addressFromPrivKeyBytes(key)
     )
 

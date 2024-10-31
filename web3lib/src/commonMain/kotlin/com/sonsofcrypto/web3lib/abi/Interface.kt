@@ -1,12 +1,12 @@
 package com.sonsofcrypto.web3lib.abi
 
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.extensions.concant
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
-import com.sonsofcrypto.web3lib.utils.extensions.isHexString
-import com.sonsofcrypto.web3lib.utils.extensions.leftPadded
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.keccak256
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.extensions.concant
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.extensions.isHexString
+import com.sonsofcrypto.web3lib.extensions.leftPadded
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.utilsCrypto.keccak256
 import io.ktor.utils.io.core.toByteArray
 
 class Interface {

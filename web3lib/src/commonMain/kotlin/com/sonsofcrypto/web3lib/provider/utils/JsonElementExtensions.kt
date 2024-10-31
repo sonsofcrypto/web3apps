@@ -4,7 +4,7 @@ import com.sonsofcrypto.web3lib.provider.model.QntHexStr
 import com.sonsofcrypto.web3lib.provider.model.toBigIntQnt
 import com.sonsofcrypto.web3lib.provider.model.toIntQnt
 import com.sonsofcrypto.web3lib.provider.model.toULongQnt
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
 

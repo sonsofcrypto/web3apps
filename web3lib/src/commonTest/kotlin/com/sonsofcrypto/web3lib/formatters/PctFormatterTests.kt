@@ -8,7 +8,7 @@ class PctFormatterTests {
     @Test
     fun testPct1() {
         val expected = "-"
-        val actual = Formatters.pct.format(null)
+        val actual = Formater.pct.format(null)
         assertEquals(expected, actual)
     }
 // NOTE: This relies on iOS formatter, not yet implemented on android side

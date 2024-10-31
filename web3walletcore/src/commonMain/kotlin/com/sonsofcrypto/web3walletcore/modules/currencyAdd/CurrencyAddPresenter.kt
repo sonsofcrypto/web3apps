@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.currencyAdd
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3walletcore.extensions.Localized
@@ -153,7 +153,7 @@ class DefaultCurrencyAddPresenter(
     private fun formattedAddress(): String? {
         val contractAddress = contractAddress ?: return null
         if (!network.isValidAddress(contractAddress)) return null
-        return Formatters.address.format(contractAddress, 10, network)
+        return Formater.address.format(contractAddress, 10, network)
     }
 
     private fun saveButtonTitle(): String =

@@ -68,7 +68,9 @@ private extension CultProposalDetailDocsView {
             name.numberOfLines = 0
             let tag = addLinkToDirectory(url: input.url)
             name.tag = tag
-            name.add(.targetAction(.init(target: self, selector: #selector(documentTapped(sender:)))))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(documentTapped(sender:)))
+            name.isUserInteractionEnabled = true
+            name.addGestureRecognizer(tap)
             return name
         }
         if let input = item as? CultProposalViewModel.ProposalDetailsDocumentsInfoDocumentItemNote {

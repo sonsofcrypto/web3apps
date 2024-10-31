@@ -2,7 +2,7 @@ package com.sonsofcrypto.web3walletcore.modules.currencySwap
 
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.types.NetworkFee
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
 import com.sonsofcrypto.web3walletcore.modules.confirmation.ConfirmationWireframeContext
 
 data class CurrencySwapWireframeContext(

@@ -6,15 +6,13 @@ import com.sonsofcrypto.web3lib.provider.model.BlockTag.Latest
 import com.sonsofcrypto.web3lib.provider.model.DataHexStr
 import com.sonsofcrypto.web3lib.provider.model.FeeData
 import com.sonsofcrypto.web3lib.provider.model.FilterRequest
-import com.sonsofcrypto.web3lib.provider.model.ProviderEvent
-import com.sonsofcrypto.web3lib.provider.model.ProviderListener
 import com.sonsofcrypto.web3lib.provider.model.QntHexStr
 import com.sonsofcrypto.web3lib.provider.model.Transaction
 import com.sonsofcrypto.web3lib.provider.model.TransactionReceipt
 import com.sonsofcrypto.web3lib.provider.model.TransactionRequest
 import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.json.JsonObject
 
 /** Abstract Provider web3 JSON-RPC API */
@@ -102,7 +100,7 @@ abstract class Provider {
     @Throws(Throwable::class)
     abstract suspend fun uninstallFilter(id: QntHexStr): Boolean
 
-    /** API Methods */
+    /** Client Methods */
 
     /** Returns the chain ID used for signing replay-protected transactions. */
     @Throws(Throwable::class)
@@ -119,20 +117,10 @@ abstract class Provider {
     /** Name service */
 
     @Throws(Throwable::class)
-    abstract suspend fun resolveName(name: String): Address.HexString?
+    abstract suspend fun resolveName(name: String): Address.HexStr?
 
     @Throws(Throwable::class)
-    abstract suspend fun lookupAddress(address: Address.HexString): String?
-
-    /** Event emitter */
-
-    abstract fun on(providerEvent: ProviderEvent, providerListener: ProviderListener): Provider
-    abstract fun once(providerEvent: ProviderEvent, providerListener: ProviderListener): Provider
-    abstract fun emit(providerEvent: ProviderEvent): Boolean
-    abstract fun listenerCount(providerEvent: ProviderEvent? = null): UInt
-    abstract fun listeners(providerEvent: ProviderEvent? = null): Array<ProviderListener>
-    abstract fun off(providerEvent: ProviderEvent, providerListener: ProviderListener? = null): Provider
-    abstract fun removeAllListeners(providerEvent: ProviderEvent? = null): Provider
+    abstract suspend fun lookupAddress(address: Address.HexStr): String?
 
     /** Errors */
     sealed class Error(message: String? = null) : Exception(message) {

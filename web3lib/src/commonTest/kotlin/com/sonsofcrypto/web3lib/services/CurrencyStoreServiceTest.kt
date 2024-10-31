@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib.services
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.services.coinGecko.DefaultCoinGeckoService
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyMarketData
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyStoreEvent
@@ -10,7 +10,7 @@ import com.sonsofcrypto.web3lib.services.networks.NetworksService
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3lib.utils.FileManager
-import com.sonsofcrypto.web3lib.utils.extensions.jsonDecode
+import com.sonsofcrypto.web3lib.extensions.jsonDecode
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Clock
 import kotlin.test.Test

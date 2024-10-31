@@ -1,9 +1,9 @@
 package com.sonsofcrypto.web3lib.formatters
 
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Down
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Normal
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Up
+import com.sonsofcrypto.web3lib.formatters.Formater.Output
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Down
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Normal
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Up
 
 class FormattersOutput {
     private data class Magnitude(val digits: Int, val long: String, val short: String)

@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.services
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3walletcore.services.settings.DefaultSettingsService
 import kotlin.test.Test
 import kotlin.test.assertTrue

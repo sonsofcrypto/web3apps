@@ -1,8 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.degenCultProposal
 
 import com.sonsofcrypto.web3lib.utils.WeakRef
-import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel
-import com.sonsofcrypto.web3walletcore.common.viewModels.ImageMedia
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalPresenterEvent.Dismiss
 import com.sonsofcrypto.web3walletcore.modules.degenCultProposal.CultProposalViewModel.ProposalDetails.DocumentsInfo

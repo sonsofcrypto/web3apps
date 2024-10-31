@@ -1,7 +1,7 @@
 package com.sonsofcrypto.web3walletcore.modules.mnemonicConfirmation
 
 import com.sonsofcrypto.web3lib.utils.WeakRef
-import com.sonsofcrypto.web3lib.utils.extensions.stripLeadingWhiteSpace
+import com.sonsofcrypto.web3lib.extensions.stripLeadingWhiteSpace
 import com.sonsofcrypto.web3walletcore.common.helpers.MnemonicInputViewModel
 import com.sonsofcrypto.web3walletcore.common.helpers.MnemonicPresenterHelper
 import com.sonsofcrypto.web3walletcore.common.viewModels.BarButtonViewModel

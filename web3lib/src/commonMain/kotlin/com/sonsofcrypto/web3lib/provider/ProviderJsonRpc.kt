@@ -1,11 +1,15 @@
 package com.sonsofcrypto.web3lib.provider
 
-import com.sonsofcrypto.web3lib.provider.JsonRpcRequest.Method
 import com.sonsofcrypto.web3lib.provider.model.Block
 import com.sonsofcrypto.web3lib.provider.model.BlockTag
 import com.sonsofcrypto.web3lib.provider.model.DataHexStr
 import com.sonsofcrypto.web3lib.provider.model.FeeData
 import com.sonsofcrypto.web3lib.provider.model.FilterRequest
+import com.sonsofcrypto.web3lib.provider.model.JsonRpcErrorResponse
+import com.sonsofcrypto.web3lib.provider.model.JsonRpcRequest
+import com.sonsofcrypto.web3lib.provider.model.JsonRpcRequest.Method
+import com.sonsofcrypto.web3lib.provider.model.JsonRpcRequest.Method.CHAIN_ID
+import com.sonsofcrypto.web3lib.provider.model.JsonRpcResponse
 import com.sonsofcrypto.web3lib.provider.model.Log
 import com.sonsofcrypto.web3lib.provider.model.QntHexStr
 import com.sonsofcrypto.web3lib.provider.model.Transaction
@@ -14,12 +18,12 @@ import com.sonsofcrypto.web3lib.provider.model.TransactionRequest
 import com.sonsofcrypto.web3lib.provider.model.fromHexifiedJsonObject
 import com.sonsofcrypto.web3lib.provider.model.jsonPrimitive
 import com.sonsofcrypto.web3lib.provider.model.toBigIntQnt
-import com.sonsofcrypto.web3lib.provider.model.toHexifiedJsonObject
 import com.sonsofcrypto.web3lib.provider.model.toULongQnt
+import com.sonsofcrypto.web3lib.provider.utils.NameServiceProvider
 import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3lib.types.jsonPrimitive
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3lib.utils.withBgCxt
 import io.ktor.client.HttpClient
 import io.ktor.client.request.post
@@ -29,7 +33,6 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -149,23 +152,26 @@ abstract class ProviderJsonRpc(
 
     @Throws(Throwable::class)
     override suspend fun feeData(): FeeData = withBgCxt {
-        val blockAsync = async { getBlock(BlockTag.Latest) }
-        val gasPriceAsync = async { gasPrice() }
-        val block = blockAsync.await()
-        val gasPrice = gasPriceAsync.await()
+        var block: Block? = null
+        var gasPrice: BigInt? = null
 
-        if (block.baseFeePerGas == null) {
-            throw Error.feeDataNullBaseFeePerGas
+        try { block = getBlock(BlockTag.Latest) } catch (_: Throwable) { }
+        try { gasPrice = gasPrice() } catch (_: Throwable) { }
+
+        var lastBaseFeePerGas: BigInt? = null
+        var maxFeePerGas: BigInt? = null
+        var maxPriorityFeePerGas: BigInt? = null
+
+        if (block?.baseFeePerGas != null) {
+            // Compute more accurately. https://eips.ethereum.org/EIPS/eip-1559
+            lastBaseFeePerGas = block.baseFeePerGas
+            maxPriorityFeePerGas = BigInt.from("1500000000")
+            maxFeePerGas = block.baseFeePerGas!!.mul(2).add(maxPriorityFeePerGas)
         }
 
-        // TODO:Compute this more accurately in the future, "check if the base
-        // fee is correct". https://eips.ethereum.org/EIPS/eip-1559
-        val maxPriorityFeePerGas = BigInt.from("2000000000") // 2 Gwei
-        val maxFeePerGas = block.baseFeePerGas
-            .mul(BigInt.from(2))
-            .add(maxPriorityFeePerGas)
-
-        return@withBgCxt FeeData(maxFeePerGas, maxPriorityFeePerGas, gasPrice)
+        return@withBgCxt FeeData(
+            lastBaseFeePerGas, maxFeePerGas, maxPriorityFeePerGas, gasPrice
+        )
     }
 
     /** History */
@@ -289,6 +295,7 @@ abstract class ProviderJsonRpc(
     @Throws(Throwable::class)
     override suspend fun getFilterChanges(id: QntHexStr): JsonObject = withBgCxt {
         // TODO: Does not work over HTTPs. Implement responses once Websockets
+        // For pocket, works for Alchemy
         return@withBgCxt performGetObjResult(
             Method.GET_FILTER_CHANGES, listOf(id.jsonPrimitive())
         )
@@ -309,13 +316,19 @@ abstract class ProviderJsonRpc(
         ).toBoolean()
     }
 
+    /** Client */
+    @Throws(Throwable::class)
+    override suspend fun chainId(): BigInt = withBgCxt {
+        return@withBgCxt performGetStrResult(CHAIN_ID).toBigIntQnt()
+    }
+
     /** Name service */
 
-    override suspend fun resolveName(name: String): Address.HexString? = withBgCxt {
+    override suspend fun resolveName(name: String): Address.HexStr? = withBgCxt {
         return@withBgCxt nameService?.resolve(name)
     }
 
-    override suspend fun lookupAddress(address: Address.HexString): String? = withBgCxt {
+    override suspend fun lookupAddress(address: Address.HexStr): String? = withBgCxt {
         return@withBgCxt nameService?.lookup(address)
     }
 

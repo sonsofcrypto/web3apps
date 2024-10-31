@@ -3,8 +3,8 @@
 | Prod / AppStore                                        | Staging                                                  | Dev / Nightly                                                 |
 |--------------------------------------------------------|----------------------------------------------------------|---------------------------------------------------------------|
 | ![pro](bundledAssets/images/testflight_prod.png)       | ![staging](bundledAssets/images/testflight_staging.png)  | ![dev.png](bundledAssets/images/testflight_dev.png)           |
-| web3wallet by sons of crypto Ξ v1.1.5 #51               | web3wallet by sons of crypto S v1.1.5 #51                 | web3wallet by sons of crypto D v1.1.5 #51                     |
-| AppStore RC.                                           | New features not quite AppStore ready. Great for testing | Living on the bleeding edge. Latest features, latest bugs. 🐛 |
+| web3wallet by sons of crypto Ξ v1.1.5 #51               | web3wallet by sons of crypto S v1.2.0 #52                | web3wallet by sons of crypto D v1.2.0 #53                     |
+| AppStore RC.                                           | New features not quite AppStore ready. Great for testing | Living on the blzeding edge. Latest features, latest bugs. 🐛 |
 | [Download](https://testflight.apple.com/join/I4DFVaiH) | [Download](https://testflight.apple.com/join/5GiDXNJ3)   | [Download](https://testflight.apple.com/join/85JEPH96)        |
 
 Live AppStore build link [here (v1.1.3 #47)](https://apps.apple.com/us/app/web3wallet-by-sons-of-crypto-%CE%BE/id6464587288)
@@ -14,7 +14,19 @@ head over to [sonsofcrypto.com](https://sonsofcrypto.com/).
 
 # Release Notes 
 
-### v1.2.0 #51
+### v1.2.0 #53
+- Unifying toast alerts
+- Adding wallets networks indicator
+
+### v1.2.0 #52
+- Removing TargetActionViewModel
+- Cult proposals fetch fix
+- Factoring out integrations
+- ExtKeySigner clean up
+- MnemonicSigner clean up
+- FeeData tweaks
+- Additional provider tests
+- Additional transaction tests
 
 ### v1.1.5 #51
 - Removing unused fonts

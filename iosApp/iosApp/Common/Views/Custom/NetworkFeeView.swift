@@ -33,7 +33,7 @@ extension NetworkFeeView {
         self.handler = handler
         networkFeeCurrencyIcon.isHidden = true
         var output = viewModel.amount
-        output.append(Formatters.OutputNormal(value: " - "))
+        output.append(Formater.OutputNormal(value: " - "))
         output.append(contentsOf: viewModel.time)
         networkEstimateFeeLabel.attributedText = NSAttributedString(
             output,

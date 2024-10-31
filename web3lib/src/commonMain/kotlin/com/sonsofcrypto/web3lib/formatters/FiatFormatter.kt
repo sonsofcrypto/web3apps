@@ -1,7 +1,7 @@
 package com.sonsofcrypto.web3lib.formatters
 
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Normal
-import com.sonsofcrypto.web3lib.utils.BigDec
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Normal
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
 import kotlin.math.max
 
 class FiatFormatter {
@@ -13,13 +13,13 @@ class FiatFormatter {
 
     fun format(
         amount: BigDec?,
-        style: Formatters.Style = Formatters.Style.Max,
+        style: Formater.Style = Formater.Style.Max,
         currencyCode: String = "usd"
-    ): List<Formatters.Output> {
+    ): List<Formater.Output> {
         val amount = amount?.toString() ?: return listOf(Normal(placeholder))
         val fiat = fiatCurrency(currencyCode)
-        var output: List<Formatters.Output> = when (style) {
-            is Formatters.Style.Custom -> {
+        var output: List<Formater.Output> = when (style) {
+            is Formater.Style.Custom -> {
                 val maxLength =
                     if (style.maxLength == 0u) 1u
                     else max(1u, style.maxLength - (fiat.symbol.length).toUInt())
@@ -28,7 +28,7 @@ class FiatFormatter {
                     formattersOutput.convert(amount, maxLength)
                 }
             }
-            is Formatters.Style.Max -> { listOf(Normal(amount)) }
+            is Formater.Style.Max -> { listOf(Normal(amount)) }
         }
         if (output.count() == 1) {
             when (val elem = output.first()) {
@@ -38,8 +38,8 @@ class FiatFormatter {
                         output = listOf(Normal(parts[0] + "." + parts[1] + "0"))
                     }
                 }
-                is Formatters.Output.Up -> { }
-                is Formatters.Output.Down -> { }
+                is Formater.Output.Up -> { }
+                is Formater.Output.Down -> { }
             }
         }
         return output.addFiatSymbol(fiat)
@@ -52,7 +52,7 @@ class FiatFormatter {
             else -> usd
         }
 
-    private fun List<Formatters.Output>.addFiatSymbol(fiat: FiatCurrency): List<Formatters.Output> {
+    private fun List<Formater.Output>.addFiatSymbol(fiat: FiatCurrency): List<Formater.Output> {
         if (isEmpty()) this
         return when (val first = first()) {
             is Normal -> {

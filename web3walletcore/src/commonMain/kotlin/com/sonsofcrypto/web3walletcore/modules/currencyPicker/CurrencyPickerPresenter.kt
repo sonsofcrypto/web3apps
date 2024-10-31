@@ -1,10 +1,10 @@
 package com.sonsofcrypto.web3walletcore.modules.currencyPicker
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
-import com.sonsofcrypto.web3lib.formatters.Formatters.Style.Custom
+import com.sonsofcrypto.web3lib.formatters.Formater
+import com.sonsofcrypto.web3lib.formatters.Formater.Style.Custom
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigDec
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.modules.currencyPicker.CurrencyPickerViewModel.Position
@@ -175,10 +175,10 @@ class DefaultCurrencyPickerPresenter(
                 it.name,
                 currencyPosition(favouriteCurrencies, it),
                 if (context.isMultiSelect) true else null,
-                Formatters.Companion.currency.format(
+                Formater.Companion.currency.format(
                     interactor.balance(selectedNetwork, it), it, Custom(15u),
                 ),
-                Formatters.Companion.fiat.format(
+                Formater.Companion.fiat.format(
                     BigDec.Companion.from(interactor.fiatPrice(selectedNetwork, it)),
                     Custom(10u), "usd",
                 )

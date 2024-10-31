@@ -1,6 +1,7 @@
 package com.sonsofcrypto.web3lib.provider
 
 import com.sonsofcrypto.web3lib.BuildKonfig
+import com.sonsofcrypto.web3lib.provider.utils.NameServiceProvider
 import com.sonsofcrypto.web3lib.types.Network
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
@@ -59,9 +60,9 @@ class ProviderPocket: ProviderJsonRpc {
 
     @Throws(Throwable::class)
     override fun url(): String = when (network.chainId) {
-        1u -> "https://eth-mainnet.rpc.grove.city/v1/lb/${apiKeys.portalId}"
-        5u -> "https://eth-goerli.rpc.grove.city/v1/lb/${apiKeys.portalId}"
-        11155111u -> "https://sepolia.rpc.grove.city/v1/lb/${apiKeys.portalId}"
+        1uL -> "https://eth-mainnet.rpc.grove.city/v1/lb/${apiKeys.portalId}"
+        5uL -> "https://eth-goerli.rpc.grove.city/v1/lb/${apiKeys.portalId}"
+        11155111uL -> "https://sepolia.rpc.grove.city/v1/lb/${apiKeys.portalId}"
         else -> throw  Error.UnsupportedNetwork(network)
     }
 

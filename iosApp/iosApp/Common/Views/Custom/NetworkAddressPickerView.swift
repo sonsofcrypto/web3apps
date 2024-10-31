@@ -50,8 +50,12 @@ final class NetworkAddressPickerView: UIView {
         }
         self.pasteButton = pasteAction
         addContactView.isHidden = true
-        addContactView.add(.targetAction(.init(target: self, selector: #selector(saveTapped))))
         addContactIcon.tintColor = Theme.color.textPrimary
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(saveTapped))
+        addContactView.isUserInteractionEnabled = true
+        addContactView.addGestureRecognizer(tap)
+
     }
     
     override func resignFirstResponder() -> Bool { textField.resignFirstResponder() }

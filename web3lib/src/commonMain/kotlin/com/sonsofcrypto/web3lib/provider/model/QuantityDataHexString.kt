@@ -1,8 +1,8 @@
 package com.sonsofcrypto.web3lib.provider.model
 
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.extensions.toHexString
 import kotlinx.serialization.json.JsonPrimitive
 
 /** SEE: https://ethereum.org/en/developers/docs/apis/json-rpc/#quantities-encoding */

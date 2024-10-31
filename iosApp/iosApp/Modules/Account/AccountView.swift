@@ -214,7 +214,11 @@ extension AccountViewController: UICollectionViewDelegate {
         }
         if section == .address {
             UIPasteboard.general.string = viewModel.address.address
-            return view.presentToastAlert(with: Localized("account.action.copy.toast"))
+            let toastStr = Localized("account.action.copy.toast")
+            navigationController?.asNavVc?.toast(
+                ToastViewModel(text: toastStr, media: nil, position: .top)
+            )
+            return
         }
         if section == .transactions {
             guard let input = viewModel.transactions[indexPath.item] as? AccountViewModel.TransactionLoaded else {

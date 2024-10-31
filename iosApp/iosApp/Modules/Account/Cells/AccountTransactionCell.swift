@@ -49,10 +49,10 @@ extension AccountTransactionCell {
     }
 }
 
-private extension Array where Element == Formatters.Output {
-    func addPrefix(_ value: String) -> [Formatters.Output] {
+private extension Array where Element == Formater.Output {
+    func addPrefix(_ value: String) -> [Formater.Output] {
         var output = self
-        output.insert(Formatters.OutputNormal(value: value), at: 0)
+        output.insert(Formater.OutputNormal(value: value), at: 0)
         return output
     }
 }

@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib.services.currencyStore
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.provider.utils.stringValue
 import com.sonsofcrypto.web3lib.services.coinGecko.CoinGeckoService
 import com.sonsofcrypto.web3lib.services.coinGecko.model.Candle
@@ -10,9 +10,9 @@ import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3lib.utils.FileManager
 import com.sonsofcrypto.web3lib.utils.Trie
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
-import com.sonsofcrypto.web3lib.utils.extensions.jsonDecode
-import com.sonsofcrypto.web3lib.utils.extensions.jsonEncode
-import com.sonsofcrypto.web3lib.utils.extensions.subListTo
+import com.sonsofcrypto.web3lib.extensions.jsonDecode
+import com.sonsofcrypto.web3lib.extensions.jsonEncode
+import com.sonsofcrypto.web3lib.extensions.subListTo
 import com.sonsofcrypto.web3lib.utils.logExceptionHandler
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
 import com.sonsofcrypto.web3lib.utils.withUICxt

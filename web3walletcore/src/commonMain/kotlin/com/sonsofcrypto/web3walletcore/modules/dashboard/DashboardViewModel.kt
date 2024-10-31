@@ -1,8 +1,8 @@
 package com.sonsofcrypto.web3walletcore.modules.dashboard
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.types.Currency
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3walletcore.common.viewModels.CandlesViewModel
 import com.sonsofcrypto.web3walletcore.modules.dashboard.DashboardViewModel.Section.Items.Actions
 import com.sonsofcrypto.web3walletcore.modules.dashboard.DashboardViewModel.Section.Items.Buttons
@@ -18,7 +18,7 @@ data class DashboardViewModel(
         val items: Items,
     ) {
         sealed class Header {
-            data class Balance(val title: List<Formatters.Output>): Header()
+            data class Balance(val title: List<Formater.Output>): Header()
             data class Title(val title: String, val action: String?): Header()
         }
 

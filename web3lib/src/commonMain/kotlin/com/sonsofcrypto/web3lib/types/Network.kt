@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Network(
     val name: String,
-    val chainId: UInt,
+    val chainId: ULong,
     val type: Type,
     val nameServiceAddress: AddressBytes?,
     val nativeCurrency: Currency,
@@ -52,9 +52,9 @@ data class Network(
         fun goerli() = Network("Goerli", 5u, Type.L1_TEST, null, Currency.ethereum())
         fun sepolia() = Network("Sepolia", 11155111u, Type.L1_TEST, null, Currency.ethereum())
 
-        fun fromChainId(chainId: UInt): Network = when(chainId) {
-            5u -> goerli()
-            11155111u -> sepolia()
+        fun fromChainId(chainId: ULong): Network = when(chainId) {
+            5uL -> goerli()
+            11155111uL -> sepolia()
             else -> ethereum()
         }
     }

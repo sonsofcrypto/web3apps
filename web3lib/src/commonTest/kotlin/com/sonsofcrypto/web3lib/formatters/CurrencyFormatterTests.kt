@@ -1,12 +1,12 @@
 package com.sonsofcrypto.web3lib.formatters
 
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Down
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Normal
-import com.sonsofcrypto.web3lib.formatters.Formatters.Output.Up
-import com.sonsofcrypto.web3lib.formatters.Formatters.Style
+import com.sonsofcrypto.web3lib.formatters.Formater.Output
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Down
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Normal
+import com.sonsofcrypto.web3lib.formatters.Formater.Output.Up
+import com.sonsofcrypto.web3lib.formatters.Formater.Style
 import com.sonsofcrypto.web3lib.types.Currency
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -88,9 +88,9 @@ class CurrencyFormatterTests {
     }
     private fun maxOutput(a: String?, c: Currency): List<Output> {
         return if (a == null) {
-            Formatters.currency.format(null, c, Style.Max)
+            Formater.currency.format(null, c, Style.Max)
         } else {
-            Formatters.currency.format(BigInt.Companion.from(a), c, Style.Max)
+            Formater.currency.format(BigInt.Companion.from(a), c, Style.Max)
         }
     }
 
@@ -371,6 +371,6 @@ class CurrencyFormatterTests {
 
     private fun customOutput(a: String, c: Currency, m: UInt): List<Output> {
         val amount = BigInt.Companion.from(a)
-        return Formatters.currency.format(amount, c, Style.Custom(m))
+        return Formater.currency.format(amount, c, Style.Custom(m))
     }
 }

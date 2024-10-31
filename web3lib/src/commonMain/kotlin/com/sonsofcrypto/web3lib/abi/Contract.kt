@@ -3,9 +3,9 @@ package com.sonsofcrypto.web3lib.abi
 import com.sonsofcrypto.web3lib.provider.Provider
 import com.sonsofcrypto.web3lib.provider.call
 import com.sonsofcrypto.web3lib.provider.model.toByteArrayData
-import com.sonsofcrypto.web3lib.signer.LegacySigner
+import com.sonsofcrypto.web3lib.legacy.LegacySigner
 import com.sonsofcrypto.web3lib.types.AddressHexString
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
+import com.sonsofcrypto.web3lib.extensions.toHexString
 
 open class Contract{
     val intf: Interface

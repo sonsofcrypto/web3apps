@@ -36,7 +36,7 @@ class MultiCallTests {
         val provider = ProviderPocket(Network.ethereum())
         val result = provider.call(
             TransactionRequest(
-                to = Address.HexString(multiCallAddress),
+                to = Address.HexStr(multiCallAddress),
                 data = DataHexStr(multucallData),
             )
         )

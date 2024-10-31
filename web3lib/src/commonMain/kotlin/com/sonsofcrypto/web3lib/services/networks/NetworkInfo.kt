@@ -4,7 +4,7 @@ import com.sonsofcrypto.web3lib.abi.Call3
 import com.sonsofcrypto.web3lib.abi.Interface
 import com.sonsofcrypto.web3lib.abi.Multicall3
 import com.sonsofcrypto.web3lib.types.AddressHexString
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.Serializable
 
 private val iface = Interface.Multicall3()

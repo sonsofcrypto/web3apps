@@ -31,7 +31,6 @@ final class CultProposalDetailGuardianView: UIView {
         socialLabel.apply(style: .subheadline)
         socialLabel.textColor = Theme.color.textSecondary
         socialValueLabel.apply(style: .subheadline, weight: .bold)
-//        socialValueLabel.add(.targetAction(.init(target: self, selector: #selector(discordTapped))))
         walletLabel.apply(style: .subheadline)
         walletLabel.textColor = Theme.color.textSecondary
         walletValueLabel.apply(style: .subheadline, weight: .bold)

@@ -306,11 +306,17 @@ extension DashboardViewController: UIScrollViewDelegate {
 
 
 private extension DashboardViewController {
-
+    
     func configureUI() {
         title = Localized("web3wallet").uppercased()
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            sysImgName: "chevron.left",
+            images: [
+                UIImage(systemName: "chevron.left"),
+                UIImage(named: "wallet_no_border"),
+                UIImage(systemName: "network")
+            ].compactMap {
+                $0?.withRenderingMode(.alwaysTemplate)
+            },
             target: self,
             action: #selector(navBarLeftActionTapped)
         )

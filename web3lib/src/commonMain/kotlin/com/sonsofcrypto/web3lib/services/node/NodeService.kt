@@ -17,7 +17,7 @@ interface NodeService {
 }
 
 class DefaultNodeService: NodeService {
-    private var nodes: MutableMap<UInt, Node> = mutableMapOf()
+    private var nodes: MutableMap<ULong, Node> = mutableMapOf()
 //    private var timer: Job? = null
 //    private val scope = CoroutineScope(SupervisorJob() + bgDispatcher)
 //

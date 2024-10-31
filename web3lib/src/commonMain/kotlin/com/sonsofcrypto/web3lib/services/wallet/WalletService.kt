@@ -3,7 +3,7 @@ package com.sonsofcrypto.web3lib.services.wallet
 import com.sonsofcrypto.web3lib.abi.ERC20
 import com.sonsofcrypto.web3lib.abi.Interface
 import com.sonsofcrypto.web3lib.abi.Multicall3
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.provider.model.BlockTag
 import com.sonsofcrypto.web3lib.provider.model.DataHexStr
 import com.sonsofcrypto.web3lib.provider.model.Log
@@ -17,19 +17,19 @@ import com.sonsofcrypto.web3lib.services.networks.NetworksEvent
 import com.sonsofcrypto.web3lib.services.networks.NetworksEvent.EnabledNetworksDidChange
 import com.sonsofcrypto.web3lib.services.networks.NetworksListener
 import com.sonsofcrypto.web3lib.services.networks.NetworksService
-import com.sonsofcrypto.web3lib.signer.LegacyWallet
-import com.sonsofcrypto.web3lib.signer.LegacyERC20Contract
+import com.sonsofcrypto.web3lib.legacy.LegacyERC20Contract
+import com.sonsofcrypto.web3lib.legacy.LegacyWallet
 import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.AddressHexString
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
 import com.sonsofcrypto.web3lib.types.toHexString
 import com.sonsofcrypto.web3lib.types.toHexStringAddress
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.abiDecodeBigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.legacy.abiDecodeBigInt
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
-import com.sonsofcrypto.web3lib.utils.extensions.jsonDecode
-import com.sonsofcrypto.web3lib.utils.extensions.jsonEncode
+import com.sonsofcrypto.web3lib.extensions.jsonDecode
+import com.sonsofcrypto.web3lib.extensions.jsonEncode
 import com.sonsofcrypto.web3lib.utils.logExceptionHandler
 import com.sonsofcrypto.web3lib.utils.timerFlow
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
@@ -131,7 +131,7 @@ class DefaultWalletService(
     private val currencies: MutableMap<String, List<Currency>> = mutableMapOf()
     private val networksState: MutableMap<String, BigInt> = mutableMapOf()
     private val transferLogs: MutableMap<String, List<Log>> = mutableMapOf()
-    private val transferLogsNonce: MutableMap<String,BigInt> = mutableMapOf()
+    private val transferLogsNonce: MutableMap<String, BigInt> = mutableMapOf()
     private var listeners: MutableSet<WalletListener> = mutableSetOf()
     private var pending: MutableList<PendingInfo> = mutableListOf()
     private var didReloadOnLastBlock: Boolean = false
@@ -267,7 +267,7 @@ class DefaultWalletService(
         network: Network
     ): TransactionResponse = withBgCxt {
         val request = TransactionRequest(
-            to = Address.HexString(contractAddress),
+            to = Address.HexStr(contractAddress),
             data = data
         )
         val wallet = networkService.wallet(network)
@@ -286,12 +286,12 @@ class DefaultWalletService(
         amount: BigInt
     ): TransactionRequest {
         if (currency.isNative())
-            return TransactionRequest(to = Address.HexString(to), value = amount)
+            return TransactionRequest(to = Address.HexStr(to), value = amount)
         if (currency.type() == Currency.Type.ERC20 && currency.address != null)
             return TransactionRequest(
-                to = Address.HexString(currency.address!!),
-                data = LegacyERC20Contract(Address.HexString(currency.address!!))
-                    .transfer(Address.HexString(to), amount)
+                to = Address.HexStr(currency.address!!),
+                data = LegacyERC20Contract(Address.HexStr(currency.address!!))
+                    .transfer(Address.HexStr(to), amount)
             )
         throw Error.UnableToSendTransaction
     }
@@ -418,7 +418,7 @@ class DefaultWalletService(
                     updateBalance(legacyWallet, currency, balance, newTransactionCount)
                 }
                 Currency.Type.ERC20 -> {
-                    val contract = LegacyERC20Contract(Address.HexString(currency.address!!))
+                    val contract = LegacyERC20Contract(Address.HexStr(currency.address!!))
                     val address = legacyWallet.address().toHexStringAddress()
                     val encodedBalance = legacyWallet.call(
                         TransactionRequest(

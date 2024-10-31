@@ -2,6 +2,8 @@
 
 package com.sonsofcrypto.web3lib.utils
 
+import com.sonsofcrypto.web3lib.extensions.toByteArray
+import com.sonsofcrypto.web3lib.extensions.toDataFull
 import com.sonsofcrypto.web3lib.utils.FileManager.Location.APPFILES
 import com.sonsofcrypto.web3lib.utils.FileManager.Location.BUNDLE
 import kotlinx.cinterop.ExperimentalForeignApi

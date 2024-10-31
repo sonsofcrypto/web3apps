@@ -1,13 +1,12 @@
 package com.sonsofcrypto.web3walletcore.modules.account
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
-import com.sonsofcrypto.web3lib.formatters.Formatters.Style.Custom
+import com.sonsofcrypto.web3lib.formatters.Formater
+import com.sonsofcrypto.web3lib.formatters.Formater.Style.Custom
 import com.sonsofcrypto.web3lib.types.Currency
-import com.sonsofcrypto.web3lib.utils.BigDec
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
-import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel.Action
 import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel.Action.Kind.NORMAL
 import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel.RegularAlertViewModel
@@ -102,17 +101,17 @@ class DefaultAccountPresenter(
     private fun headerViewModel(): AccountViewModel.Header {
         val pct = interactor.market(context.currency)?.priceChangePercentage24h ?: 0.toDouble()
         return AccountViewModel.Header(
-            Formatters.currency.format(
+            Formater.currency.format(
                 interactor.cryptoBalance(context.network, context.currency),
                 context.currency,
                 Custom(15u)
             ),
-            Formatters.fiat.format(
+            Formater.fiat.format(
                 BigDec.from(interactor.fiatBalance(context.network, context.currency)),
                 Custom(20u),
                 "usd"
             ),
-            Formatters.pct.format(pct, true),
+            Formater.pct.format(pct, true),
             pct >= 0,
             headerButtonsViewModel(),
         )
@@ -126,7 +125,7 @@ class DefaultAccountPresenter(
     )
 
     private fun addressViewModel(): AccountViewModel.Address = AccountViewModel.Address(
-        Formatters.Companion.address.format(
+        Formater.Companion.address.format(
             interactor.address(context.network), 12, context.network
         ),
         interactor.address(context.network),
@@ -137,17 +136,17 @@ class DefaultAccountPresenter(
         )
 
     private fun marketInfoViewModel(): AccountViewModel.MarketInfo = AccountViewModel.MarketInfo(
-        Formatters.fiat.format(
+        Formater.fiat.format(
             BigDec.from(interactor.market(context.currency)?.marketCap ?: 0.toDouble()),
             Custom(8u),
             "usd"
         ),
-        Formatters.fiat.format(
+        Formater.fiat.format(
             BigDec.from(interactor.market(context.currency)?.currentPrice ?: 0.toDouble()),
             Custom(8u),
             "usd"
         ),
-        Formatters.fiat.format(
+        Formater.fiat.format(
             BigDec.from(interactor.market(context.currency)?.totalVolume ?: 0.toDouble()),
             Custom(8u),
             "usd"
@@ -174,15 +173,15 @@ class DefaultAccountPresenter(
     private fun transactionViewModel(
         t: AccountTransaction
     ): AccountViewModel.Transaction {
-        val date = t.date?.let { Formatters.date.format(it, "dd/MM/yyyy") } ?: t.blockNumber
+        val date = t.date?.let { Formater.date.format(it, "dd/MM/yyyy") } ?: t.blockNumber
         val isReceive = t.to == interactor.address(context.network)
         val fiatPrice = BigDec.from(interactor.fiatPrice(t.amount, context.currency))
         val address = if (isReceive) t.from else t.to
         val data = AccountViewModel.Transaction.Data(
             date,
-            Formatters.address.format(address, 10, context.network),
-            Formatters.currency.format(t.amount, context.currency, Custom(20u)),
-            Formatters.fiat.format(fiatPrice, Custom(12u), "usd"),
+            Formater.address.format(address, 10, context.network),
+            Formater.currency.format(t.amount, context.currency, Custom(20u)),
+            Formater.fiat.format(fiatPrice, Custom(12u), "usd"),
             isReceive,
             t.txHash
         )

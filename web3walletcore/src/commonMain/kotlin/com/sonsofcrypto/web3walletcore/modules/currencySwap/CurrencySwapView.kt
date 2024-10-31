@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.currencySwap
 
-import com.sonsofcrypto.web3lib.types.NetworkFee
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
 
 interface CurrencySwapView {
     fun update(viewModel: CurrencySwapViewModel)

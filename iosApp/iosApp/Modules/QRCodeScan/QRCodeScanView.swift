@@ -42,10 +42,8 @@ extension QRCodeScanViewController {
         self.viewModel = viewModel
         title = viewModel.title.uppercased()
         if let failure = viewModel.failure {
-            view.presentToastAlert(
-                with: failure,
-                duration: 3.0,
-                bottomOffset: view.frame.height * 0.15
+            navigationController?.asNavVc?.toast(
+                ToastViewModel(text: failure, media: nil, position: .top)
             )
         }
     }
@@ -215,7 +213,7 @@ extension QRCodeScanViewController: AVCaptureMetadataOutputObjectsDelegate {
         guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
         guard let qrCode = readableObject.stringValue else { return }
         // NOTE: We ignore if we keep detecting the same code over whist a failure toast is presented
-        guard !view.isToastFailurePresented else { return }
+        guard navigationController?.asNavVc?.isPresentingToast() == false else { return }
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         presenter.handleEvent(.QRCode(input: qrCode))
     }

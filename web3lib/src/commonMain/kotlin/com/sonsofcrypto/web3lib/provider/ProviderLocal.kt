@@ -1,5 +1,6 @@
 package com.sonsofcrypto.web3lib.provider
 
+import com.sonsofcrypto.web3lib.provider.utils.NameServiceProvider
 import com.sonsofcrypto.web3lib.types.Network
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
@@ -44,7 +45,7 @@ class ProviderLocal: ProviderJsonRpc {
 
     @Throws(Throwable::class)
     override fun url(): String = when (network.chainId) {
-        1u -> "https://127.0.0.1:62302"
+        1uL -> "https://127.0.0.1:62302"
         else -> throw  Error.UnsupportedNetwork(network)
     }
 }

@@ -80,8 +80,8 @@ private extension NetworkFeePickerView {
         let valueLabel = stackView?.arrangedSubviews.first{ $0.tag == 2 } as? UILabel
         valueLabel?.font = Theme.font.body
         valueLabel?.textColor = Theme.color.textPrimary
-        let output = Formatters.Companion.shared.currency.format(
-            amount: fee.amount, currency: fee.currency, style: Formatters.StyleCustom(maxLength: 10)
+        let output = Formater.Companion.shared.currency.format(
+            amount: fee.amount, currency: fee.currency, style: Formater.StyleCustom(maxLength: 10)
         )
         valueLabel?.attributedText = NSAttributedString(
             output,
@@ -89,7 +89,9 @@ private extension NetworkFeePickerView {
             fontSmall: Theme.font.caption2,
             foregroundColor: Theme.color.textPrimary
         )
-        stackView?.add(.targetAction(.init(target: self, selector: #selector(feeTapped(_:)))))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(feeTapped(_:)))
+        stackView?.isUserInteractionEnabled = true
+        stackView?.addGestureRecognizer(tap)
     }
     
     func estimatedFee(fee: NetworkFee) -> String {

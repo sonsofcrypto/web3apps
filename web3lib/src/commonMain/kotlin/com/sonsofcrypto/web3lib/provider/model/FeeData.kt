@@ -1,8 +1,10 @@
 package com.sonsofcrypto.web3lib.provider.model
 
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 
 data class FeeData(
+    /** Latest block BaseFeePerGas */
+    val lastBaseFeePerGas: BigInt?,
     /** The Max Fee Per Gas, which is the absolute maximum you are willing to
      * pay per unit of gas to get your transaction included in a block. */
     val maxFeePerGas: BigInt?,

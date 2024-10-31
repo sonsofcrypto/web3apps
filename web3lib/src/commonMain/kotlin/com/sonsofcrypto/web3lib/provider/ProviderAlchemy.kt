@@ -1,6 +1,7 @@
 package com.sonsofcrypto.web3lib.provider
 
 import com.sonsofcrypto.web3lib.BuildKonfig
+import com.sonsofcrypto.web3lib.provider.utils.NameServiceProvider
 import com.sonsofcrypto.web3lib.types.Network
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
@@ -50,9 +51,9 @@ class ProviderAlchemy: ProviderJsonRpc {
 
     @Throws(Throwable::class)
     override fun url(): String = when (network.chainId) {
-        1u -> "https://eth-mainnet.g.alchemy.com/v2/${apiKeys.key}"
-        5u -> "https://eth-goerli.g.alchemy.com/v2/${apiKeys.key}"
-        11155111u -> "https://eth-sepolia.g.alchemy.com/v2/${apiKeys.key}"
+        1uL -> "https://eth-mainnet.g.alchemy.com/v2/${apiKeys.key}"
+        5uL -> "https://eth-goerli.g.alchemy.com/v2/${apiKeys.key}"
+        11155111uL -> "https://eth-sepolia.g.alchemy.com/v2/${apiKeys.key}"
         else -> throw  Error.UnsupportedNetwork(network)
     }
 

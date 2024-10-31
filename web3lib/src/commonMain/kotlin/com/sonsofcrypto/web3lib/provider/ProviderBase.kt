@@ -5,15 +5,13 @@ import com.sonsofcrypto.web3lib.provider.model.BlockTag
 import com.sonsofcrypto.web3lib.provider.model.DataHexStr
 import com.sonsofcrypto.web3lib.provider.model.FeeData
 import com.sonsofcrypto.web3lib.provider.model.FilterRequest
-import com.sonsofcrypto.web3lib.provider.model.ProviderEvent
-import com.sonsofcrypto.web3lib.provider.model.ProviderListener
 import com.sonsofcrypto.web3lib.provider.model.QntHexStr
 import com.sonsofcrypto.web3lib.provider.model.Transaction
 import com.sonsofcrypto.web3lib.provider.model.TransactionReceipt
 import com.sonsofcrypto.web3lib.provider.model.TransactionRequest
 import com.sonsofcrypto.web3lib.types.Address
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import kotlinx.serialization.json.JsonObject
 
 open class ProviderBase(override val network: Network): Provider() {
@@ -158,40 +156,12 @@ open class ProviderBase(override val network: Network): Provider() {
     }
 
     @Throws(Throwable::class)
-    override suspend fun resolveName(name: String): Address.HexString? {
+    override suspend fun resolveName(name: String): Address.HexStr? {
         TODO("Not yet implemented")
     }
 
     @Throws(Throwable::class)
-    override suspend fun lookupAddress(address: Address.HexString): String? {
-        TODO("Not yet implemented")
-    }
-
-    override fun on(providerEvent: ProviderEvent, providerListener: ProviderListener): Provider {
-        TODO("Not yet implemented")
-    }
-
-    override fun once(providerEvent: ProviderEvent, providerListener: ProviderListener): Provider {
-        TODO("Not yet implemented")
-    }
-
-    override fun emit(providerEvent: ProviderEvent): Boolean {
-        TODO("Not yet implemented")
-    }
-
-    override fun listenerCount(providerEvent: ProviderEvent?): UInt {
-        TODO("Not yet implemented")
-    }
-
-    override fun listeners(providerEvent: ProviderEvent?): Array<ProviderListener> {
-        TODO("Not yet implemented")
-    }
-
-    override fun off(providerEvent: ProviderEvent, providerListener: ProviderListener?): Provider {
-        TODO("Not yet implemented")
-    }
-
-    override fun removeAllListeners(providerEvent: ProviderEvent?): Provider {
+    override suspend fun lookupAddress(address: Address.HexStr): String? {
         TODO("Not yet implemented")
     }
 }

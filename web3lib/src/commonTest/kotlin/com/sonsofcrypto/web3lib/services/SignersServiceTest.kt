@@ -1,7 +1,7 @@
 package com.sonsofcrypto.web3lib.services
 
 import com.sonsofcrypto.web3lib.BuildKonfig
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.randomString
 import com.sonsofcrypto.web3lib.services.address.DefaultAddressService
 import com.sonsofcrypto.web3lib.services.keyStore.DefaultSignerStoreService
@@ -16,13 +16,13 @@ import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreService
 import com.sonsofcrypto.web3lib.services.uuid.UUIDService
 import com.sonsofcrypto.web3lib.types.Bip44
 import com.sonsofcrypto.web3lib.types.ExtKey
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39.EntropySize.ES128
-import com.sonsofcrypto.web3lib.utils.bip39.WordList
-import com.sonsofcrypto.web3lib.utils.bip39.localeString
-import com.sonsofcrypto.web3lib.utils.defaultDerivationPath
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.secureRand
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39.EntropySize.ES128
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.WordList
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.localeString
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.defaultDerivationPath
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.utilsCrypto.secureRand
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.test.Test

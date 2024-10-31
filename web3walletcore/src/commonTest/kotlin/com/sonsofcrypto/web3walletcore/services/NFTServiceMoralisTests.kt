@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.services
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.utils.FileManager
 import com.sonsofcrypto.web3lib.utils.FileManager.Location.BUNDLE
 import com.sonsofcrypto.web3walletcore.services.nfts.NFTServiceMoralis

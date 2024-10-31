@@ -65,7 +65,7 @@ sealed class Topic {
 data class FilterRequest(
     val fromBlock: BlockTag? = BlockTag.Earliest,
     val toBlock: BlockTag? = BlockTag.Latest,
-    val address: Address.HexString?,
+    val address: Address.HexStr?,
     val topics: List<Topic>?
 ) {
 

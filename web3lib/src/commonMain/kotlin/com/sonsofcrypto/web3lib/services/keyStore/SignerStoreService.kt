@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib.services.keyStore
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.services.address.AddressService
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem.Type.MNEMONIC
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem.Type.PRVKEY
@@ -8,13 +8,13 @@ import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem.Type.VIEW_ONLY
 import com.sonsofcrypto.web3lib.services.uuid.UUIDService
 import com.sonsofcrypto.web3lib.types.Bip44
 import com.sonsofcrypto.web3lib.types.ExtKey
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39
-import com.sonsofcrypto.web3lib.utils.bip39.WordList
-import com.sonsofcrypto.web3lib.utils.bip39.localeString
-import com.sonsofcrypto.web3lib.utils.defaultDerivationPath
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
-import com.sonsofcrypto.web3lib.utils.incrementedDerivationPath
-import com.sonsofcrypto.web3lib.utils.lastDerivationPathComponent
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.WordList
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.localeString
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.defaultDerivationPath
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.incrementedDerivationPath
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.lastDerivationPathComponent
 import kotlinx.serialization.decodeFromByteArray
 import kotlinx.serialization.encodeToByteArray
 import kotlinx.serialization.protobuf.ProtoBuf

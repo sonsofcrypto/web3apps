@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib.services.networks
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.provider.Provider
 import com.sonsofcrypto.web3lib.provider.ProviderLocal
 import com.sonsofcrypto.web3lib.provider.ProviderPocket
@@ -13,12 +13,12 @@ import com.sonsofcrypto.web3lib.services.node.NodeService
 import com.sonsofcrypto.web3lib.services.poll.GroupPollServiceRequest
 import com.sonsofcrypto.web3lib.services.poll.PollService
 import com.sonsofcrypto.web3lib.services.poll.PollServiceRequest
-import com.sonsofcrypto.web3lib.signer.LegacyWallet
+import com.sonsofcrypto.web3lib.legacy.LegacyWallet
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.types.NetworkFee
-import com.sonsofcrypto.web3lib.utils.BigInt
-import com.sonsofcrypto.web3lib.utils.extensions.stdJson
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
+import com.sonsofcrypto.web3lib.extensions.stdJson
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -44,7 +44,8 @@ sealed class NetworksEvent() {
 /** `NetworksEvent` listener */
 interface NetworksListener { fun handle(event: NetworksEvent) }
 
-/** Network service manages enabled `Network`s, `Wallet`s and `Provider`s
+/**
+ * Network service manages enabled `Network`s, `Wallet`s and `Provider`s
  * Enabled and selected networks and provider preferences are persisted.
  */
 interface NetworksService {

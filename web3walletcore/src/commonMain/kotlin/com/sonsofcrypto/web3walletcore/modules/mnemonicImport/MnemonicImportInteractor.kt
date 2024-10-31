@@ -6,11 +6,11 @@ import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreService
 import com.sonsofcrypto.web3lib.types.Bip44
 import com.sonsofcrypto.web3lib.types.ExtKey
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39
-import com.sonsofcrypto.web3lib.utils.defaultDerivationPath
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.lastDerivationPathComponent
-import com.sonsofcrypto.web3lib.utils.secureRand
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.defaultDerivationPath
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.lastDerivationPathComponent
+import com.sonsofcrypto.web3lib.utilsCrypto.secureRand
 import com.sonsofcrypto.web3walletcore.common.helpers.MnemonicPresenterHelper
 import com.sonsofcrypto.web3walletcore.extensions.Localized
 import com.sonsofcrypto.web3walletcore.services.clipboard.ClipboardService

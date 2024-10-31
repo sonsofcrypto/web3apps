@@ -78,8 +78,8 @@ private extension ConfirmationSendView {
     }
     
     func currencyAmountView(
-        with value: [Formatters.Output],
-        and usdValue: [Formatters.Output]
+        with value: [Formater.Output],
+        and usdValue: [Formater.Output]
     ) -> UIView {
         let amountLabel = UILabel()
         amountLabel.apply(style: .title3)
@@ -143,7 +143,7 @@ private extension ConfirmationSendView {
     
     func networkFeeGroup() -> UIView {
         var value = viewModel.networkFee.value
-        value.append(Formatters.OutputNormal(value: " ~ \(viewModel.networkFee.time)"))
+        value.append(Formater.OutputNormal(value: " ~ \(viewModel.networkFee.time)"))
         let views = [
             row(
                 with: viewModel.networkFee.title,

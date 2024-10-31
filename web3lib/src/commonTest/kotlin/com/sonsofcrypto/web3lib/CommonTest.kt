@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3lib
 
-import com.sonsofcrypto.web3lib.keyValueStore.KeyValueStore
+import com.sonsofcrypto.web3lib.utils.KeyValueStore
 import com.sonsofcrypto.web3lib.services.address.DefaultAddressService
 import com.sonsofcrypto.web3lib.services.coinGecko.DefaultCoinGeckoService
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyStoreService
@@ -19,9 +19,10 @@ import com.sonsofcrypto.web3lib.services.poll.DefaultPollService
 import com.sonsofcrypto.web3lib.services.poll.PollService
 import com.sonsofcrypto.web3lib.services.wallet.DefaultWalletService
 import com.sonsofcrypto.web3lib.services.wallet.WalletService
+import com.sonsofcrypto.web3lib.signer.KeySigner
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.bip39.Bip39
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.Bip39
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -43,6 +44,9 @@ class CommonTest {
         )
     }
 }
+
+fun testKeySigner(): KeySigner =
+    KeySigner(BuildKonfig.testPrvKey.hexStringToByteArray())
 
 class TestEnvServices(
     val currencyStoreService: CurrencyStoreService,

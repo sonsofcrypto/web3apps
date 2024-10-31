@@ -1,9 +1,9 @@
 package com.sonsofcrypto.web3walletcore.modules.currencySend
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.types.Currency
-import com.sonsofcrypto.web3lib.types.NetworkFee
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3walletcore.common.viewModels.CurrencyAmountPickerViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.NetworkAddressPickerViewModel
@@ -144,7 +144,7 @@ class DefaultCurrencySendPresenter(
 
     fun isAddress(address: String, addressTo: String?): Boolean {
         addressTo ?: return false
-        val addressToCompare = Formatters.address.format(addressTo, 8, context.network)
+        val addressToCompare = Formater.address.format(addressTo, 8, context.network)
         return address == addressToCompare
     }
 
@@ -191,7 +191,7 @@ class DefaultCurrencySendPresenter(
     private fun formattedAddress(address: String?): String {
         address ?: return ""
         if (!context.network.isValidAddress(address)) { return address }
-        return Formatters.address.format(address, 8, context.network)
+        return Formater.address.format(address, 8, context.network)
     }
 
     private fun currencyViewModel(

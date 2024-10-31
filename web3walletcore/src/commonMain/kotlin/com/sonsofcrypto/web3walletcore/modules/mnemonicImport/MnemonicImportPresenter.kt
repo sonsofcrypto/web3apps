@@ -5,8 +5,8 @@ import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem.PasswordType.B
 import com.sonsofcrypto.web3lib.services.keyStore.SignerStoreItem.PasswordType.PIN
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3lib.utils.execDelayed
-import com.sonsofcrypto.web3lib.utils.extensions.stripLeadingWhiteSpace
-import com.sonsofcrypto.web3lib.utils.isValidDerivationPath
+import com.sonsofcrypto.web3lib.extensions.stripLeadingWhiteSpace
+import com.sonsofcrypto.web3lib.utilsCrypto.bip39.isValidDerivationPath
 import com.sonsofcrypto.web3walletcore.common.helpers.MnemonicInputViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel
 import com.sonsofcrypto.web3walletcore.common.viewModels.AlertViewModel.Action

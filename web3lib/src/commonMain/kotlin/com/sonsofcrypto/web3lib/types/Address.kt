@@ -13,22 +13,22 @@ sealed class Address() {
     @Serializable
     data class Bytes(val data: AddressBytes) : Address()
     @Serializable
-    data class HexString(val hexString: AddressHexString) : Address()
+    data class HexStr(val hexString: AddressHexString) : Address()
     @Serializable
     data class Name(val name: String) : Address()
 
     companion object {
-        fun fromHexString(hexString: String?): Address.HexString? {
+        fun fromHexString(hexString: String?): Address.HexStr? {
             return if (hexString != null && hexString != "null") {
-                HexString(hexString)
+                HexStr(hexString)
             } else null
         }
     }
 }
 
-fun Address.toHexStringAddress(): Address.HexString = when (this) {
-    is Address.HexString -> this
-    is Address.Bytes -> Address.HexString(DataHexStr(this.data))
+fun Address.toHexStringAddress(): Address.HexStr = when (this) {
+    is Address.HexStr -> this
+    is Address.Bytes -> Address.HexStr(DataHexStr(this.data))
     else -> TODO("Resolve name address")
 }
 
@@ -36,9 +36,7 @@ fun Address.toHexString(): AddressHexString = this.toHexStringAddress().hexStrin
 
 
 fun Address.jsonPrimitive(): JsonPrimitive = when (this) {
-    is Address.HexString -> JsonPrimitive(hexString)
+    is Address.HexStr -> JsonPrimitive(hexString)
     is Address.Bytes -> JsonPrimitive(DataHexStr(data))
     else -> JsonPrimitive("")
 }
-
-

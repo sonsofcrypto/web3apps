@@ -1,6 +1,6 @@
 package com.sonsofcrypto.web3walletcore.modules.dashboard
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
+import com.sonsofcrypto.web3lib.formatters.Formater
 import com.sonsofcrypto.web3lib.services.coinGecko.model.Candle
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyMarketData
 import com.sonsofcrypto.web3lib.services.currencyStore.CurrencyMetadata
@@ -13,7 +13,7 @@ import com.sonsofcrypto.web3lib.services.wallet.WalletListener
 import com.sonsofcrypto.web3lib.services.wallet.WalletService
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
 import com.sonsofcrypto.web3lib.utils.uiDispatcher
@@ -103,7 +103,7 @@ class DefaultDashboardInteractor(
         walletService.balance(network, currency)
 
     override fun fiatBalance(network: Network, currency: Currency): Double =
-        Formatters.crypto(
+        Formater.crypto(
             cryptoBalance(network, currency),
             currency.decimals(),
             marketdata(currency)?.currentPrice ?: 0.0

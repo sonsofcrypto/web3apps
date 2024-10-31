@@ -3,7 +3,7 @@ package com.sonsofcrypto.web3lib.services.wallet
 import com.sonsofcrypto.web3lib.provider.model.Log
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 
 /** Wallet service events */
 sealed class WalletEvent() {

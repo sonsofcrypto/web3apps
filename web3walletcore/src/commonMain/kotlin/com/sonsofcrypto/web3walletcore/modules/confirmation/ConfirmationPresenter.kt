@@ -1,13 +1,13 @@
 package com.sonsofcrypto.web3walletcore.modules.confirmation
 
-import com.sonsofcrypto.web3lib.formatters.Formatters
-import com.sonsofcrypto.web3lib.formatters.Formatters.Style.Custom
+import com.sonsofcrypto.web3lib.formatters.Formater
+import com.sonsofcrypto.web3lib.formatters.Formater.Style.Custom
 import com.sonsofcrypto.web3lib.provider.model.TransactionResponse
 import com.sonsofcrypto.web3lib.types.Currency
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.types.NetworkFee
-import com.sonsofcrypto.web3lib.utils.BigDec
-import com.sonsofcrypto.web3lib.utils.BigInt
+import com.sonsofcrypto.web3lib.legacy.NetworkFee
+import com.sonsofcrypto.web3lib.types.bignum.BigDec
+import com.sonsofcrypto.web3lib.types.bignum.BigInt
 import com.sonsofcrypto.web3lib.utils.WeakRef
 import com.sonsofcrypto.web3lib.utils.bgDispatcher
 import com.sonsofcrypto.web3lib.utils.withUICxt
@@ -192,7 +192,7 @@ class DefaultConfirmationPresenter(
         ConfirmationCurrencyViewModel(
             c.iconName,
             c.symbol,
-            Formatters.currency.format(a, c, Custom(15u)),
+            Formater.currency.format(a, c, Custom(15u)),
             fiatPrice(a, c, Custom(10u), "usd")
         )
 
@@ -200,32 +200,32 @@ class DefaultConfirmationPresenter(
         from: String, to: String, network: Network
     ): ConfirmationAddressViewModel =
         ConfirmationAddressViewModel(
-            Formatters.address.format(from, 8, network),
-            Formatters.address.format(to, 8, network),
+            Formater.address.format(from, 8, network),
+            Formater.address.format(to, 8, network),
         )
 
     private fun providerViewModel(provider: Provider): ConfirmationProviderViewModel =
         ConfirmationProviderViewModel(provider.iconName, provider.name, provider.slippage)
 
     private fun networkFeeViewModel(fee: NetworkFee): ConfirmationNetworkFeeViewModel {
-        val output = Formatters.currency.format(fee.amount, fee.currency, Custom(10u))
+        val output = Formater.currency.format(fee.amount, fee.currency, Custom(10u))
             .toMutableList()
         val fiatOutput = fiatPrice(fee.amount, fee.currency, Custom(8u))
-        output.add(Formatters.Output.Normal(" ~ "))
+        output.add(Formater.Output.Normal(" ~ "))
         output.addAll(fiatOutput)
         return ConfirmationNetworkFeeViewModel(
             Localized("networkFeeView.estimatedFee"),
-            Formatters.currency.format(fee.amount, fee.currency, Custom(10u)),
+            Formater.currency.format(fee.amount, fee.currency, Custom(10u)),
             fee.timeString,
             fiatPrice(fee.amount, fee.currency, Custom(8u)),
         )
     }
 
     private fun fiatPrice(
-        amount: BigInt, currency: Currency, style: Formatters.Style, currencyCode: String = "usd"
-    ): List<Formatters.Output> {
-        val value = Formatters.crypto(amount, currency.decimals(), interactor.fiatPrice(currency))
-        return Formatters.fiat.format(
+        amount: BigInt, currency: Currency, style: Formater.Style, currencyCode: String = "usd"
+    ): List<Formater.Output> {
+        val value = Formater.crypto(amount, currency.decimals(), interactor.fiatPrice(currency))
+        return Formater.fiat.format(
             BigDec.from(BigDec.from(value).mul(BigDec.from(100)).toBigInt()).div(BigDec.from(100)),
             style,
             currencyCode

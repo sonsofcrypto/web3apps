@@ -2,11 +2,12 @@ package com.sonsofcrypto.web3lib.services.address
 
 import com.sonsofcrypto.web3lib.types.ExtKey
 import com.sonsofcrypto.web3lib.types.Network
-import com.sonsofcrypto.web3lib.utils.Curve
-import com.sonsofcrypto.web3lib.utils.compressedPubKey
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.keccak256
-import com.sonsofcrypto.web3lib.utils.upcompressedPubKey
+import com.sonsofcrypto.web3lib.utilsCrypto.Curve
+import com.sonsofcrypto.web3lib.utilsCrypto.compressedPubKey
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.types.Address
+import com.sonsofcrypto.web3lib.utilsCrypto.keccak256
+import com.sonsofcrypto.web3lib.utilsCrypto.upcompressedPubKey
 
 interface AddressService {
     /** Address for default network (Ethereum) */
@@ -50,3 +51,17 @@ class DefaultAddressService: AddressService {
     }
 }
 
+@Throws(Throwable::class)
+fun checkValidAddress(address: String, chainId: ULong = 1u): String {
+    if (!Network.fromChainId(chainId).isValidAddress(address))
+        throw Error("${address} is not a valid address.")
+    return address
+}
+
+@Throws(Throwable::class)
+fun validateAndParseAddress(address: String, chainId: ULong): String {
+    val network = Network.fromChainId(chainId)
+    if (!DefaultAddressService().isValid(address, network))
+        throw Error("${address} is not a valid address.")
+    return address
+}

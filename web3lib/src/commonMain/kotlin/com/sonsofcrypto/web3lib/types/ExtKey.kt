@@ -1,21 +1,21 @@
 package com.sonsofcrypto.web3lib.types
 
-import com.sonsofcrypto.web3lib.utils.Curve
-import com.sonsofcrypto.web3lib.utils.addPrvKeys
-import com.sonsofcrypto.web3lib.utils.addPubKeys
-import com.sonsofcrypto.web3lib.utils.compressedPubKey
-import com.sonsofcrypto.web3lib.utils.decodeBase58WithChecksum
-import com.sonsofcrypto.web3lib.utils.encodeToBase58WithChecksum
-import com.sonsofcrypto.web3lib.utils.extensions.hexStringToByteArray
-import com.sonsofcrypto.web3lib.utils.extensions.toByteArray
-import com.sonsofcrypto.web3lib.utils.extensions.toHexString
-import com.sonsofcrypto.web3lib.utils.extensions.toUInt
-import com.sonsofcrypto.web3lib.utils.hmacSha512
-import com.sonsofcrypto.web3lib.utils.isBip44ValidPrv
-import com.sonsofcrypto.web3lib.utils.isBip44ValidPub
-import com.sonsofcrypto.web3lib.utils.ripemd160
-import com.sonsofcrypto.web3lib.utils.sha256
-import com.sonsofcrypto.web3lib.utils.upcompressedPubKey
+import com.sonsofcrypto.web3lib.utilsCrypto.Curve
+import com.sonsofcrypto.web3lib.utilsCrypto.addPrvKeys
+import com.sonsofcrypto.web3lib.utilsCrypto.addPubKeys
+import com.sonsofcrypto.web3lib.utilsCrypto.compressedPubKey
+import com.sonsofcrypto.web3lib.utilsCrypto.decodeBase58WithChecksum
+import com.sonsofcrypto.web3lib.utilsCrypto.encodeToBase58WithChecksum
+import com.sonsofcrypto.web3lib.extensions.hexStringToByteArray
+import com.sonsofcrypto.web3lib.extensions.toByteArray
+import com.sonsofcrypto.web3lib.extensions.toHexString
+import com.sonsofcrypto.web3lib.extensions.toUInt
+import com.sonsofcrypto.web3lib.utilsCrypto.hmacSha512
+import com.sonsofcrypto.web3lib.utilsCrypto.isBip44ValidPrv
+import com.sonsofcrypto.web3lib.utilsCrypto.isBip44ValidPub
+import com.sonsofcrypto.web3lib.utilsCrypto.ripemd160
+import com.sonsofcrypto.web3lib.utilsCrypto.sha256
+import com.sonsofcrypto.web3lib.utilsCrypto.upcompressedPubKey
 
 private const val firstHardenedIdx: UInt = 2147483648u
 
